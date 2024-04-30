@@ -42,6 +42,14 @@ public sealed class ClientClothingSystem : ClothingSystem
         {"id", "IDCARD"},
         {"pocket1", "POCKET1"},
         {"pocket2", "POCKET2"},
+        {"pocket3", "POCKET3"},
+        {"pocket4", "POCKET4"},
+        {"pocket5", "POCKET5"},
+        {"pocket6", "POCKET6"},
+        {"pocket7", "POCKET7"},
+        {"pocket8", "POCKET8"},
+        {"pocket9", "POCKET9"},
+        {"pocket10", "POCKET10"},
         {"suitstorage", "SUITSTORAGE"},
     };
 

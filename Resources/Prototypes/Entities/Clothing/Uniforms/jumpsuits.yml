@@ -1461,3 +1461,59 @@
     sprite: Clothing/Uniforms/Jumpsuit/familiar_garbs.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuit/familiar_garbs.rsi
+
+# From Barotrauma 14
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformAssistantClothes
+  name: assistant clothes
+  description: Even the assistant needs clothing.
+  components:
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/assistant.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/assistant.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformEngineerJumpsuit
+  name: engineer's jumpsuit
+  description: The Engineer's Jumpsuit is a part of one of the Engineer's Uniforms.
+  components:
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/engineer.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/engineer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformDoctorUniform
+  name: doctor's uniform
+  description: Makes you look like you might be useful in a medical emergency.
+  components:
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/doctor.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/doctor.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformMechanicJumpsuit
+  name: mechanic's jumpsuit
+  description: The Mechanic's Jumpsuit is a part of one of the Mechanic's Uniforms.
+  components:
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/mechanic.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/mechanic.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformCommandoFatigues
+  name: commando's fatigues
+  description: I ain't got time to bleed.
+  components:
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/commando.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/commando.rsi

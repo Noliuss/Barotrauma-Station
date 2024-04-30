@@ -137,6 +137,45 @@ public partial class InventorySystem
             && _containerSystem.Insert(itemToSpawn, pocket2)
             )
             return;
+        if (TryGetSlotContainer(entity, "pocket3", out var pocket3, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket3)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket4", out var pocket4, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket4)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket5", out var pocket5, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket5)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket6", out var pocket6, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket6)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket7", out var pocket7, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket7)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket8", out var pocket8, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket8)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket9", out var pocket9, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket9)
+            )
+            return;
+
+        if (TryGetSlotContainer(entity, "pocket10", out var pocket10, out _)
+            && _containerSystem.Insert(itemToSpawn, pocket10)
+            )
+            return;
 
         //Try insert into hands, or drop on the floor
         _handsSystem.PickupOrDrop(entity, itemToSpawn, false);

@@ -1,135 +1,94 @@
-﻿﻿[color=#ff0000]YOU MUST BE AT LEAST 17 YEARS OF AGE TO PLAY ON DELTA-V SERVERS. ANY USERS SUSPECTED OF BEING UNDER 17 YEARS OF AGE WILL BE BANNED UNTIL THEY ARE OF AGE.[/color]
+﻿﻿[color=#ff0000]YOU MUST BE AT LEAST 16 YEARS OF AGE TO PLAY ON OUR SERVER. ANY USERS SUSPECTED OF BEING UNDER 17 YEARS OF AGE WILL BE BANNED UNTIL THEY ARE OF AGE.[/color]
 
 [color=#ff0000]DISCONNECTING FROM OR IGNORING/EVADING ADMIN-HELPS WILL RESULT IN AN APPEAL ONLY BAN.[/color]
 
 [color=#ff0000]THE USAGE OF ANY THIRD-PARTY APPLICATIONS/SCRIPTS/CLIENT MODIFICATIONS TO GAIN AN ADVANTAGE, AVOID INTENDED GAME/SERVER MECHANICS, OR TO HARM SERVER INFRASTRUCTURE IS STRICTLY PROHIBITED. ANY AND ALL INSTANCES OF THIS WILL BE MET WITH AN APPEAL-ONLY BAN.[/color]
 
-[color=#00ff00]Rules Update 11Mar2024 - Added Cryo Rules, Changed the Prisoner Rule, Expanded on EORG, added rules aimed at meta-grudging/vitriolic OOC/LOOC, and clarified part of Rule 6[/color]
-
-[color=#ffff00]Delta-V is a Medium Roleplay server. Try to immerse yourself into your character. This includes doing your job, interacting with your fellow crewmates, and using roleplay as the primary vessel to play the game. MRP places less emphasis on “winning” and more on just telling a story.[/color]
+[color=#ffff00]Our server is a Medium Roleplay one. Try to immerse yourself into your character. This includes doing your job, interacting with your fellow crewmates, and using roleplay as the primary vessel to play the game. MRP places less emphasis on “winning” and more on just telling a story.[/color]
 
 If you have any questions about these rules, please use the admin help (ahelp) menu by hitting F1 in-game or clicking the “Ahelp” button in the lobby.
 
-[color=#a4885c]0.[/color] Admins can disregard any and all of these rules if they deem it in the best interest of the current round, server, and/or community at large.
-    - Administrators will be held fully accountable for their actions if they exercise this privilege.
-    - All of these rules apply as they are intended. Every example of a rule break cannot be defined as written, therefore, enforcement of the rules is subject to staff interpretation of the rule's intention.
+1. Being an asshole.
+The main rule of any role-playing game is not to interfere with other players . We are all here just to play interesting rounds: don’t break anyone’s game, and they won’t break it for you.
 
-[color=#a4885c]1.[/color] Erotic Roleplay (ERP), erotic content, or 18+ sexual content is [color=#ff0000]not allowed under any circumstance[/color]. This includes comments not explicitly sexual in nature that contain words, phrases, or ideations that are deemed inappropriate. [color=#ff0000]If roleplay reaches a point where it has become sexual and/or uncomfortable, immediately stop and contact an administrator.[/color]
+Examples:
 
-[color=#a4885c]2.[/color] Follow the server expectations
-    - Do not cheat.
-    - Do not abuse glitches and exploits. [color=#ff0000]We have zero tolerance for abusing exploits/bugs. If you’re not sure, ask an admin.[/color] Otherwise, please use the #bug-reports channel on the Discord to report the bug.
-    - If you are banned from a role or department, you may not play that role. This includes seeking or accepting promotions into roles you are banned from.
-    - Do not make yourself a major problem/annoyance/disruption for the crew while not being an antagonist (i.e. self-antagging).
-    - Do not make yourself a major problem/annoyance/disruption for one specific crew member in a way that would actively detract from the other player's enjoyment of the shift.
-    - Do not, as a crewmate, hide the nuclear fission explosive (i.e. "the nuke") in an impossible to see location.
-    - Do not ignore the admin help relay or abuse it by flooding it with garbage, checking for admins before stating a problem (ex: "hello?", "any admins?"), using it as a chatroom, or sending messages of no substance. Hostility to administrators in the relay will result in your removal. All ahelp messages are sent to the Delta-V Discord.
-    - Department strikes (ex: cargonia and any variation thereof), riots, cults, and any other type of similar largely disruptive behavior are strictly forbidden. These activities are generally antagonist-only and all players regardless of antagonist status must obtain admin Central Command permission before engaging in this behavior (you are extremely unlikely to get permission).
-    - AFK (aka SSD) and catatonic players are considered to have the same rights as a conscious crewmate.
-    - End-of-round grief (EORG) is not allowed. This includes attacking, destroying, polluting, and injuring without reason both *at* and *on the way to* Central Command.
-        * This also extends to the following:
-            * Neutral parties, such as space dragons or sentient artifacts activating harmful nodes.
-            * Attempts to block the docking ports or ports leading into Central Command.
+The captain recalls the shuttle within 3 hours, with 80% of the crew dead from a deadly virus and a singularity rife upon arrival.
+Captain throwing the nuclear disk in space because he knows that nukies can't win without it.
+Playing in "catch me" with the administration. The player is so tired of playing SS14 that he is now playing on the admins’ nerves, systematically and demonstrably violating the rules in small ways, followed by attempts to prove in AHelp, OOC and discord that he did not break anything.
 
-[color=#a4885c]3.[/color] Follow Chat Guidelines
-    - Use English as your primary method of communication.
-    - Do not spam.
-    - Do not advertise.
-    - Be respectful towards other players in LOOC and OOC channels, and avoid making others uncomfortable. This can range anywhere from starting arguments to personal attacks against others, depending on the context.
-    - Do not use netspeak in character (i.e. btw, lmfao).
-    - Do not use the Emotes channel to bypass an inability to speak. This includes examples like "motions for you to put parmesan THEN sauce on the spaghetti," "im friendly," and "huh weird looks like I can't type."
-    - Use the LOOC and OOC channels properly. Don’t speak of in-character matters in those channels unless you’re asking questions related to in-game concepts.
-       * DO NOT use in-character channels to bypass a lack of ability to use OOC/LOOC chats (e.g. "Huh, wonder where captain went? *OOC* He probably left to get dinner lol"). This will result in an immediate dewhitelist.
-    - Hate speech, slurs and bigotry are [color=#ff0000]not allowed[/color]. Words that are closely tied to real life slurs are [color=#ff0000]not allowed[/color].
-    - No racist remarks towards in-game races/morphotypes (i.e. Simulated Racism), while you don’t have to like everybody, you should not be acting upon nor expressing your distaste for other races/morphotypes.
+2. Grief
+Depriving a player of the ability to play the game without in-game reasons.
 
-[color=#a4885c]4.[/color] Follow Metagaming guidelines
-    - If you die and get revived, do not act on things you saw while you were dead.
-    - Do not engage in meta-communications. This includes using chat channels outside of what is available in-game to communicate with other players in the same game.
-    - Players are allowed to have in-character relationships (friends, enemies, or otherwise), however they cannot be used as a reason to grant or deny things based exclusively on having a relationship with one another(i.e. Meta-Friending).
-    - You are allowed to have knowledge of past experiences with someone else in prior shifts. This does not give you permission to hold a grudge against someone that results in you treating them differently in an unfair way (i.e. Meta-Grudging).
-    - Specific players who were antagonists in previous rounds must not be treated differently because of it.
-    - Do not "Antag Roll." This is the act of joining rounds for the purpose of seeing if you joined as an antagonist, and leaving soon after if not. Players who have a history of this behavior will have their whitelist revoked and/or face a ban.
-    - [color=#ff0000]Do not stream the current round to the Delta-V Discord.[/color]
-    - Do not place players into cryosleep unless they have given consent to do so, they are fully catatonic, or they have been sentenced to preservative stasis. Always examine a character to double check if they are SSD or catatonic prior to placing them into cryosleep.
+In a role-playing game, characters can kill each other in cases where they have reasons for their actions . When you kill another player for some non-game reason, it is considered as grief. Completely isolating a character for an extended period of time with no way to escape is also considered a grief.
 
-[color=#a4885c]5.[/color] If a player dies and is brought back by way of cloning or borgification, they forget the last five minutes leading up to their death and cannot describe who or what killed them.
+Examples of in-game situations that are not considered as grief:
 
-Players that are revived by using a defibrillator CAN recall what killed them and do not have any forgetfulness about what happened while they were alive.
+Any antagonist role can kill/isolate people in order to complete their tasks. But the mere fact of receiving a role does not give the right to kill anyone he meets.
+Arrest/execution according to coalition law or the new order.
+Murder due to a drunken fight/conflict between characters. The situation must be developed well enough for the character's motivation to be visible. Simple murders for the reason “I got drunk” won’t work.
+Any character can kill anyone in order to save his life (if he is not a coward and his character, in general, allows him to do this). For example, if the Security Service opened fire on you with a lethal weapon, you can return fire and even kill someone there.
+And so on. For any murder and any long-term isolation, there must be sufficient motivation for your character , taking into account the situation at the station and the nature of your character. If your character has enough motivation to kill another character, he does NOT always need an antagonist role to do so.
 
-[color=#ff0000]Please report players who violate this rule.[/color]
+3. Non-RP actions
+In any situation, you must act based on the specific situation and characteristics of your character. Any action you take in the game must be justified from the character's point of view.
 
-[color=#a4885c]6.[/color] All constructed/summoned beings that have laws are bound by those laws and must abide by them.
-    - If a being has a master, they MUST follow their master's orders.
-    - Your master is held accountable if they order you to do something malicious.
-        *This does not apply to breaking server rules. If you are ordered to do something that would break a server rule, disregard it and inform an admin.
-    - Not having orders, or being given free will by your master does NOT give you permission to self-antag or grief the crew.
+Metagame is the manifestation of any knowledge and skills that do not correspond to your character. For example:
+The player, based on indirect out-of-game signs, calculates the mode and begins to prepare for the invasion of the antagonists in advance.
+Security officer arrested the man and took him for search because he knows that this player steals the baton from the post in every round.
 
-[color=#a4885c]7.[/color] Follow Naming Conventions
-    - In-character names must fit the server standards of:
-        * Doesn't make obvious references
-        * Doesn't disturb roleplay
-      OR
-        * Is a result of random name generation.
-    - The only exception to the above is that theatrical roles like clown, boxer, and mime are allowed stage names with some freedom, as long as it is not obscene.
+Powergame , within our server, is ignoring the character’s pain and fear. Don't try to ignore torture or kick ass at people who point guns at you. Also remember that your character is an ordinary person and he will not be able, for example, without straining, to lift and drag two or more people along with him at once.
 
-[color=#a4885c]8.[/color] Follow Roleplay Guidelines
-    - Treat your character as a separate entity from you, the player. Your character's actions, feelings, and knowledge in-game should be based solely on the character's experiences and not your own as the player. Low roleplay actions that have no regard for your character or the setting (Memes, silly copy paste spam IC) are not acceptable.
-    - Character development can occur over rounds but each round is a soft-reset, meaning you can have previous shift experience but your character will never have died in the past.
-    - Command and Security will be held to a higher standard for roleplay.
-    - By picking prisoner, you have chosen to RP as a prisoner. You are still subject to rules pertaining to escalation, and should only seek to escape from the brig with good roleplay reasoning, such as abusive security, or a badly damaged perma. Escaping for no reason is considered a self-antag activity. If you are unsure whether your escape reason is valid, feel free to AHelp it first.
+Munchkinism - there are a lot of useful things in the game, but you shouldn’t collect everything that doesn’t fit well and carry it on yourself. Moreover, you should not do this when your character begins to feel physical difficulties. If you run around the outpost in hard separatist's costume, body armor, a gas mask and with five guns without sufficient justification and role-playing, then you not only risk getting hurt in an accident by tripping over a tile, but also getting banned for going out of character.
 
-[color=#a4885c]9.[/color] Follow Escalation Guidelines
-    - Do not escalate situations needlessly. Very few things are deserving of a fight to the death.
-    - Antagonistic ghost roles, and pest ghost roles like mice are always fair game for attacking. Don't grief crew-aligned ghost roles like familiars, drones, or pets without provocation.
-    - If a fight results in someone being critically injured, seek medical help for them. If they die, do not destroy or otherwise hide their body.
+Other examples of leaving a role:
 
-[color=#a4885c]10.[/color] Follow Antagonist Guidelines
-    - The damage antagonists cause should be roughly proportional to their objectives, and contribute towards achieving them in some way. However antagonists have leniency in regards to what they can and can’t do.  If you are concerned as to whether or not what you're about to do is allowed, feel free to ahelp and ask an admin.
-    - Other antagonists are not necessarily your friends. Traitors, rat kings, and possibly even space dragons are free agents, but no one should be working together with xenomorphs or zombies.
-    - Exploits, arrivals camping, unnecessary round extensions, and other extremely lame behavior are forbidden.
-    - Ghost roles have their own independent rules that must be followed. [color=#ff0000]Breaking these rules can result in a ban, whitelist removal, or both.[/color]
+You track down another player and try to perform certain actions with his character based on your Out-Of-Character motivation.
 
-[color=#a4885c]11.[/color] Psionics
-    - Players that have psionic powers are allowed to use them at-will to accomplish their roleplay goals. It should be noted that in-character consequences can happen as a result of their use, including being stripped of psionic powers or even death.
-    - As a psionic mantis, it is not your goal to hunt down psionics. Do not mindbreak others against their will solely because they have psionic powers.
+Not suitable for your position. Don't pick up a role if you don't already understand the game mechanics enough. In example, you need to understand the laws when playing as security.
 
-[color=#a4885c]12.[/color] Don't rush for or prepare equipment unrelated to your job for no purpose other than to have it "just in case" (referred to as "Powergaming").
-    - A medical doctor does not need insulated gloves, and the Head of Personnel does not need to give themselves armory access so they can go grab a gun. Have an actual reason for needing these things.
-    - Don't manufacture weapons, bombs, or deadly poisons before you know of any reason you would need them.
-    - Don't preemptively hide antagonist objectives or preemptively secure them with higher security than normally required.
-    - Don't manufacture or prepare things for the "end of the round" when the shuttle docks with Central Command.
+Imposing emotions and impressions on other characters through emotes and flavor. They should only contain a description of what other characters can see - let their players decide for themselves what conclusions to draw from this. Also, you should not use links to pictures/videos/music in flavors - only a text description of your character’s appearance.
 
-[color=#ff0000]SECURITY & COMMAND RULES[/color]
-These rules apply to any individual who is promoted or is acting in the place of a Security/Command role (unless they are an antagonist).
+Leaving the game at the wrong time. When you leave, your character falls asleep. If you often leave the game at inopportune moments, when your character does not have the opportunity to lie down and fall asleep, then you risk getting banned. The same goes for when you simply press the Sleep button to ignore what is happening around you, or simply leave the character AFK. Examples:
+ The player left the game as soon as he was handcuffed.
+ The player pressed the Sleep button during torture.
+ During the attack on the character, the player began to write angry messages in AHelp, OOC or LOOC, leaving the character without an appropriate reaction. It's okay to complain to AHelp, but don't turn your character into an insensitive log!
 
-[color=#a4885c]13.[/color] Security and command roles are held to a higher standard and must follow space law.
-    - If you don’t have time to play a full round, do not select these roles.
-    - If you need to leave your computer, send an ahelp or notify your fellow crew via the radio.
-    - Be competent in your job and department. Failure to know the basics of your department is liable to result in a job ban.
-    - Security and Command roles are forbidden from using a syndicate uplink to receive contraband without written permission from Central Command.
-    - Do not give away your objective items (e.g. Captain’s equipment, Head of Personnel’s ID, etc.). Some leeway is given to making deals with criminals if the deal benefits the safety or situation of the station as a whole and not just yourself.
-    - Uphold the Law & maintain order. Do not engage in lawbreaking activity or troublemaker behavior. Security is expected to intervene into criminal activity where possible. Heads of Staff are at minimum expected to report criminal activity to Security.
-    - Do not immediately abandon your position as a Command role and go do whatever you want instead of managing your department/the station. Do not abuse your position or use it to make arbitrary choices to the detriment of the station.
-    - Do not hire random crew to be your bodyguards or promote random crewmember to Captain or a Head of Staff at random. If you need bodyguards, talk to your security department. If you need a new Command role, talk to the personnel in that related department.
-    - Do not abandon the station during Nuclear Operatives. You are supposed to protect the station, not let operatives kill everyone on it without a fight.
+Conflicts with crew members not due to role reasons. Justified conflicts caused by role-playing reasons are not prohibited on the server, but if you deliberately provoke other players into conflict every time without reason in order to receive support from the administration, then this will be regarded as a violation of the rules.
 
-[color=#a4885c]14.[/color] Security (and Command where applicable) should try to remain non-lethal and effect arrests. Security/Command will be expected to answer for use of lethal force. Security/Command will be expected to effect arrests on criminals and prevent them from dying while in custody, even if lethal force is used.
+4. Violation of the atmosphere
 
-In the following special circumstances, lethal force may be used by Security:
-    - Lethal force is used against you (ex: firearms, lasers, disabling/stunning weapons with intent to kill, deadly melee weapons)
-    - Suspect is equipped with dangerous equipment only used by enemy agents/antagonists and is not cuffed nor surrendering (ex: Bloodred Hardsuit, China Lake, C-20R, etc.).
-    - You determine that your life or the life of another person is in immediate danger.
-    - The suspect is unable to be safely detained by less-lethal means. This includes suspects who continually resist efforts to be cuffed or continuously manage to escape.
-    - If no other reasonable options are readily available and allowing the suspect to continue would be an unreasonable danger to the station/crew.
+In our backstory, we play on a lonely outpost that is placed at the Aphotic Plateau deep under the surfasce of Europa in the midst of humanity's loss of much of its history, technology, and culture. Your characters must behave within this setting.
 
-[color=#a4885c]15.[/color] Security/Command are expected to protect detainees in their custody to the best of their ability so as long as it does not come to unreasonable risk to themselves, the crew, or the station at large to do so.
-    - Brig times should generally not exceed 20 minutes unless the crime is permabriggable.
-    - Security may choose to confiscate dangerous items (weapons, firearms) as well as items used to commit crimes or items that prove problematic in possession of the detainee (tools, insulated gloves, etc.).
-    - Security may inspect PDAs of detainees and withhold them for the duration of detention, but can only confiscate them if they are obviously contraband. Suspicion alone is NOT sufficient for PDA confiscation by Security.
-    - Security is prohibited from checking crewmates for implants without reasonable suspicion.
-    - Detainees that die in your custody must be cloned unless they have been (legally) executed or have committed suicide.
-    - Executions must be for a capital crime, used only as a last resort, and MUST be authorized by the highest ranking member of Security, who will answer to the use of execution.
-    - Detainees in the brig have the right to know what they are being charged with.
+Thus, we prohibit:
 
-[color=#a4885c]16.[/color] Command members besides the Logistics Officer are not permitted to leave the station on salvage expeditions.
+OOCinIC (Out-Of-Character in In-Character chat). Any communication between players should take place in OOC/LOOC chats, and in IC only the characters' remarks and emotions. Examples of what should not be in IC: “How to write in red in this game?”, “((I’m afk guys, I’ll be there soon))”.
+
+Illiteracy. The language of the server is English - this means that regardless of your nationality, you must write in literary English. This applies not only to grammatical errors, but also the correct placement of punctuation, spaces and capital letters. Also, it applies to addressing or calling other characters by name.
+
+Use of in-game slang by a character who does not know it. Words such as "emag" are known only to agents of enemy corporations, and "OOC", "traitor" and "nukie" are convenient player terms that have arisen due to the frequent use of these concepts, but they are prohibited for use by regular IC characters.
+
+Using modern Internet slang. "Buttheart", "lol", "kek" - these are all examples of modern slang, which, within our prehistory, was lost and unknown to the characters.
+
+Memes. Any set expressions from the modern Internet are prohibited for use in IC under any conditions.
+
+Incorrectly character naming. The format of names is strictly “First Name Last Name”, without nicknames or abbreviations.
+
+Non-standard character names. You should not name your characters with famous people and heroes of other universes' names, and you should not choose “meaningful” names that can be translated into some non-standard meanings. You can choose last names "Black", "White", "Snow", etc., but do not call your characters "Imna Zi", "Lisa Vagina". If you are in doubt about what name to choose, it is better to click on the in-game random name generator and choose something from it.
+
+Use of inappropriate audio-visual resources in-game. The unacceptability of any audio, graphic or text resources uploaded into the game by players is assessed by the server administration. If you know that a particular resource is unacceptable, but you upload it anyway, then you are violating the rule about the in-game atmosphere. To communicate less with the administration, just try not to upload resources that may annoy other players or stand out too much from the game atmosphere.
+
+5. Malicious out-of-game interactions
+Don't break rounds in general using out-of-game methods. Be careful, violations in this category have a very serious impact on the game and are therefore punished very severely!
+
+ICinOOC (In-Character information in Out-Of-Character communications). It is prohibited to write any information about the current round in any non-game means of communication: OOC/LOOC chats on the server, Discord/Jabber conferences, forums, Skype, and so on. This does not apply to information that can be found in the lobby without entering the game (list of personnel, announcements from the station, etc.).
+
+Cooperation is the use of non-game means of communication to coordinate actions in the game. Your character should know only what he saw, and not what your accomplices outside the game personally told you. Any such actions are punished quite severely.
+
+Using multiple accounts. The most serious violation that novice players often commit. If you want to change your account, notify the server administration about this, otherwise you risk getting permanent blocks on all your accounts without the right to appeal.
+
+34. ERP
+ERP (Erotic RolePlay) is completely prohibited on our server. Be careful, violations of this category are disgusting and therefore are punished very severely!
+
+ERP - any sexual activity. It is prohibited to act out having sex or other sexual activities through speech, emotes, or any other means.
+
