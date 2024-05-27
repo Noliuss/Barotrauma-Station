@@ -7,6 +7,9 @@ using Content.Shared.Database;
 using Content.Shared.Projectiles;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
+using Content.Shared.Skill.Components;
+using Content.Shared.Popups;
+using Robust.Shared.Random;
 
 namespace Content.Server.Projectiles;
 
@@ -17,6 +20,8 @@ public sealed class ProjectileSystem : SharedProjectileSystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly GunSystem _guns = default!;
     [Dependency] private readonly SharedCameraRecoilSystem _sharedCameraRecoil = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -46,6 +51,18 @@ public sealed class ProjectileSystem : SharedProjectileSystem
 
         var otherName = ToPrettyString(target);
         var direction = args.OurBody.LinearVelocity.Normalized();
+
+        if (TryComp<SkillComponent>(target, out var skill))
+        {
+            var rand = _random.Next(100);
+            if (skill.TotalLuck > rand)
+            {
+                var message = Loc.GetString("skil   l-lucky-evasion");
+                _popup.PopupEntity(message, target);
+                return;
+            }
+        }
+
         var modifiedDamage = _damageableSystem.TryChangeDamage(target, ev.Damage, component.IgnoreResistances, origin: component.Shooter);
         var deleted = Deleted(target);
 

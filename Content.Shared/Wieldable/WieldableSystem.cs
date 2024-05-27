@@ -4,6 +4,8 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
+using Content.Shared.Skill.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
@@ -14,6 +16,7 @@ using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Wieldable.Components;
+using Robust.Shared.Configuration;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 
@@ -21,6 +24,7 @@ namespace Content.Shared.Wieldable;
 
 public sealed class WieldableSystem : EntitySystem
 {
+    [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly SharedVirtualItemSystem _virtualItemSystem = default!;
     [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
     [Dependency] private readonly SharedItemSystem _itemSystem = default!;
@@ -156,6 +160,22 @@ public sealed class WieldableSystem : EntitySystem
             return false;
         }
 
+        // Strength is needed to weild
+        if (!EntityManager.TryGetComponent<SkillComponent>(user, out var skill))
+        {
+            if(!quiet)
+                _popupSystem.PopupClient(Loc.GetString("player-component-no-skill"), user, user);
+            return false;
+        }
+
+        var strNeeded = _config.GetCVar<int>(SkillCCVars.StrengthWeild);
+        if(skill.TotalStrength < strNeeded)
+        {
+            var message = Loc.GetString("player-component-not-enough-strength-weild",
+                ("number", strNeeded), ("item", uid));
+            _popupSystem.PopupClient(message, user, user);
+            return false;
+        }
         // Seems legit.
         return true;
     }

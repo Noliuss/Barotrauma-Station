@@ -1,0 +1,48 @@
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconStrength
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Strength
+
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconPerception
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Perception
+
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconEndurance
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Endurance
+
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconCharisma
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Charisma
+
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconIntelligence
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Intelligence
+
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconAgility
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Agility
+
+- type: statusIcon
+  parent: JobIcon
+  id: SkillIconLuck
+  icon:
+    sprite: Interface/Misc/skill_icons.rsi
+    state: Luck

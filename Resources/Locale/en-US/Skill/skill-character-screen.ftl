@@ -1,0 +1,12 @@
+humanoid-profile-editor-skill-priority-one-button = 1
+humanoid-profile-editor-skill-priority-two-button = 2
+humanoid-profile-editor-skill-priority-three-button = 3
+humanoid-profile-editor-skill-priority-four-button = 4
+humanoid-profile-editor-skill-priority-five-button = 5
+humanoid-profile-editor-skill-priority-six-button = 6
+humanoid-profile-editor-skill-priority-seven-button = 7
+humanoid-profile-editor-skill-priority-eight-button = 8
+humanoid-profile-editor-skill-priority-nine-button = 9
+humanoid-profile-editor-skill-priority-ten-button = 10
+humanoid-profile-editor-skills-tab = Skill
+humanoid-profile-editor-skill-points-label = {$points} left of {$max} points

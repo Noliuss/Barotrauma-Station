@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Utility;
+using Content.Shared.Skill;
 
 namespace Content.Server.Database
 {
@@ -38,6 +39,7 @@ namespace Content.Server.Database
             var prefs = await db.DbContext
                 .Preference
                 .Include(p => p.Profiles).ThenInclude(h => h.Jobs)
+                .Include(p => p.Profiles).ThenInclude(h => h.Skills)
                 .Include(p => p.Profiles).ThenInclude(h => h.Antags)
                 .Include(p => p.Profiles).ThenInclude(h => h.Traits)
                 .AsSingleQuery()
@@ -86,6 +88,7 @@ namespace Content.Server.Database
                 .Include(p => p.Preference)
                 .Where(p => p.Preference.UserId == userId.UserId)
                 .Include(p => p.Jobs)
+                .Include(p => p.Skills)
                 .Include(p => p.Antags)
                 .Include(p => p.Traits)
                 .AsSplitQuery()
@@ -172,6 +175,7 @@ namespace Content.Server.Database
         private static HumanoidCharacterProfile ConvertProfiles(Profile profile)
         {
             var jobs = profile.Jobs.ToDictionary(j => j.JobName, j => (JobPriority) j.Priority);
+            var skills = profile.Skills.ToDictionary(j => j.SkillName, j => (SkillPriority) j.Priority);
             var antags = profile.Antags.Select(a => a.AntagName);
             var traits = profile.Traits.Select(t => t.TraitName);
 
@@ -232,7 +236,8 @@ namespace Content.Server.Database
                 jobs,
                 (PreferenceUnavailableMode) profile.PreferenceUnavailable,
                 antags.ToList(),
-                traits.ToList()
+                traits.ToList(),
+                skills
             );
         }
 
@@ -267,10 +272,17 @@ namespace Content.Server.Database
             profile.PreferenceUnavailable = (DbPreferenceUnavailableMode) humanoid.PreferenceUnavailable;
 
             profile.Jobs.Clear();
+            profile.Skills.Clear();
             profile.Jobs.AddRange(
                 humanoid.JobPriorities
                     .Where(j => j.Value != JobPriority.Never)
                     .Select(j => new Job {JobName = j.Key, Priority = (DbJobPriority) j.Value})
+            );
+
+            profile.Skills.AddRange(
+                humanoid.SkillPriorities
+                    .Where(j => j.Value != SkillPriority.Zero)
+                    .Select(j => new Skill {SkillName = j.Key, Priority = (DbSkillPriority) j.Value})
             );
 
             profile.Antags.Clear();

@@ -19,6 +19,14 @@
         Slash: 0.70
         Piercing: 0.70 #Can save you, but bullets will still hurt. Will take about 10 shots from a Viper before critting, as opposed to 7 while unarmored and 16~ with a bulletproof vest.
         Heat: 0.80
+  - type: ClothingSkillModifier
+    strengthModifier: 1
+    perceptionModifier: 3
+    enduranceModifier: -2 # check negative
+    charismaModifier: 8 # to see we don't get more than 10
+    intelligenceModifier: -6 # to see we still have 1 after sum with base 5
+    # agilityModifier: 1 to check it doesn't show
+    luckModifier: 0 # to check it does not show
   - type: ExplosionResistance
     damageCoefficient: 0.90
 

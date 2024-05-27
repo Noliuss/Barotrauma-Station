@@ -71,6 +71,13 @@ namespace Content.Server.Database
                 .HasIndex(j => new { j.ProfileId, j.JobName })
                 .IsUnique();
 
+            modelBuilder.Entity<Skill>()
+                .HasIndex(j => j.ProfileId);
+
+            modelBuilder.Entity<Skill>()
+                .HasIndex(j => new { j.ProfileId, j.SkillName })
+                .IsUnique();
+
             modelBuilder.Entity<AssignedUserId>()
                 .HasIndex(p => p.UserName)
                 .IsUnique();
@@ -340,6 +347,7 @@ namespace Content.Server.Database
         public string Backpack { get; set; } = null!;
         public int SpawnPriority { get; set; } = 0;
         public List<Job> Jobs { get; } = new();
+        public List<Skill> Skills { get; } = new();
         public List<Antag> Antags { get; } = new();
         public List<Trait> Traits { get; } = new();
 
@@ -366,6 +374,31 @@ namespace Content.Server.Database
         Low = 1,
         Medium = 2,
         High = 3
+    }
+
+    public class Skill
+    {
+        public int Id { get; set; }
+        public Profile Profile { get; set; } = null!;
+        public int ProfileId { get; set; }
+        public string SkillName { get; set; } = null!;
+        public DbSkillPriority Priority { get; set; }
+    }
+
+    public enum DbSkillPriority
+    {
+        // These enum values HAVE to match the ones in SkillPriority in Content.Shared
+        Zero = 0,
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
+        Five = 5,
+        Six = 6,
+        Seven = 7,
+        Eight = 8,
+        Nine = 9,
+        Ten = 10
     }
 
     public class Antag

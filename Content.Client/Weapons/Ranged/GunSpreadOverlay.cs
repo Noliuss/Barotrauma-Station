@@ -5,6 +5,7 @@ using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
+using Content.Shared.Skill.Components;
 
 namespace Content.Client.Weapons.Ranged;
 

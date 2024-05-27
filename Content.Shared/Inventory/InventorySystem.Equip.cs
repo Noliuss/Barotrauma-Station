@@ -14,6 +14,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Skill;
 
 namespace Content.Shared.Inventory;
 
@@ -21,6 +22,7 @@ public abstract partial class InventorySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private readonly SkillModifierSystem _skillModifiers = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -194,6 +196,8 @@ public abstract partial class InventorySystem
         Dirty(target, inventory);
 
         _movementSpeed.RefreshMovementSpeedModifiers(target);
+
+        _skillModifiers.RefreshClothingSkillModifiers(target);
 
         return true;
     }
@@ -450,6 +454,8 @@ public abstract partial class InventorySystem
         Dirty(target, inventory);
 
         _movementSpeed.RefreshMovementSpeedModifiers(target);
+
+        _skillModifiers.RefreshClothingSkillModifiers(target);
 
         return true;
     }

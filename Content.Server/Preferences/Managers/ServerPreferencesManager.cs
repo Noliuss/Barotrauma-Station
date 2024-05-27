@@ -12,6 +12,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Content.Shared.Skill;
 
 
 namespace Content.Server.Preferences.Managers

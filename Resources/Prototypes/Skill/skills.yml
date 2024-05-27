@@ -1,0 +1,49 @@
+# Skill prototypes used in Character creation screen
+- type: skill
+  id: Strength
+  name: Strength
+  description: skill-character-creation-description-strength
+  icon: "SkillIconStrength"
+  order: 0
+
+- type: skill
+  id: Perception
+  name: Perception
+  description: skill-character-creation-description-perception
+  icon: "SkillIconPerception"
+  order: 1
+
+- type: skill
+  id: Endurance
+  name: Endurance
+  description: skill-character-creation-description-endurance
+  icon: "SkillIconEndurance"
+  order: 2
+
+- type: skill
+  id: Charisma
+  name: Charisma
+  description: skill-character-creation-description-charisma
+  icon: "SkillIconCharisma"
+  order: 3
+
+- type: skill
+  id: Intelligence
+  name: Intelligence
+  description: skill-character-creation-description-intelligence
+  icon: "SkillIconIntelligence"
+  order: 4
+
+- type: skill
+  id: Agility
+  name: Agility
+  description: skill-character-creation-description-agility
+  icon: "SkillIconAgility"
+  order: 5
+
+- type: skill
+  id: Luck
+  name: Luck
+  description: skill-character-creation-description-luck
+  icon: "SkillIconLuck"
+  order: 6

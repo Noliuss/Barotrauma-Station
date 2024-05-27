@@ -34,6 +34,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BoxContainer;
+using Content.Shared.Skill;
 using Direction = Robust.Shared.Maths.Direction;
 
 namespace Content.Client.Preferences.UI
@@ -81,9 +82,13 @@ namespace Content.Client.Preferences.UI
 
         private TabContainer _tabContainer => CTabContainer;
         private BoxContainer _jobList => CJobList;
+        private Label _skillPointsLabel => SkillPointsLabel;
+        private ProgressBar _skillPointsBar => SkillPointsBar; // Nuclear14 The above labels' names are referencing their position relative to this element, i guess by Barotrauma 14 it works exactly the same?
+        private BoxContainer _skillList => CSkillList;
         private BoxContainer _antagList => CAntagList;
         private BoxContainer _traitsList => CTraitsList;
         private readonly List<JobPrioritySelector> _jobPriorities;
+        private readonly List<SkillPrioritySelector> _skillPriorities; // User skill choice
         private OptionButton _preferenceUnavailableButton => CPreferenceUnavailableButton;
         private readonly Dictionary<string, BoxContainer> _jobCategories;
         // Mildly hacky, as I don't trust prototype order to stay consistent and don't want the UI to break should a new one get added mid-edit. --moony
@@ -404,6 +409,15 @@ namespace Content.Client.Preferences.UI
 
             #endregion Jobs
 
+            #region Skills
+
+            _tabContainer.SetTabTitle(5, Loc.GetString("humanoid-profile-editor-skills-tab"));
+            _skillPriorities = new List<SkillPrioritySelector>();
+            UpdateSkillRequirements();
+
+            #endregion Skills
+
+
             #region Antags
 
             _tabContainer.SetTabTitle(2, Loc.GetString("humanoid-profile-editor-antags-tab"));
@@ -680,6 +694,54 @@ namespace Content.Client.Preferences.UI
             Save();
         }
 
+        private void UpdateSkillRequirements()
+        {
+            _skillList.DisposeAllChildren();
+            _skillPriorities.Clear();
+
+            var points = _configurationManager.GetCVar(SkillCCVars.MaxSkill);
+            _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-loadouts-points-label", ("points", points), ("max", points));
+            _skillPointsBar.MaxValue = points;
+            _skillPointsBar.Value = points;
+
+
+            foreach (var skill in _prototypeManager.EnumeratePrototypes<SkillPrototype>().OrderBy(a => a.Order))
+            {
+                    var selector = new SkillPrioritySelector(skill, _prototypeManager);
+
+                    _skillList.AddChild(selector);
+                    _skillPriorities.Add(selector);
+
+                    selector.PriorityChanged += priority =>
+                    {
+                        foreach (var skillSelector in _skillPriorities)
+                        {
+
+                            if(priority != 0)
+                            {
+                                var temp = _skillPointsBar.Value - (int) priority;
+                                if (temp < 0){
+                                }
+                                else
+                                {
+                                    _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", _skillPointsBar.Value), ("max", _skillPointsBar.MaxValue));
+                                    _skillPointsBar.Value = temp;
+                                }
+                            }
+                            else
+                            {
+                                _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", _skillPointsBar.Value), ("max", _skillPointsBar.MaxValue));
+                                _skillPointsBar.Value += (int) skillSelector.Priority;
+                            }
+                            Profile = Profile?.WithSkillPriority(skill.ID, priority);
+                            IsDirty = true;
+                            UpdateSkillPriorities();
+                        }
+                    };
+
+                }
+        }
+
         private void OnFlavorTextChange(string content)
         {
             if (Profile is null)
@@ -842,7 +904,7 @@ namespace Content.Client.Preferences.UI
         private void SetSpecies(string newSpecies)
         {
             Profile = Profile?.WithSpecies(newSpecies);
-            OnSkinColorOnValueChanged(); // Species may have special color prefs, make sure to update it.
+            OnSkinColorOnValueChanged(); // Species may have skill color prefs, make sure to update it.
             CMarkings.SetSpecies(newSpecies); // Repopulate the markings tab as well.
             UpdateSexControls(); // update sex for new species
             RebuildSpriteView(); // they might have different inv so we need a new dummy
@@ -1359,6 +1421,121 @@ namespace Content.Client.Preferences.UI
                     Text = text,
                     MinWidth = 90
                 };
+            }
+        }
+        private void UpdateSkillPriorities()
+        {
+            var points = _configurationManager.GetCVar(SkillCCVars.MaxSkill);
+            _skillPointsBar.Value = points;
+            _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", _skillPointsBar.Value), ("max", _skillPointsBar.MaxValue));
+
+            foreach (var prioritySelector in _skillPriorities)
+            {
+                var skillId = prioritySelector.Skill.ID;
+
+                var priority = Profile?.SkillPriorities.GetValueOrDefault(skillId, SkillPriority.Zero) ?? SkillPriority.Zero;
+
+                prioritySelector.Priority = priority;
+
+                if (priority != SkillPriority.Zero)
+                {
+                    points -= (int) priority;
+                    _skillPointsBar.Value = points;
+                    _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", points), ("max", _skillPointsBar.MaxValue));
+
+                }
+            }
+            if (points < 0)
+                _saveButton.Disabled = true;
+
+        }
+
+        private sealed class SkillPrioritySelector : Control
+        {
+            public SkillPrototype Skill { get; }
+            private readonly RadioOptions<int> _optionButton;
+
+            public SkillPriority Priority
+            {
+                get => (SkillPriority) _optionButton.SelectedValue;
+                set => _optionButton.SelectByValue((int) value);
+            }
+
+            public event Action<SkillPriority>? PriorityChanged;
+            private Label _skillTitle;
+
+            public SkillPrioritySelector(SkillPrototype skill, IPrototypeManager prototypeManager)
+            {
+                Skill = skill;
+
+                _optionButton = new RadioOptions<int>(RadioOptionsLayout.Horizontal)
+                {
+                    FirstButtonStyle = StyleBase.ButtonOpenRight,
+                    ButtonStyle = StyleBase.ButtonOpenBoth,
+                    LastButtonStyle = StyleBase.ButtonOpenLeft
+                };
+                //Override default radio option button width
+                _optionButton.GenerateItem = GenerateButton;
+                // Text, Value
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-one-button"), (int) SkillPriority.One);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-two-button"), (int) SkillPriority.Two);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-three-button"), (int) SkillPriority.Three);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-four-button"), (int) SkillPriority.Four);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-five-button"), (int) SkillPriority.Five);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-six-button"), (int) SkillPriority.Six);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-seven-button"), (int) SkillPriority.Seven);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-eight-button"), (int) SkillPriority.Eight);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-nine-button"), (int) SkillPriority.Nine);
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-ten-button"), (int) SkillPriority.Ten);
+
+                _optionButton.OnItemSelected += args =>
+                {
+                    _optionButton.Select(args.Id);
+                    PriorityChanged?.Invoke(Priority);
+                };
+
+                var icon = new TextureRect
+                {
+                    TextureScale = new Vector2(2, 2),
+                    Stretch = TextureRect.StretchMode.KeepCentered
+                };
+
+                var skillIcon = prototypeManager.Index<StatusIconPrototype>(skill.Icon);
+                icon.Texture = skillIcon.Icon.Frame0();
+
+                _skillTitle = new Label()
+                {
+                    Margin = new Thickness(5f,5f,5f,5f),
+                    Text = skill.LocalizedName,
+                    MinSize = new Vector2(100, 0),
+                    MouseFilter = MouseFilterMode.Stop
+                };
+
+                if (skill.LocalizedDescription != null)
+                {
+                    _skillTitle.ToolTip = skill.LocalizedDescription;
+                    _skillTitle.TooltipDelay = 0.2f;
+                }
+
+                AddChild(new BoxContainer
+                {
+                    Orientation = LayoutOrientation.Horizontal,
+                    Children =
+                    {
+                        icon,
+                        _skillTitle,
+                        _optionButton,
+                    }
+                });
+            }
+            private Button GenerateButton(string text, int value)
+            {
+                var btn = new Button
+                {
+                    Text = text,
+                    MinWidth = 40
+                };
+                return btn;
             }
         }
 
