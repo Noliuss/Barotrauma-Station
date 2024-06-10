@@ -4,10 +4,10 @@
   description: job-description-engineer
   playTimeTracker: JobStationEngineer
   antagAdvantage: 3 # DeltaV - Reduced TC: External Access + Engineering
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Engineering
-      time: 14400 #4 hrs
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Engineering
+  #     time: 14400 #4 hrs
   startingGear: StationEngineerGear
   icon: "JobIconStationEngineer"
   supervisors: job-supervisors-ce
@@ -17,6 +17,15 @@
   - External
   extendedAccess:
   - Atmospherics
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 5
+        weaponsJobModifier: 15
+        mechanicalEngineeringJobModifier: 25
+        electricalEngineeringJobModifier: 40
+        medicalJobModifier: 15
 
 - type: startingGear
   id: StationEngineerGear

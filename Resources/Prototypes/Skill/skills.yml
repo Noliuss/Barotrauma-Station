@@ -1,49 +1,35 @@
 # Skill prototypes used in Character creation screen
 - type: skill
-  id: Strength
-  name: Strength
-  description: skill-character-creation-description-strength
-  icon: "SkillIconStrength"
+  id: Helm
+  name: Helm
+  description: skill-character-creation-description-Helm
+  icon: "SkillIconHelm"
   order: 0
 
 - type: skill
-  id: Perception
-  name: Perception
-  description: skill-character-creation-description-perception
-  icon: "SkillIconPerception"
+  id: Weapons
+  name: Weapons
+  description: skill-character-creation-description-Weapons
+  icon: "SkillIconWeapons"
   order: 1
 
 - type: skill
-  id: Endurance
-  name: Endurance
-  description: skill-character-creation-description-endurance
-  icon: "SkillIconEndurance"
+  id: MechanicalEngineering
+  name: Mechanical Engineering
+  description: skill-character-creation-description-MechanicalEngineering
+  icon: "SkillIconMechanicalEngineering"
   order: 2
 
 - type: skill
-  id: Charisma
-  name: Charisma
-  description: skill-character-creation-description-charisma
-  icon: "SkillIconCharisma"
+  id: ElectricalEngineering
+  name: Electrical Engineering
+  description: skill-character-creation-description-ElectricalEngineering
+  icon: "SkillIconElectricalEngineering"
   order: 3
 
 - type: skill
-  id: Intelligence
-  name: Intelligence
-  description: skill-character-creation-description-intelligence
-  icon: "SkillIconIntelligence"
+  id: Medical
+  name: Medical
+  description: skill-character-creation-description-Medical
+  icon: "SkillIconMedical"
   order: 4
-
-- type: skill
-  id: Agility
-  name: Agility
-  description: skill-character-creation-description-agility
-  icon: "SkillIconAgility"
-  order: 5
-
-- type: skill
-  id: Luck
-  name: Luck
-  description: skill-character-creation-description-luck
-  icon: "SkillIconLuck"
-  order: 6

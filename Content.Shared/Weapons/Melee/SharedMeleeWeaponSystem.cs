@@ -229,36 +229,36 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     {
         if (!Resolve(uid, ref component, false))
             return new DamageSpecifier();
-        // Nuclear14 adjust melee damage with your Strength
+        // Adjust melee damage with your Strength
         // 1 Strength = 0.6
         // 5 Strength = 1
         // 10 Strength = 1.5
-        var damage = component.Damage;
-        foreach(var entry in damage.DamageDict)
-        {
-            if (entry.Value <= 0) continue;
+        // var damage = component.Damage;
+        // foreach(var entry in damage.DamageDict)
+        // {
+        //     if (entry.Value <= 0) continue;
 
-            float newValue = entry.Value.Float();
-            if (TryComp<SkillComponent>(user, out var skill)){
-                newValue *= 0.50f + (skill.TotalStrength / 10f);
-            }
-            damage.DamageDict[entry.Key] = newValue;
-        }
+        //     float newValue = entry.Value.Float();
+        //     if (TryComp<SkillComponent>(user, out var skill)){
+        //         newValue *= 0.50f + (skill.TotalStrength / 10f);
+        //     }
+        //     damage.DamageDict[entry.Key] = newValue;
+        // }
 
-        var ev = new GetMeleeDamageEvent(uid, new (damage), new(), user);
+        var ev = new GetMeleeDamageEvent(uid, new (component.Damage), new(), user);
         RaiseLocalEvent(uid, ref ev);
 
         // remove multiplier after dealing damage
-        foreach(var entry in damage.DamageDict)
-        {
-            if (entry.Value <= 0) continue;
+        // foreach(var entry in damage.DamageDict)
+        // {
+        //     if (entry.Value <= 0) continue;
 
-            float newValue = entry.Value.Float();
-            if (TryComp<SkillComponent>(user, out var skill)){
-                newValue /= 0.50f + (skill.TotalStrength / 10f);
-            }
-            damage.DamageDict[entry.Key] = newValue;
-        }
+        //     float newValue = entry.Value.Float();
+        //     if (TryComp<SkillComponent>(user, out var skill)){
+        //         newValue /= 0.50f + (skill.TotalStrength / 10f);
+        //     }
+        //     damage.DamageDict[entry.Key] = newValue;
+        // }
 
         return DamageSpecifier.ApplyModifierSets(ev.Damage, ev.Modifiers);
     }

@@ -14,93 +14,95 @@ public sealed partial class SkillComponent : Component
     #region Skill Base Stats
 
     /// <summary>
-    /// Strength player's skill
+    /// Player's skill index
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("strength")]
-    public int BaseStrength { get; set; } = 5;
+    [DataField("helm")]
+    public int baseHelm { get; set; } = 5;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("perception")]
-    public int BasePerception { get; set; } = 5;
+    [DataField("Weapons")]
+    public int baseWeapons { get; set; } = 5;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("endurance")]
-    public int BaseEndurance { get; set; } = 5;
+    [DataField("MechanicalEngineering")]
+    public int baseMechanicalEngineering { get; set; } = 5;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("charisma")]
-    public int BaseCharisma { get; set; } = 5;
+    [DataField("ElectricalEngineering")]
+    public int baseElectricalEngineering { get; set; } = 5;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("intelligence")]
-    public int BaseIntelligence { get; set; } = 5;
+    [DataField("Medical")]
+    public int baseMedical { get; set; } = 5;
+
+    #endregion
+
+    #region Skill job modifiers
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("agility")]
-    public int BaseAgility { get; set; } = 5;
+    [DataField("helmJobModifier")]
+    public int helmJobModifier { get; set; } = 0;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("luck")]
-    public int BaseLuck { get; set; } = 5;
+    [DataField("weaponsJobModifier")]
+    public int weaponsJobModifier { get; set; } = 0;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("mechanicalEngineeringJobModifier")]
+    public int mechanicalEngineeringJobModifier { get; set; } = 0;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("electricalEngineeringJobModifier")]
+    public int electricalEngineeringJobModifier { get; set; } = 0;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("medicalJobModifier")]
+    public int medicalJobModifier { get; set; } = 0;
 
     #endregion
 
     #region Skill modifiers
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("strengthModifier")]
-    public int StrengthModifier { get; set; } = 0;
+    [DataField("HelmModifier")]
+    public int HelmModifier { get; set; } = 0;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("perceptionModifier")]
-    public int PerceptionModifier { get; set; } = 0;
+    [DataField("WeaponsModifier")]
+    public int WeaponsModifier { get; set; } = 0;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("enduranceModifier")]
-    public int EnduranceModifier { get; set; } = 0;
+    [DataField("MechanicalEngineeringModifier")]
+    public int MechanicalEngineeringModifier { get; set; } = 0;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("charismaModifier")]
-    public int CharismaModifier { get; set; } = 0;
+    [DataField("ElectricalEngineeringModifier")]
+    public int ElectricalEngineeringModifier { get; set; } = 0;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("intelligenceModifier")]
-    public int IntelligenceModifier { get; set; } = 0;
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("agilityModifier")]
-    public int AgilityModifier { get; set; } = 0;
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("luckModifier")]
-    public int LuckModifier { get; set; } = 0;
+    [DataField("MedicalModifier")]
+    public int MedicalModifier { get; set; } = 0;
 
     #endregion
 
     #region Total Skill
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalStrength { get { return Math.Clamp(BaseStrength + StrengthModifier, SkillAmountMin, SkillAmountMax); } }
+    public int TotalHelm { get { return Math.Clamp(baseHelm + helmJobModifier + HelmModifier, SkillAmountMin, SkillAmountMax); } }
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalPerception { get { return Math.Clamp(BasePerception + PerceptionModifier, SkillAmountMin, SkillAmountMax); } }
+    public int TotalWeapons { get { return Math.Clamp(baseWeapons + weaponsJobModifier + WeaponsModifier, SkillAmountMin, SkillAmountMax); } }
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalEndurance { get { return Math.Clamp(BaseEndurance + EnduranceModifier, SkillAmountMin, SkillAmountMax); } }
+    public int TotalMechanicalEngineering { get { return Math.Clamp(baseMechanicalEngineering + mechanicalEngineeringJobModifier + MechanicalEngineeringModifier, SkillAmountMin, SkillAmountMax); } }
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalCharisma { get { return Math.Clamp(BaseCharisma + CharismaModifier, SkillAmountMin, SkillAmountMax); } }
+    public int TotalElectricalEngineering { get { return Math.Clamp(baseElectricalEngineering + electricalEngineeringJobModifier + ElectricalEngineeringModifier, SkillAmountMin, SkillAmountMax); } }
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalIntelligence { get { return Math.Clamp(BaseIntelligence + IntelligenceModifier, SkillAmountMin, SkillAmountMax); } }
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalAgility { get { return Math.Clamp(BaseAgility + AgilityModifier, SkillAmountMin, SkillAmountMax); } }
-
-    [ViewVariables(VVAccess.ReadWrite)]
-    public int TotalLuck { get { return Math.Clamp(BaseLuck + LuckModifier, SkillAmountMin, SkillAmountMax); } }
+    public int TotalMedical { get { return Math.Clamp(baseMedical + medicalJobModifier + MedicalModifier, SkillAmountMin, SkillAmountMax); } }
 
     #endregion
 
@@ -110,7 +112,7 @@ public sealed partial class SkillComponent : Component
     ///     Don't let Skill go above this value.
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
-    public int SkillAmountMax = 10;
+    public int SkillAmountMax = 200;
 
     /// <summary>
     ///     Don't let Skill go below this value.

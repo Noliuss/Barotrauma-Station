@@ -43,22 +43,18 @@ namespace Content.Shared.Skill
             var ev = new RefreshSkillModifiersEvent();
             RaiseLocalEvent(uid, ev);
 
-            if (ev.StrengthModifier == skill.StrengthModifier &&
-                ev.PerceptionModifier == skill.PerceptionModifier &&
-                ev.EnduranceModifier == skill.EnduranceModifier &&
-                ev.CharismaModifier == skill.CharismaModifier &&
-                ev.IntelligenceModifier == skill.IntelligenceModifier &&
-                ev.AgilityModifier == skill.AgilityModifier &&
-                ev.LuckModifier == skill.LuckModifier
+            if (ev.HelmModifier == skill.HelmModifier &&
+                ev.WeaponsModifier == skill.WeaponsModifier &&
+                ev.MechanicalEngineeringModifier == skill.MechanicalEngineeringModifier &&
+                ev.ElectricalEngineeringModifier == skill.ElectricalEngineeringModifier &&
+                ev.MedicalModifier == skill.MedicalModifier
             )  return;
 
-            skill.StrengthModifier = ev.StrengthModifier;
-            skill.PerceptionModifier = ev.PerceptionModifier;
-            skill.EnduranceModifier = ev.EnduranceModifier;
-            skill.CharismaModifier = ev.CharismaModifier;
-            skill.IntelligenceModifier = ev.IntelligenceModifier;
-            skill.AgilityModifier = ev.AgilityModifier;
-            skill.LuckModifier = ev.LuckModifier;
+            skill.HelmModifier = ev.HelmModifier;
+            skill.WeaponsModifier = ev.WeaponsModifier;
+            skill.MechanicalEngineeringModifier = ev.MechanicalEngineeringModifier;
+            skill.ElectricalEngineeringModifier = ev.ElectricalEngineeringModifier;
+            skill.MedicalModifier = ev.MedicalModifier;
 
             var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(0), new RefreshSkillModifiersDoAfterEvent(), uid, uid)
 //            var doAfterEventArgs = new DoAfterArgs(uid, uid, TimeSpan.FromSeconds(0), new RefreshSkillModifiersDoAfterEvent(), uid, uid);
@@ -80,13 +76,11 @@ namespace Content.Shared.Skill
         [Serializable, NetSerializable]
         private sealed class SkillModifierComponentState : ComponentState
         {
-            public int StrengthModifier;
-            public int PerceptionModifier;
-            public int EnduranceModifier;
-            public int CharismaModifier;
-            public int IntelligenceModifier;
-            public int AgilityModifier;
-            public int LuckModifier;
+            public int HelmModifier;
+            public int WeaponsModifier;
+            public int MechanicalEngineeringModifier;
+            public int ElectricalEngineeringModifier;
+            public int MedicalModifier;
 
         }
     }
@@ -99,61 +93,47 @@ namespace Content.Shared.Skill
     public sealed class RefreshSkillModifiersEvent : EntityEventArgs, IInventoryRelayEvent
     {
         public SlotFlags TargetSlots { get; } = ~SlotFlags.POCKET;
-        public int StrengthModifier { get; private set; } = 0;
-        public int PerceptionModifier { get; private set; } = 0;
-        public int EnduranceModifier { get; private set; } = 0;
-        public int CharismaModifier { get; private set; } = 0;
-        public int IntelligenceModifier { get; private set; } = 0;
-        public int AgilityModifier { get; private set; } = 0;
-        public int LuckModifier { get; private set; } = 0;
+        public int HelmModifier { get; private set; } = 0;
+        public int WeaponsModifier { get; private set; } = 0;
+        public int MechanicalEngineeringModifier { get; private set; } = 0;
+        public int ElectricalEngineeringModifier { get; private set; } = 0;
+        public int MedicalModifier { get; private set; } = 0;
 
         public void ModifySkill(
-            int strengthModifier,
-            int perceptionModifier,
-            int enduranceModifier,
-            int charismaModifier,
-            int intelligenceModifier,
-            int agilityModifier,
-            int luckModifier
+            int HelmModifier,
+            int WeaponsModifier,
+            int MechanicalEngineeringModifier,
+            int ElectricalEngineeringModifier,
+            int MedicalModifier
         )
         {
-            StrengthModifier += strengthModifier;
-            PerceptionModifier += perceptionModifier;
-            EnduranceModifier += enduranceModifier;
-            CharismaModifier += charismaModifier;
-            IntelligenceModifier += intelligenceModifier;
-            AgilityModifier += agilityModifier;
-            LuckModifier += luckModifier;
+            HelmModifier += HelmModifier;
+            WeaponsModifier += WeaponsModifier;
+            MechanicalEngineeringModifier += MechanicalEngineeringModifier;
+            ElectricalEngineeringModifier += ElectricalEngineeringModifier;
+            MedicalModifier += MedicalModifier;
         }
 
         // used to modify stats by chems
-        public void ModifyStrength(int strengthModifier)
+        public void ModifyHelm(int HelmModifier)
         {
-            StrengthModifier += strengthModifier;
+            HelmModifier += HelmModifier;
         }
-        public void ModifyPerception(int perceptionModifier)
+        public void ModifyWeapons(int WeaponsModifier)
         {
-            PerceptionModifier += perceptionModifier;
+            WeaponsModifier += WeaponsModifier;
         }
-        public void ModifyEndurance(int enduranceModifier)
+        public void ModifyMechanicalEngineering(int MechanicalEngineeringModifier)
         {
-            EnduranceModifier += enduranceModifier;
+            MechanicalEngineeringModifier += MechanicalEngineeringModifier;
         }
-        public void ModifyCharisma(int charismaModifier)
+        public void ModifyElectricalEngineering(int ElectricalEngineeringModifier)
         {
-            CharismaModifier += charismaModifier;
+            ElectricalEngineeringModifier += ElectricalEngineeringModifier;
         }
-        public void ModifyIntelligence(int intelligenceModifier)
+        public void ModifyMedical(int MedicalModifier)
         {
-            IntelligenceModifier += intelligenceModifier;
-        }
-        public void ModifyAgility(int agilityModifier)
-        {
-            AgilityModifier += agilityModifier;
-        }
-        public void ModifyLuck(int luckModifier)
-        {
-            LuckModifier += luckModifier;
+            MedicalModifier += MedicalModifier;
         }
     }
     [Serializable, NetSerializable]

@@ -16,7 +16,6 @@ using Content.Shared.Medical;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Skill.Components;
 using Content.Shared.Stacks;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -80,6 +79,7 @@ public sealed class HealingSystem : EntitySystem
         if (healing.ModifyBloodLevel != 0)
             _bloodstreamSystem.TryModifyBloodLevel(entity.Owner, healing.ModifyBloodLevel);
 
+        var healed = _damageable.TryChangeDamage(entity.Owner, healing.Damage, true, origin: args.Args.User);
         // Nuclear14 Use Special for healing multiplier
         // healing multiplier applying when getting healed by things like ointments
         // It is different for doctor and patient depending on doctor Int, pacient Endurance / both Luck
@@ -93,38 +93,38 @@ public sealed class HealingSystem : EntitySystem
         // 1.13 * 1.46 ~ 1.64 when one primal stat is 10, another is 5
         // for each Primal point we get 0.067 = 6.7%
         // for each Luck we get 0.02 = 2%
-        var newDic = healing.Damage;
-        foreach(var entry in newDic.DamageDict)
-        {
-            if (entry.Value >= 0) continue;
+        // var newDic = healing.Damage;
+        // foreach(var entry in newDic.DamageDict)
+        // {
+        //     if (entry.Value >= 0) continue;
 
-            float newValue = entry.Value.Float();
-            if (TryComp<SkillComponent>(args.User, out var skill)){
-                newValue *= 0.70f + (skill.TotalIntelligence / 15f + skill.TotalLuck / 50f);
-            }
-            if (TryComp<SkillComponent>(entity.Owner, out var skill2)){
-                newValue *= 0.70f + (skill2.TotalEndurance / 15f + skill2.TotalLuck / 50f);
-            }
-            newDic.DamageDict[entry.Key] = newValue;
-        }
+        //     float newValue = entry.Value.Float();
+        //     if (TryComp<SkillComponent>(args.User, out var skill)){
+        //         newValue *= 0.70f + (skill.TotalIntelligence / 15f + skill.TotalLuck / 50f);
+        //     }
+        //     if (TryComp<SkillComponent>(entity.Owner, out var skill2)){
+        //         newValue *= 0.70f + (skill2.TotalEndurance / 15f + skill2.TotalLuck / 50f);
+        //     }
+        //     newDic.DamageDict[entry.Key] = newValue;
+        // }
 
-        var healed = _damageable.TryChangeDamage(entity.Owner, newDic, true, origin: args.Args.User);
+        // var healed = _damageable.TryChangeDamage(entity.Owner, newDic, true, origin: args.Args.User);
 
-        // remove modifier after perfoming healing, to prevent accumulating
-        foreach(var entry in newDic.DamageDict)
-        {
-            if (entry.Value >= 0) continue;
+        // // remove modifier after perfoming healing, to prevent accumulating
+        // foreach(var entry in newDic.DamageDict)
+        // {
+        //     if (entry.Value >= 0) continue;
 
-            float newValue = entry.Value.Float();
-            // todo: use log
-            if (TryComp<SkillComponent>(args.User, out var skill)){
-                newValue /= 0.70f + (skill.TotalIntelligence / 15f + skill.TotalLuck / 50f);
-            }
-            if (TryComp<SkillComponent>(entity.Owner, out var skill2)){
-                newValue /= 0.70f + (skill2.TotalEndurance / 15f + skill2.TotalLuck / 50f);
-            }
-            newDic.DamageDict[entry.Key] = newValue;
-        }
+        //     float newValue = entry.Value.Float();
+        //     // todo: use log
+        //     if (TryComp<SkillComponent>(args.User, out var skill)){
+        //         newValue /= 0.70f + (skill.TotalIntelligence / 15f + skill.TotalLuck / 50f);
+        //     }
+        //     if (TryComp<SkillComponent>(entity.Owner, out var skill2)){
+        //         newValue /= 0.70f + (skill2.TotalEndurance / 15f + skill2.TotalLuck / 50f);
+        //     }
+        //     newDic.DamageDict[entry.Key] = newValue;
+        // }
         //Nuclear14 end
         if (healed == null && healing.BloodlossModifier != 0)
             return;

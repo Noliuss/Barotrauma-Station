@@ -8,6 +8,15 @@
   supervisors: job-supervisors-everyone
   access:
   - Maintenance
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 18
+        weaponsJobModifier: 20
+        mechanicalEngineeringJobModifier: 20
+        electricalEngineeringJobModifier: 20
+        medicalJobModifier: 20
 
 - type: startingGear
   id: PassengerGear

@@ -3,10 +3,10 @@
   name: job-name-doctor
   description: job-description-doctor
   playTimeTracker: JobMedicalDoctor
-  requirements:
-    - !type:DepartmentTimeRequirement
-      department: Medical
-      time: 14400 #4 hrs
+  # requirements:
+  #   - !type:DepartmentTimeRequirement
+  #     department: Medical
+  #     time: 14400 #4 hrs
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo
@@ -16,6 +16,15 @@
   extendedAccess:
   - Chemistry
   - Paramedic # DeltaV - Add Paramedic access
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 5
+        weaponsJobModifier: 15
+        mechanicalEngineeringJobModifier: 15
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 40
 
 - type: startingGear
   id: DoctorGear

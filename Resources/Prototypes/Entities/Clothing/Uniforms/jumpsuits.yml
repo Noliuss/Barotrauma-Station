@@ -1469,6 +1469,12 @@
   name: assistant clothes
   description: Even the assistant needs clothing.
   components:
+  - type: ClothingSkillModifier
+    HelmModifier: 5
+    WeaponsModifier: 5
+    MechanicalEngineeringModifier: 5
+    ElectricalEngineeringModifier: 5
+    MedicalModifier: 5
   - type: Sprite
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/assistant.rsi
   - type: Clothing
@@ -1480,6 +1486,11 @@
   name: engineer's jumpsuit
   description: The Engineer's Jumpsuit is a part of one of the Engineer's Uniforms.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.95
+        Heat: 0.70
   - type: Sprite
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/engineer.rsi
   - type: Clothing
@@ -1491,6 +1502,12 @@
   name: doctor's uniform
   description: Makes you look like you might be useful in a medical emergency.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+  # No slots for medicine for it yet, sadly. Ill add them in the future
   - type: Sprite
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/doctor.rsi
   - type: Clothing
@@ -1502,6 +1519,12 @@
   name: mechanic's jumpsuit
   description: The Mechanic's Jumpsuit is a part of one of the Mechanic's Uniforms.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.85
+        Heat: 0.80
   - type: Sprite
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/mechanic.rsi
   - type: Clothing
@@ -1513,6 +1536,11 @@
   name: commando's fatigues
   description: I ain't got time to bleed.
   components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.85
   - type: Sprite
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/commando.rsi
   - type: Clothing

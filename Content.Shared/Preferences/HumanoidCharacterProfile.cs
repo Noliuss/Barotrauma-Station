@@ -131,13 +131,11 @@ namespace Content.Shared.Preferences
             new List<string>(),
             new Dictionary<string, SkillPriority>
             {
-                {"Strength", SkillPriority.Five},
-                {"Perception", SkillPriority.Five},
-                {"Endurance", SkillPriority.Five},
-                {"Charisma", SkillPriority.Five},
-                {"Intelligence", SkillPriority.Five},
-                {"Agility", SkillPriority.Five},
-                {"Luck", SkillPriority.Five}
+                {"Helm", SkillPriority.Zero},
+                {"Weapons", SkillPriority.Zero},
+                {"MechanicalEngineering", SkillPriority.Zero},
+                {"ElectricalEngineering", SkillPriority.Zero},
+                {"Medical", SkillPriority.Zero}
             }
             )
         {
@@ -170,13 +168,11 @@ namespace Content.Shared.Preferences
                 new List<string>(),
                 new Dictionary<string, SkillPriority>
                 {
-                    {"Strength", SkillPriority.Five},
-                    {"Perception", SkillPriority.Five},
-                    {"Endurance", SkillPriority.Five},
-                    {"Charisma", SkillPriority.Five},
-                    {"Intelligence", SkillPriority.Five},
-                    {"Agility", SkillPriority.Five},
-                    {"Luck", SkillPriority.Five}
+                    {"Helm", SkillPriority.Zero},
+                    {"Weapons", SkillPriority.Zero},
+                    {"MechanicalEngineering", SkillPriority.Zero},
+                    {"ElectricalEngineering", SkillPriority.Zero},
+                    {"Medical", SkillPriority.Zero}
                 }
                 );
         }
@@ -230,13 +226,11 @@ namespace Content.Shared.Preferences
                 }, PreferenceUnavailableMode.StayInLobby, new List<string>(), new List<string>(),
                 new Dictionary<string, SkillPriority>
                 {
-                    {"Strength", SkillPriority.Five},
-                    {"Perception", SkillPriority.Five},
-                    {"Endurance", SkillPriority.Five},
-                    {"Charisma", SkillPriority.Five},
-                    {"Intelligence", SkillPriority.Five},
-                    {"Agility", SkillPriority.Five},
-                    {"Luck", SkillPriority.Five}
+                    {"Helm", SkillPriority.Zero},
+                    {"Weapons", SkillPriority.Zero},
+                    {"MechanicalEngineering", SkillPriority.Zero},
+                    {"ElectricalEngineering", SkillPriority.Zero},
+                    {"Medical", SkillPriority.Zero}
                 });
         }
 
@@ -557,7 +551,7 @@ namespace Content.Shared.Preferences
             var skillPriorities = new Dictionary<string, SkillPriority>(SkillPriorities
                 .Where(p => prototypeManager.HasIndex<SkillPrototype>(p.Key) && p.Value switch
                 {
-                    SkillPriority.Zero => false, // Drop never since that's assumed default.
+                    SkillPriority.Zero => true,
                     SkillPriority.One => true,
                     SkillPriority.Two => true,
                     SkillPriority.Three => true,

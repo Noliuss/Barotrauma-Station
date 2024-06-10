@@ -204,7 +204,7 @@ namespace Content.Shared.Chemistry.Reaction
             var posFound = _transformSystem.TryGetMapOrGridCoordinates(soln, out var gridPos);
 
             _adminLogger.Add(LogType.ChemicalReaction, reaction.Impact,
-                $"Chemical reaction {reaction.ID:reaction} occurred with strength {unitReactions:strength} on entity {ToPrettyString(soln):metabolizer} at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not Found]")}");
+                $"Chemical reaction {reaction.ID:reaction} occurred with helm stat {unitReactions:helm} on entity {ToPrettyString(soln):metabolizer} at Pos:{(posFound ? $"{gridPos:coordinates}" : "[Grid or Map not Found]")}");
 
             foreach (var effect in reaction.Effects)
             {

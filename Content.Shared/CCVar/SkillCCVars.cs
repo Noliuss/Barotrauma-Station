@@ -9,36 +9,30 @@ public sealed class SkillCCVars
     #region Human editor
 
     public static readonly CVarDef<int> MaxSkill =
-            CVarDef.Create("skill.max", 40);
+            CVarDef.Create("skill.max", 15);
 
     #endregion
 
-    #region Strength
+    #region Helm
 
     /// <summary>
     ///     Strength to be able to weild anything
     /// </summary>
-    public static readonly CVarDef<int> StrengthWeild =
-            CVarDef.Create("skillStrength.weild", 3);
+    // public static readonly CVarDef<int> StrengthWeild =
+    //         CVarDef.Create("skillStrength.weild", 3);
 
     #endregion
 
-    #region Perception
+    #region Weapons
     #endregion
 
-    #region Endurance
+    #region MechanicalEngineering
     #endregion
 
-    #region Charisma
+    #region ElectricalEngineering
     #endregion
 
-    #region Intelligence
-    #endregion
-
-    #region Agility
-    #endregion
-
-    #region Luck
+    #region Medical
     #endregion
 
 }

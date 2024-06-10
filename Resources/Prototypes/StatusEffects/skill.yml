@@ -1,48 +1,35 @@
 - type: statusIcon
   parent: JobIcon
-  id: SkillIconStrength
+  id: SkillIconHelm
   icon:
     sprite: Interface/Misc/skill_icons.rsi
-    state: Strength
+    state: Helm
 
 - type: statusIcon
   parent: JobIcon
-  id: SkillIconPerception
+  id: SkillIconWeapons
   icon:
     sprite: Interface/Misc/skill_icons.rsi
-    state: Perception
+    state: Weapons
 
 - type: statusIcon
   parent: JobIcon
-  id: SkillIconEndurance
+  id: SkillIconMechanicalEngineering
   icon:
     sprite: Interface/Misc/skill_icons.rsi
-    state: Endurance
+    state: MechanicalEngineering
 
 - type: statusIcon
   parent: JobIcon
-  id: SkillIconCharisma
+  id: SkillIconElectricalEngineering
   icon:
-    sprite: Interface/Misc/skill_icons.rsi
-    state: Charisma
+    sprite: Interface/Misc/research_disciplines.rsi
+    state: industrial
+# Sorry for this one being made like that, but this sprite is licensed differently
 
 - type: statusIcon
   parent: JobIcon
-  id: SkillIconIntelligence
+  id: SkillIconMedical
   icon:
     sprite: Interface/Misc/skill_icons.rsi
-    state: Intelligence
-
-- type: statusIcon
-  parent: JobIcon
-  id: SkillIconAgility
-  icon:
-    sprite: Interface/Misc/skill_icons.rsi
-    state: Agility
-
-- type: statusIcon
-  parent: JobIcon
-  id: SkillIconLuck
-  icon:
-    sprite: Interface/Misc/skill_icons.rsi
-    state: Luck
+    state: Medical

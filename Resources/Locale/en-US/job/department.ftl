@@ -1,5 +1,5 @@
 department-Cargo = Cargo
-department-Civilian = Civilian
+department-Civilian = Submarine crew
 department-Command = Command
 department-Engineering = Engineering
 department-Medical = Medical

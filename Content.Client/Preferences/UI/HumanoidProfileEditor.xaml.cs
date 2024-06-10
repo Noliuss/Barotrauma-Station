@@ -123,8 +123,6 @@ namespace Content.Client.Preferences.UI
             _configurationManager = configurationManager;
             _markingManager = IoCManager.Resolve<MarkingManager>();
 
-            SpeciesInfoButton.ToolTip = Loc.GetString("humanoid-profile-editor-guidebook-button-tooltip");
-
             #region Left
 
             #region Randomize
@@ -541,28 +539,7 @@ namespace Content.Client.Preferences.UI
 
             preferencesManager.OnServerDataLoaded += LoadServerData;
 
-            SpeciesInfoButton.OnPressed += OnSpeciesInfoButtonPressed;
-
-            UpdateSpeciesGuidebookIcon();
-
             IsDirty = false;
-        }
-
-        private void OnSpeciesInfoButtonPressed(BaseButton.ButtonEventArgs args)
-        {
-            var guidebookController = UserInterfaceManager.GetUIController<GuidebookUIController>();
-            var species = Profile?.Species ?? SharedHumanoidAppearanceSystem.DefaultSpecies;
-            var page = "Species";
-            if (_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-                page = species;
-
-            if (_prototypeManager.TryIndex<GuideEntryPrototype>("Species", out var guideRoot))
-            {
-                var dict = new Dictionary<string, GuideEntry>();
-                dict.Add("Species", guideRoot);
-                //TODO: Don't close the guidebook if its already open, just go to the correct page
-                guidebookController.ToggleGuidebook(dict, includeChildren:true, selected: page);
-            }
         }
 
         private void ToggleClothes(BaseButton.ButtonEventArgs obj)
@@ -700,7 +677,7 @@ namespace Content.Client.Preferences.UI
             _skillPriorities.Clear();
 
             var points = _configurationManager.GetCVar(SkillCCVars.MaxSkill);
-            _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-loadouts-points-label", ("points", points), ("max", points));
+            _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", points), ("max", points));
             _skillPointsBar.MaxValue = points;
             _skillPointsBar.Value = points;
 
@@ -908,7 +885,6 @@ namespace Content.Client.Preferences.UI
             CMarkings.SetSpecies(newSpecies); // Repopulate the markings tab as well.
             UpdateSexControls(); // update sex for new species
             RebuildSpriteView(); // they might have different inv so we need a new dummy
-            UpdateSpeciesGuidebookIcon();
             IsDirty = true;
             _needUpdatePreview = true;
         }
@@ -1058,25 +1034,6 @@ namespace Content.Client.Preferences.UI
                 }
             }
 
-        }
-
-        public void UpdateSpeciesGuidebookIcon()
-        {
-            SpeciesInfoButton.StyleClasses.Clear();
-
-            var species = Profile?.Species;
-            if (species is null)
-                return;
-
-            if (!_prototypeManager.TryIndex<SpeciesPrototype>(species, out var speciesProto))
-                return;
-
-            // Don't display the info button if no guide entry is found
-            if (!_prototypeManager.HasIndex<GuideEntryPrototype>(species))
-                return;
-
-            var style = speciesProto.GuideBookIcon;
-            SpeciesInfoButton.StyleClasses.Add(style);
         }
 
         private void UpdateMarkings()
@@ -1477,6 +1434,7 @@ namespace Content.Client.Preferences.UI
                 //Override default radio option button width
                 _optionButton.GenerateItem = GenerateButton;
                 // Text, Value
+                _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-zero-button"), (int) SkillPriority.Zero);
                 _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-one-button"), (int) SkillPriority.One);
                 _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-two-button"), (int) SkillPriority.Two);
                 _optionButton.AddItem(Loc.GetString("humanoid-profile-editor-skill-priority-three-button"), (int) SkillPriority.Three);
@@ -1497,7 +1455,8 @@ namespace Content.Client.Preferences.UI
                 var icon = new TextureRect
                 {
                     TextureScale = new Vector2(2, 2),
-                    Stretch = TextureRect.StretchMode.KeepCentered
+                    Stretch = TextureRect.StretchMode.KeepCentered,
+                    Margin = new Thickness(5, 0, 0, 0)
                 };
 
                 var skillIcon = prototypeManager.Index<StatusIconPrototype>(skill.Icon);
@@ -1507,7 +1466,7 @@ namespace Content.Client.Preferences.UI
                 {
                     Margin = new Thickness(5f,5f,5f,5f),
                     Text = skill.LocalizedName,
-                    MinSize = new Vector2(100, 0),
+                    MinSize = new Vector2(185, 0),
                     MouseFilter = MouseFilterMode.Stop
                 };
 

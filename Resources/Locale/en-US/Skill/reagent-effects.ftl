@@ -1,37 +1,26 @@
 # guidebook reagent skill effects
 
-reagent-effect-guidebook-strength-modifier =
+reagent-effect-guidebook-Helm-modifier =
     { $chance ->
         [1] Modifies
         *[other] modify
-    } strength by {$strength} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
-reagent-effect-guidebook-perception-modifier =
+    } Helm by {$Helm} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
+reagent-effect-guidebook-Weapons-modifier =
     { $chance ->
         [1] Modifies
         *[other] modify
-    } perception by {$perception} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
-reagent-effect-guidebook-endurance-modifier =
+    } Weapons by {$Weapons} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
+reagent-effect-guidebook-MechanicalEngineering-modifier =
     { $chance ->
         [1] Modifies
         *[other] modify
-    } endurance by {$endurance} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
-reagent-effect-guidebook-charisma-modifier =
+    } MechanicalEngineering by {$MechanicalEngineering} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
+reagent-effect-guidebook-ElectricalEngineering-modifier =
     { $chance ->
         [1] Modifies
         *[other] modify
-    } charisma by {$charisma} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
-reagent-effect-guidebook-intelligence-modifier =
+    } ElectricalEngineering by {$ElectricalEngineering} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
+reagent-effect-guidebook-Medical-modifier =
     { $chance ->
         [1] Modifies
         *[other] modify
-    } intelligence by {$intelligence} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
-reagent-effect-guidebook-agility-modifier =
-    { $chance ->
-        [1] Modifies
-        *[other] modify
-    } agility by {$agility} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}
-reagent-effect-guidebook-luck-modifier =
-    { $chance ->
-        [1] Modifies
-        *[other] modify
-    } luck by {$luck} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}

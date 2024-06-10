@@ -51,13 +51,11 @@ public sealed class ClothingSkillModifierSystem : EntitySystem
     private void OnGetState(EntityUid uid, ClothingSkillModifierComponent component, ref ComponentGetState args)
     {
         args.State = new ClothingSkillModifierComponentState(
-            component.StrengthModifier,
-            component.PerceptionModifier,
-            component.EnduranceModifier,
-            component.CharismaModifier,
-            component.IntelligenceModifier,
-            component.AgilityModifier,
-            component.LuckModifier,
+            component.HelmModifier,
+            component.WeaponsModifier,
+            component.MechanicalEngineeringModifier,
+            component.ElectricalEngineeringModifier,
+            component.MedicalModifier,
             component.Enabled);
     }
 
@@ -67,21 +65,17 @@ public sealed class ClothingSkillModifierSystem : EntitySystem
             return;
 
         var diff = component.Enabled != state.Enabled ||
-                !MathHelper.CloseTo(component.StrengthModifier, state.StrengthModifier) ||
-                !MathHelper.CloseTo(component.PerceptionModifier, state.PerceptionModifier) ||
-                !MathHelper.CloseTo(component.EnduranceModifier, state.EnduranceModifier) ||
-                !MathHelper.CloseTo(component.CharismaModifier, state.CharismaModifier) ||
-                !MathHelper.CloseTo(component.IntelligenceModifier, state.IntelligenceModifier) ||
-                !MathHelper.CloseTo(component.AgilityModifier, state.AgilityModifier) ||
-                !MathHelper.CloseTo(component.LuckModifier, state.LuckModifier);
+                !MathHelper.CloseTo(component.HelmModifier, state.HelmModifier) ||
+                !MathHelper.CloseTo(component.WeaponsModifier, state.WeaponsModifier) ||
+                !MathHelper.CloseTo(component.MechanicalEngineeringModifier, state.MechanicalEngineeringModifier) ||
+                !MathHelper.CloseTo(component.ElectricalEngineeringModifier, state.ElectricalEngineeringModifier) ||
+                !MathHelper.CloseTo(component.MedicalModifier, state.MedicalModifier);
 
-        component.StrengthModifier = state.StrengthModifier;
-        component.PerceptionModifier = state.PerceptionModifier;
-        component.EnduranceModifier = state.EnduranceModifier;
-        component.CharismaModifier = state.CharismaModifier;
-        component.IntelligenceModifier = state.IntelligenceModifier;
-        component.AgilityModifier = state.AgilityModifier;
-        component.LuckModifier = state.LuckModifier;
+        component.HelmModifier = state.HelmModifier;
+        component.WeaponsModifier = state.WeaponsModifier;
+        component.MechanicalEngineeringModifier = state.MechanicalEngineeringModifier;
+        component.ElectricalEngineeringModifier = state.ElectricalEngineeringModifier;
+        component.MedicalModifier = state.MedicalModifier;
         component.Enabled = state.Enabled;
 
         // Avoid raising the event for the container if nothing changed.
@@ -97,13 +91,11 @@ public sealed class ClothingSkillModifierSystem : EntitySystem
         if (!component.Enabled)
             return;
 
-        args.Args.ModifySkill(component.StrengthModifier,
-            component.PerceptionModifier,
-            component.EnduranceModifier,
-            component.CharismaModifier,
-            component.IntelligenceModifier,
-            component.AgilityModifier,
-            component.LuckModifier
+        args.Args.ModifySkill(component.HelmModifier,
+            component.WeaponsModifier,
+            component.MechanicalEngineeringModifier,
+            component.ElectricalEngineeringModifier,
+            component.MedicalModifier
         );
     }
 
@@ -112,81 +104,61 @@ public sealed class ClothingSkillModifierSystem : EntitySystem
         if (!args.CanInteract || !args.CanAccess)
             return;
 
-        var strengthModifier = component.StrengthModifier;
-        var perceptionModifier = component.PerceptionModifier;
-        var enduranceModifier = component.EnduranceModifier;
-        var charismaModifier = component.CharismaModifier;
-        var intelligenceModifier = component.IntelligenceModifier;
-        var agilityModifier = component.AgilityModifier;
-        var luckModifier = component.LuckModifier;
+        var HelmModifier = component.HelmModifier;
+        var WeaponsModifier = component.WeaponsModifier;
+        var MechanicalEngineeringModifier = component.MechanicalEngineeringModifier;
+        var ElectricalEngineeringModifier = component.ElectricalEngineeringModifier;
+        var MedicalModifier = component.MedicalModifier;
 
         var msg = new FormattedMessage();
 
-        if (strengthModifier != 0){
-        if  (strengthModifier > 0){
-            msg.AddMarkup(Loc.GetString("clothing-strength-increase-equal-examine", ("strength", strengthModifier)));
+        if (HelmModifier != 0){
+        if  (HelmModifier > 0){
+            msg.AddMarkup(Loc.GetString("clothing-Helm-increase-equal-examine", ("helm", HelmModifier)));
             }
-        else if (strengthModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-strength-decrease-equal-examine", ("strength", strengthModifier)));
+        else if (HelmModifier < 0)
+            msg.AddMarkup(Loc.GetString("clothing-Helm-decrease-equal-examine", ("helm", HelmModifier)));
         msg.PushNewline();
         }
 
-        if (perceptionModifier != 0){
-        if  (perceptionModifier > 0)
-            msg.AddMarkup(Loc.GetString("clothing-perception-increase-equal-examine", ("perception", perceptionModifier)));
-        else if (perceptionModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-perception-decrease-equal-examine", ("perception", perceptionModifier)));
+        if (WeaponsModifier != 0){
+        if  (WeaponsModifier > 0)
+            msg.AddMarkup(Loc.GetString("clothing-Weapons-increase-equal-examine", ("Weapons", WeaponsModifier)));
+        else if (WeaponsModifier < 0)
+            msg.AddMarkup(Loc.GetString("clothing-Weapons-decrease-equal-examine", ("Weapons", WeaponsModifier)));
         msg.PushNewline();
         }
 
-        if (enduranceModifier != 0){
-        if  (enduranceModifier > 0)
-            msg.AddMarkup(Loc.GetString("clothing-endurance-increase-equal-examine", ("endurance", enduranceModifier)));
-        else if (enduranceModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-endurance-decrease-equal-examine", ("endurance", enduranceModifier)));
+        if (MechanicalEngineeringModifier != 0){
+        if  (MechanicalEngineeringModifier > 0)
+            msg.AddMarkup(Loc.GetString("clothing-MechanicalEngineering-increase-equal-examine", ("MechanicalEngineering", MechanicalEngineeringModifier)));
+        else if (MechanicalEngineeringModifier < 0)
+            msg.AddMarkup(Loc.GetString("clothing-MechanicalEngineering-decrease-equal-examine", ("MechanicalEngineering", MechanicalEngineeringModifier)));
         msg.PushNewline();
         }
 
-        if (charismaModifier != 0){
-        if  (charismaModifier > 0)
-            msg.AddMarkup(Loc.GetString("clothing-charisma-increase-equal-examine", ("charisma", charismaModifier)));
-        else if (charismaModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-charisma-decrease-equal-examine", ("charisma", charismaModifier)));
+        if (ElectricalEngineeringModifier != 0){
+        if  (ElectricalEngineeringModifier > 0)
+            msg.AddMarkup(Loc.GetString("clothing-ElectricalEngineering-increase-equal-examine", ("ElectricalEngineering", ElectricalEngineeringModifier)));
+        else if (ElectricalEngineeringModifier < 0)
+            msg.AddMarkup(Loc.GetString("clothing-ElectricalEngineering-decrease-equal-examine", ("ElectricalEngineering", ElectricalEngineeringModifier)));
         msg.PushNewline();
         }
 
-        if (intelligenceModifier != 0){
-        if  (intelligenceModifier > 0)
-            msg.AddMarkup(Loc.GetString("clothing-intelligence-increase-equal-examine", ("intelligence", intelligenceModifier)));
-        else if (intelligenceModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-intelligence-decrease-equal-examine", ("intelligence", intelligenceModifier)));
+        if (MedicalModifier != 0){
+        if  (MedicalModifier > 0)
+            msg.AddMarkup(Loc.GetString("clothing-Medical-increase-equal-examine", ("Medical", MedicalModifier)));
+        else if (MedicalModifier < 0)
+            msg.AddMarkup(Loc.GetString("clothing-Medical-decrease-equal-examine", ("Medical", MedicalModifier)));
         msg.PushNewline();
         }
 
-        if (agilityModifier != 0){
-        if  (agilityModifier > 0)
-            msg.AddMarkup(Loc.GetString("clothing-agility-increase-equal-examine", ("agility", agilityModifier)));
-        else if (agilityModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-agility-decrease-equal-examine", ("agility", agilityModifier)));
-        msg.PushNewline();
-        }
-
-        if (luckModifier != 0){
-        if  (luckModifier > 0)
-            msg.AddMarkup(Loc.GetString("clothing-luck-increase-equal-examine", ("luck", luckModifier)));
-        else if (luckModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-luck-decrease-equal-examine", ("luck", luckModifier)));
-        msg.PushNewline();
-        }
-
-        if  (strengthModifier != 0 ||
-        perceptionModifier != 0 ||
-        enduranceModifier != 0 ||
-        enduranceModifier != 0 ||
-        charismaModifier != 0 ||
-        intelligenceModifier != 0 ||
-        agilityModifier != 0 ||
-        luckModifier != 0
+        if  (HelmModifier != 0 ||
+        WeaponsModifier != 0 ||
+        MechanicalEngineeringModifier != 0 ||
+        MechanicalEngineeringModifier != 0 ||
+        ElectricalEngineeringModifier != 0 ||
+        MedicalModifier != 0
         )
         _examine.AddDetailedExamineVerb(args,
             component,

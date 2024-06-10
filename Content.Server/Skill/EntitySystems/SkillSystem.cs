@@ -1,5 +1,4 @@
 using Content.Server.GameTicking;
-using Content.Server.Skill.Speech.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Prototypes;
@@ -9,7 +8,7 @@ using Content.Shared.Skill;
 using Content.Shared.Skill.Components;
 using Content.Server.NPC.Systems;
 
-namespace Content.Server.Skilll.EntitySystems;
+namespace Content.Server.Skill.EntitySystems;
 
 public sealed class SkillSystem : EntitySystem
 {
@@ -21,7 +20,7 @@ public sealed class SkillSystem : EntitySystem
 
         SubscribeLocalEvent<SkillComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
 
-        SubscribeLocalEvent<SkillComponent, RefreshSkillModifiersDoAfterEvent>(OnSkillModifiersChanged);
+//        SubscribeLocalEvent<SkillComponent, RefreshSkillModifiersDoAfterEvent>(OnSkillModifiersChanged);
 
     }
 
@@ -42,15 +41,6 @@ public sealed class SkillSystem : EntitySystem
             }
             setSkill(skill, skillPrototype, item.Value);
         }
-
-        if (skill.TotalIntelligence < 3)
-        {
-            EntityManager.AddComponent<LowIntelligenceAccentComponent>(uid);
-        }
-        else
-        {
-            EntityManager.RemoveComponent<LowIntelligenceAccentComponent>(uid);
-        }
     }
 
     private void setSkill(SkillComponent component,
@@ -59,42 +49,23 @@ public sealed class SkillSystem : EntitySystem
     {
         switch(prototype.ID)
         {
-            case "Strength":
-                component.BaseStrength = (int) priority;
+            case "Helm":
+                component.baseHelm += (int) priority;
                 return;
-            case "Perception":
-                component.BasePerception = (int) priority;
+            case "Weapons":
+                component.baseWeapons += (int) priority;
                 return;
-            case "Endurance":
-                component.BaseEndurance = (int) priority;
+            case "MechanicalEngineering":
+                component.baseMechanicalEngineering += (int) priority;
                 return;
-            case "Charisma":
-                component.BaseCharisma = (int) priority;
+            case "ElectricalEngineering":
+                component.baseElectricalEngineering += (int) priority;
                 return;
-            case "Intelligence":
-                component.BaseIntelligence = (int) priority;
-                return;
-            case "Agility":
-                component.BaseAgility = (int) priority;
-                return;
-            case "Luck":
-                component.BaseLuck = (int) priority;
+            case "Medical":
+                component.baseMedical += (int) priority;
                 return;
             default:
                 return;
         }
-    }
-
-    private void OnSkillModifiersChanged(EntityUid uid, SkillComponent component, RefreshSkillModifiersDoAfterEvent args)
-    {
-        if (component.TotalIntelligence < 3)
-        {
-            EnsureComp<LowIntelligenceAccentComponent>(uid);
-        }
-        else
-        {
-            EntityManager.RemoveComponent<LowIntelligenceAccentComponent>(uid);
-        }
-
     }
 }

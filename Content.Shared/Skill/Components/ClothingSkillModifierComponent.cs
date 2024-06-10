@@ -15,60 +15,44 @@ public sealed partial class ClothingSkillModifierComponent : Component
     #region Skill stats
 
     /// <summary>
-    /// SkilL Strength of cloth boost
+    /// Skill Helm of cloth boost
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("strengthModifier")]
-    public int StrengthModifier = 0;
+    [DataField("HelmModifier")]
+    public int HelmModifier = 0;
 
     /// <summary>
-    /// SkilL Perception of cloth boost
+    /// Skill Weapons of cloth boost
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("perceptionModifier")]
-    public int PerceptionModifier = 0;
+    [DataField("WeaponsModifier")]
+    public int WeaponsModifier = 0;
 
     /// <summary>
-    /// SkilL Endurance of cloth boost
+    /// Skill MechanicalEngineering of cloth boost
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("enduranceModifier")]
-    public int EnduranceModifier = 0;
+    [DataField("MechanicalEngineeringModifier")]
+    public int MechanicalEngineeringModifier = 0;
 
     /// <summary>
-    /// SkilL Charisma of cloth boost
+    /// Skill ElectricalEngineering of cloth boost
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("charismaModifier")]
-    public int CharismaModifier = 0;
+    [DataField("ElectricalEngineeringModifier")]
+    public int ElectricalEngineeringModifier = 0;
 
     /// <summary>
-    /// SkilL Intelligence of cloth boost
+    /// Skill Medical of cloth boost
     /// </summary>
     ///
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("intelligenceModifier")]
-    public int IntelligenceModifier = 0;
-
-    /// <summary>
-    /// SkilL Agility of cloth boost
-    /// </summary>
-    ///
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("agilityModifier")]
-    public int AgilityModifier = 0;
-
-    /// <summary>
-    /// SkilL Luck of cloth boost
-    /// </summary>
-    ///
-    [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("luckModifier")]
-    public int LuckModifier = 0;
+    [DataField("MedicalModifier")]
+    public int MedicalModifier = 0;
 
     /// <summary>
     ///     Is this clothing item currently 'actively' affects you?
@@ -85,32 +69,26 @@ public sealed partial class ClothingSkillModifierComponent : Component
 [Serializable, NetSerializable]
 public sealed class ClothingSkillModifierComponentState : ComponentState
 {
-    public int StrengthModifier;
-    public int PerceptionModifier;
-    public int EnduranceModifier;
-    public int CharismaModifier;
-    public int IntelligenceModifier;
-    public int AgilityModifier;
-    public int LuckModifier;
+    public int HelmModifier;
+    public int WeaponsModifier;
+    public int MechanicalEngineeringModifier;
+    public int ElectricalEngineeringModifier;
+    public int MedicalModifier;
     public bool Enabled;
 
     public ClothingSkillModifierComponentState(
-        int strengthModifier,
-        int perceptionModifier,
-        int enduranceModifier,
-        int charismaModifier,
-        int intelligenceModifier,
-        int agilityModifier,
-        int luckModifier,
+        int HelmModifier,
+        int WeaponsModifier,
+        int MechanicalEngineeringModifier,
+        int ElectricalEngineeringModifier,
+        int MedicalModifier,
         bool enabled)
     {
-        StrengthModifier = strengthModifier;
-        PerceptionModifier = perceptionModifier;
-        EnduranceModifier = enduranceModifier;
-        CharismaModifier = charismaModifier;
-        IntelligenceModifier = intelligenceModifier;
-        AgilityModifier = agilityModifier;
-        LuckModifier = luckModifier;
+        HelmModifier = HelmModifier;
+        WeaponsModifier = WeaponsModifier;
+        MechanicalEngineeringModifier = MechanicalEngineeringModifier;
+        ElectricalEngineeringModifier = ElectricalEngineeringModifier;
+        MedicalModifier = MedicalModifier;
         Enabled = enabled;
     }
 }

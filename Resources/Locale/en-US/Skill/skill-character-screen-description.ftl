@@ -1,8 +1,6 @@
 # Description of Skill labels in character creation screen
-skill-character-creation-description-strength = Modifies your Melee damage
-skill-character-creation-description-perception = Modifies your shooting accuracy
-skill-character-creation-description-endurance = Modifies your HP
-skill-character-creation-description-charisma = Gives you accent if below 3
-skill-character-creation-description-intelligence = Modifies medicine
-skill-character-creation-description-agility = Agility
-skill-character-creation-description-luck = Gives you 1% chance to pass bullet
+skill-character-creation-description-Helm = Determines how good a character is at steering a submarine
+skill-character-creation-description-Weapons = Determines a character's effectiveness with certain weapons
+skill-character-creation-description-MechanicalEngineering = Determines how well a character operates certain Tools and how long crafting takes in the Fabricator
+skill-character-creation-description-ElectricalEngineering = Determines how long electrical repairs take, and if rewiring or reparations can be done safely
+skill-character-creation-description-Medical = Determines how proficient a character is at treating their wounds and the wounds of others
