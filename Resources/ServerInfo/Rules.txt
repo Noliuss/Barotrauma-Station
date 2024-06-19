@@ -64,8 +64,6 @@ Thus, we prohibit:
 
 OOCinIC (Out-Of-Character in In-Character chat). Any communication between players should take place in OOC/LOOC chats, and in IC only the characters' remarks and emotions. Examples of what should not be in IC: “How to write in red in this game?”, “((I’m afk guys, I’ll be there soon))”.
 
-Illiteracy. The language of the server is English - this means that regardless of your nationality, you must write in literary English. This applies not only to grammatical errors, but also the correct placement of punctuation, spaces and capital letters. Also, it applies to addressing or calling other characters by name.
-
 Use of in-game slang by a character who does not know it. Words such as "emag" are known only to agents of enemy corporations, and "OOC", "traitor" and "nukie" are convenient player terms that have arisen due to the frequent use of these concepts, but they are prohibited for use by regular IC characters.
 
 Using modern Internet slang. "Buttheart", "lol", "kek" - these are all examples of modern slang, which, within our prehistory, was lost and unknown to the characters.
