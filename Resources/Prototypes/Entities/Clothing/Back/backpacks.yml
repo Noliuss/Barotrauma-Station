@@ -2,21 +2,24 @@
   parent: [Clothing, ContentsExplosionResistanceBase]
   id: ClothingBackpack
   name: backpack
-  description: You wear this on your back and put items into it.
+  description: A bulky backpack that can hold a large amount of tools and supplies, at the cost of slightly impaired movement.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Backpacks/backpack.rsi
+    sprite: Clothing/Back/Duffels/salvage.rsi
     state: icon
   - type: Item
-    size: Huge
+    size: Normal
   - type: Clothing
     quickEquip: false
     slots:
-    - back
+    - belt
   - type: Storage
     grid:
-    - 0,0,6,3
-    maxItemSize: Huge
+    - 0,0,4,2
+    maxItemSize: Small
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.7
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

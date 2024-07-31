@@ -1,0 +1,29 @@
+- type: job
+  id: MedicalDoctor
+  name: job-name-doctor
+  description: job-description-doctor
+  playTimeTracker: JobMedicalDoctor
+  startingGear: DoctorGear
+  icon: "JobIconMedicalDoctor"
+  supervisors: job-supervisors-captain
+  access:
+  - SubmarineMedical
+  - SubmarineBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 5
+        weaponsJobModifier: 15
+        mechanicalEngineeringJobModifier: 15
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 40
+
+- type: startingGear
+  id: DoctorGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformDoctorUniform
+    id: MedicalIDCard
+    ears: BS14-ClothingHeadset
+    head: BS14-ClothingHealthScannerHUD
+    pocket1: Gauze

@@ -121,14 +121,14 @@
       spawnGas: Tritium
 
 - type: entity
-  name: water vapor gas miner
+  name: water... gas?.. miner
   parent: GasMinerBase
-  id: GasMinerWaterVapor
+  id: GasMinerWater
   placement:
     mode: SnapgridCenter
   components:
     - type: GasMiner
-      spawnGas: WaterVapor
+      spawnGas: Water
 
 - type: entity
   name: ammonia gas miner

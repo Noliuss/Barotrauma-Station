@@ -54,7 +54,7 @@
         CarbonDioxide: stationCO2
         Plasma: stationPlasma # everything below is usually bad
         Tritium: danger
-        WaterVapor: stationWaterVapor
+        Water: stationWater
         Ammonia: stationAmmonia
         NitrousOxide: stationNO
         Frezon: danger

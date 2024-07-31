@@ -337,7 +337,7 @@ namespace Content.Shared.Atmos
         CarbonDioxide = 2,
         Plasma = 3,
         Tritium = 4,
-        WaterVapor = 5,
+        Water = 5,
         Ammonia = 6,
         NitrousOxide = 7,
         Frezon = 8

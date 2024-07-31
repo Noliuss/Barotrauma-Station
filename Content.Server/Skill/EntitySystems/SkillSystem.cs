@@ -2,11 +2,15 @@ using Content.Server.GameTicking;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Prototypes;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Robust.Shared.Serialization.Manager;
+using Robust.Shared.Utility;
 using Content.Shared.Skill.Components;
 using Content.Shared.Skill;
 using Content.Shared.Skill.Components;
 using Content.Server.NPC.Systems;
+using Content.Server.Roles;
 
 namespace Content.Server.Skill.EntitySystems;
 
@@ -67,5 +71,20 @@ public sealed class SkillSystem : EntitySystem
             default:
                 return;
         }
+    }
+    private void OnSkillModifiersChanged(EntityUid uid, SkillComponent component, RefreshSkillModifiersDoAfterEvent args)
+    {
+        if(!TryComp<MindContainerComponent>(uid, out var mindContainer) || mindContainer.Mind == null)
+            return;
+
+        var mindId = mindContainer.Mind.Value;
+        var mind = Comp<MindComponent>(mindContainer.Mind.Value);
+
+        mind.ClearSkill();
+        mind.AddSkill(Loc.GetString("skill-component-examine-character-Helm", ("total", component.TotalHelm)));
+        mind.AddSkill(Loc.GetString("skill-component-examine-character-Weapons", ("total", component.TotalWeapons)));
+        mind.AddSkill(Loc.GetString("skill-component-examine-character-ElectricalEngineering", ("total", component.TotalElectricalEngineering)));
+        mind.AddSkill(Loc.GetString("skill-component-examine-character-MechanicalEngineering", ("total", component.TotalMechanicalEngineering)));
+        mind.AddSkill(Loc.GetString("skill-component-examine-character-Medical", ("total", component.TotalMedical)));
     }
 }

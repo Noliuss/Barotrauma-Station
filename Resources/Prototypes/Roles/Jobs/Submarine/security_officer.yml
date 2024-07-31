@@ -1,0 +1,32 @@
+- type: job
+  id: SecurityOfficer
+  name: job-name-security
+  description: job-description-security
+  playTimeTracker: JobSecurityOfficer
+  startingGear: SecurityOfficerGear
+  icon: "JobIconSecurityOfficer"
+  supervisors: job-supervisors-captain
+  canBeAntag: false
+  access:
+  - SubmarineSecurity
+  - SubmarineBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 5
+        weaponsJobModifier: 40
+        mechanicalEngineeringJobModifier: 15
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 25
+
+- type: startingGear
+  id: SecurityOfficerGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformCommandoFatigues
+    head: ClothingHeadHelmetBasic
+    id: SecurityIDCard
+    ears: BS14-ClothingHeadset
+    pocket1: CombatKnife
+    pocket2: Handcuffs
+    pocket3: Stunbaton

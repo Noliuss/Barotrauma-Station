@@ -33,7 +33,7 @@
   - 0     # carbon dioxide
   - 0     # plasma
   - 0     # tritium
-  - 0     # vapor
+  - 0     # water
   - 0     # ammonia
   - 0     # n2o
   - 0.01  # frezon
@@ -50,7 +50,7 @@
   - 0     # carbon dioxide
   - 0     # plasma
   - 0.01  # tritium
-  - 0     # vapor
+  - 0     # water
   - 0     # ammonia
   - 0     # n2o
   - 0     # frezon
@@ -67,7 +67,7 @@
   - 0     # carbon dioxide
   - 0     # plasma
   - 0     # tritium
-  - 0     # vapor
+  - 0     # water
   - 0.01  # ammonia
   - 0     # n2o
   - 0     # frezon
@@ -84,7 +84,7 @@
   - 0     # carbon dioxide
   - 0     # plasma
   - 0     # tritium
-  - 0     # vapor
+  - 0     # water
   - 0     # ammonia
   - 0.01  # n2o
   - 0     # frezon
@@ -92,7 +92,7 @@
   - !type:N2ODecompositionReaction {}
 
 #- type: gasReaction
-#  id: WaterVaporPuddle
+#  id: WaterPuddle
 #  priority: 1
 #  maximumTemperature: 373.13 # Boiling point of water.
 #  minimumRequirements: # In this case, same as minimum mole count.
@@ -101,8 +101,8 @@
 #    - 0  # carbon dioxide
 #    - 0  # plasma
 #    - 0  # tritium
-#    - 1  # water vapor
+#    - 1  # water
 #  effects:
-#    - !type:WaterVaporReaction
+#    - !type:WaterReaction
 #      gas: 5
 #      reagent: Water

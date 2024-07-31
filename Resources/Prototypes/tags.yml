@@ -839,6 +839,9 @@
   id: Medkit
 
 - type: Tag
+  id: Medicine
+
+- type: Tag
   id: Metal
 
 - type: Tag

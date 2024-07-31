@@ -86076,7 +86076,7 @@ entities:
     - type: Transform
       pos: -17.5,-8.5
       parent: 34
-- proto: WaterVaporCanister
+- proto: WaterCanister
   entities:
   - uid: 12326
     components:

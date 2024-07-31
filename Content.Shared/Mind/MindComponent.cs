@@ -29,6 +29,9 @@ namespace Content.Shared.Mind
         [DataField, AutoNetworkedField]
         public List<EntityUid> Objectives = new();
 
+        [DataField, AutoNetworkedField]
+        public List<string> _skills = new();
+
         /// <summary>
         ///     The session ID of the player owning this mind.
         /// </summary>
@@ -105,5 +108,21 @@ namespace Content.Shared.Mind
         [ViewVariables, Access(typeof(SharedMindSystem), typeof(SharedGameTicker))]
         // TODO remove this after moving IPlayerManager functions to shared
         public ICommonSession? Session { get; set; }
+
+        [ViewVariables]
+        public IEnumerable<string> AllSkills => _skills;
+
+        public void AddSkill(string skill)
+        {
+            if (_skills.Contains(skill))
+            {
+                return;
+            }
+            _skills.Add(skill);
+        }
+        public void ClearSkill()
+        {
+            _skills = new();
+        }
     }
 }

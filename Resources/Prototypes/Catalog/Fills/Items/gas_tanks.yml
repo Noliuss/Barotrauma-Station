@@ -139,10 +139,10 @@
         - 0 # CO2
         - 0 # plasma
         - 0 # tritium
-        - 0 # water vapor
+        - 0 # water
         - 0 # ammonia
         - 0.014251686 # 5% N2O
-        # 0.285033721       total 
+        # 0.285033721       total
       temperature: 293.15
 
 - type: entity
@@ -198,7 +198,7 @@
         - 0 # CO2
         - 0 # plasma
         - 0 # tritium
-        - 0 # water vapor
+        - 0 # water
         - 0 # ammonia
         - 0.615413715 # 30% N2O
         # 2.051379050       total

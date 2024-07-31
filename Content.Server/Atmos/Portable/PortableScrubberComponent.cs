@@ -25,7 +25,7 @@ namespace Content.Server.Atmos.Portable
             Gas.CarbonDioxide,
             Gas.Plasma,
             Gas.Tritium,
-            Gas.WaterVapor,
+            Gas.Water,
             Gas.Ammonia,
             Gas.NitrousOxide,
             Gas.Frezon

@@ -30,7 +30,7 @@ namespace Content.Server.Nutrition.Components // Vapes are very nutritious.
 
         [DataField("gasType")]
         [ViewVariables(VVAccess.ReadWrite)]
-        public Gas GasType { get; set; } = Gas.WaterVapor;
+        public Gas GasType { get; set; } = Gas.Water;
 
         /// <summary>
         /// Solution volume will be divided by this number and converted to the gas

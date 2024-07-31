@@ -676,7 +676,7 @@ namespace Content.Client.Preferences.UI
             _skillList.DisposeAllChildren();
             _skillPriorities.Clear();
 
-            var points = _configurationManager.GetCVar(SkillCCVars.MaxSkill);
+            var points = 15;
             _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", points), ("max", points));
             _skillPointsBar.MaxValue = points;
             _skillPointsBar.Value = points;
@@ -1382,7 +1382,7 @@ namespace Content.Client.Preferences.UI
         }
         private void UpdateSkillPriorities()
         {
-            var points = _configurationManager.GetCVar(SkillCCVars.MaxSkill);
+            var points = 15;
             _skillPointsBar.Value = points;
             _skillPointsLabel.Text = Loc.GetString("humanoid-profile-editor-skill-points-label", ("points", _skillPointsBar.Value), ("max", _skillPointsBar.MaxValue));
 

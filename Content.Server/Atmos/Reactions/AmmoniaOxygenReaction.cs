@@ -26,7 +26,7 @@ public sealed partial class AmmoniaOxygenReaction : IGasReactionEffect
         mixture.AdjustMoles(Gas.Ammonia, -deltaMoles);
         mixture.AdjustMoles(Gas.Oxygen, -deltaMoles);
         mixture.AdjustMoles(Gas.NitrousOxide, deltaMoles / 2);
-        mixture.AdjustMoles(Gas.WaterVapor, deltaMoles * 1.5f);
+        mixture.AdjustMoles(Gas.Water, deltaMoles * 1.5f);
 
         return ReactionResult.Reacting;
     }

@@ -1,0 +1,35 @@
+- type: job
+  id: Captain
+  name: job-name-captain
+  description: job-description-captain
+  playTimeTracker: JobCaptain
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 120
+  weight: 20
+  startingGear: CaptainGear
+  icon: "JobIconCaptain"
+  supervisors: job-supervisors-nobody
+  canBeAntag: false
+  accessGroups:
+  - Submarine
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 40
+        weaponsJobModifier: 25
+        mechanicalEngineeringJobModifier: 15
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 5
+
+- type: startingGear
+  id: CaptainGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformAssistantClothes
+    head: BS14-ClothingHeadAdmiralHat
+    id: CaptainIDCard
+    ears: BS14-ClothingHeadset

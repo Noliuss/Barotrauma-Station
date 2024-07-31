@@ -114,10 +114,10 @@ public sealed class ClothingSkillModifierSystem : EntitySystem
 
         if (HelmModifier != 0){
         if  (HelmModifier > 0){
-            msg.AddMarkup(Loc.GetString("clothing-Helm-increase-equal-examine", ("helm", HelmModifier)));
+            msg.AddMarkup(Loc.GetString("clothing-Helm-increase-equal-examine", ("Helm", HelmModifier)));
             }
         else if (HelmModifier < 0)
-            msg.AddMarkup(Loc.GetString("clothing-Helm-decrease-equal-examine", ("helm", HelmModifier)));
+            msg.AddMarkup(Loc.GetString("clothing-Helm-decrease-equal-examine", ("Helm", HelmModifier)));
         msg.PushNewline();
         }
 

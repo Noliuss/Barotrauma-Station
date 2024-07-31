@@ -3,44 +3,17 @@
 - type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltUtility
-  name: utility belt
-  description: Can hold various things.
+  name: toolbelt
+  description: A wearable container for storing tools and supplies.
   components:
   - type: Sprite
     sprite: Clothing/Belt/utility.rsi
   - type: Clothing
     sprite: Clothing/Belt/utility.rsi
   - type: Storage
-    maxItemSize: Normal
-    # TODO: Fill this out more.
-    whitelist:
-      tags:
-        - Powerdrill
-        - Wirecutter
-        - Crowbar
-        - Screwdriver
-        - Flashlight
-        - Wrench
-        - GeigerCounter
-        - Flare
-        - CableCoil
-        - CigPack
-        - Radio
-        - HolofanProjector
-        - Multitool
-        - AppraisalTool
-        - JawsOfLife
-        - GPS
-      components:
-        - SprayPainter
-        - NetworkConfigurator
-        - RCD
-        - RCDAmmo
-        - Welder
-        - PowerCell
-        - Geiger
-        - TrayScanner
-        - GasAnalyzer
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
   - type: ItemMapper
     mapLayers:
       drill:
@@ -627,12 +600,19 @@
 - type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase]
   id: ClothingBeltMilitaryWebbing
-  name: chest rig
-  description: A set of tactical webbing worn by Syndicate boarding parties.
+  name: bandolier
+  description: Lightweight combat gear capable of carrying ammunition and other useful items. Despite improved ergonomics, it does not increase the effectiveness of combat with long-range weapons and turrets.
   components:
+  - type: ClothingSkillModifier
+    HelmModifier: 15
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,1,1
   - type: Sprite
     sprite: Clothing/Belt/militarywebbing.rsi
   - type: Clothing
+    slots: [outerClothing]
     sprite: Clothing/Belt/militarywebbing.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.5

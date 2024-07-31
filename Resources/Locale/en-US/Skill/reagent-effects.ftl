@@ -24,3 +24,4 @@ reagent-effect-guidebook-Medical-modifier =
     { $chance ->
         [1] Modifies
         *[other] modify
+    } Medical by {$Medical} for at least {NATURALFIXED($time, 3)} {MANY("second", $time)}

@@ -19,7 +19,7 @@ namespace Content.Shared.Atmos.Piping.Unary.Components
             Gas.CarbonDioxide,
             Gas.Plasma,
             Gas.Tritium,
-            Gas.WaterVapor,
+            Gas.Water,
             Gas.Ammonia,
             Gas.NitrousOxide,
             Gas.Frezon

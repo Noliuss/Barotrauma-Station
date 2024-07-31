@@ -24,7 +24,7 @@ public sealed partial class GasProducerAnomalyComponent : Component
     /// The gas to release
     /// </summary>
     [DataField("releasedGas", required: true)]
-    public Gas ReleasedGas = Gas.WaterVapor; // There is no entry for none, and Gas cannot be null
+    public Gas ReleasedGas = Gas.Water; // There is no entry for none, and Gas cannot be null
 
     /// <summary>
     /// The amount of gas released when the anomaly reaches max severity

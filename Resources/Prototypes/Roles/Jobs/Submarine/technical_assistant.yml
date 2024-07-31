@@ -1,0 +1,32 @@
+- type: job
+  id: TechnicalAssistant
+  name: job-name-technical-assistant
+  description: job-description-technical-assistant
+  playTimeTracker: JobTechnicalAssistant
+  startingGear: TechnicalAssistantGear
+  icon: "JobIconChiefEngineer"
+  supervisors: job-supervisors-captain
+  access:
+  - SubmarineEngineering
+  - SubmarineBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 5
+        weaponsJobModifier: 15
+        mechanicalEngineeringJobModifier: 40
+        electricalEngineeringJobModifier: 25
+        medicalJobModifier: 15
+
+- type: startingGear
+  id: TechnicalAssistantGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformMechanicJumpsuit
+    head: BS14-ClothingHeadBaseballHat
+    id: TechnicalAssistantIDCard
+    belt: ClothingBeltUtility
+    ears: BS14-ClothingHeadset
+    pocket1: Wrench
+    pocket2: Screwdriver
+    pocket3: Welder

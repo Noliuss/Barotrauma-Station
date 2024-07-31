@@ -1,5 +1,9 @@
+using Content.Server.Atmos;
+using Content.Server.Atmos.Components;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Atmos.EntitySystems;
+using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 
 namespace Content.Server.Atmos.Components;
 
@@ -19,5 +23,5 @@ public sealed partial class MapAtmosphereComponent : SharedMapAtmosphereComponen
     ///     Whether empty tiles will be considered space or not.
     /// </summary>
     [DataField("space"), ViewVariables(VVAccess.ReadWrite)]
-    public bool Space = true;
+    public bool Space = false;
 }

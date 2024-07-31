@@ -1,0 +1,28 @@
+- type: job
+  id: Passenger
+  name: job-name-passenger
+  description: job-description-passenger
+  playTimeTracker: JobPassenger
+  startingGear: PassengerGear
+  icon: "JobIconAssistant"
+  supervisors: job-supervisors-captain
+  access:
+  - SubmarineBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 18
+        weaponsJobModifier: 20
+        mechanicalEngineeringJobModifier: 20
+        electricalEngineeringJobModifier: 20
+        medicalJobModifier: 20
+
+- type: startingGear
+  id: PassengerGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformAssistantClothes
+    id: PassengerIDCard
+    ears: BS14-ClothingHeadset
+    pocket1: Wrench
+    pocket2: Screwdriver

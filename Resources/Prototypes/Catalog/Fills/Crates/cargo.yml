@@ -102,7 +102,7 @@
     - id: TritiumCanister
       prob: 0.001
       orGroup: Canister
-    - id: WaterVaporCanister
+    - id: WaterCanister
       prob: 0.001
       orGroup: Canister
     #weapons

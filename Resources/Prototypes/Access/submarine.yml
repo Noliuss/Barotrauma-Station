@@ -1,0 +1,23 @@
+- type: accessLevel
+  id: SubmarineMedical
+  name: id-card-access-level-submarine-medical
+
+- type: accessLevel
+  id: SubmarineSecurity
+  name: id-card-access-level-submarine-security
+
+- type: accessLevel
+  id: SubmarineEngineering
+  name: id-card-access-level-submarine-engineering
+
+- type: accessLevel
+  id: SubmarineBasic
+  name: id-card-access-level-submarine-basic
+
+- type: accessGroup
+  id: Submarine
+  tags:
+  - SubmarineMedical
+  - SubmarineSecurity
+  - SubmarineEngineering
+  - SubmarineBasic

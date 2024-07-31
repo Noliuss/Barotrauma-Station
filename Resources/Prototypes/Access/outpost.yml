@@ -1,0 +1,57 @@
+- type: accessLevel
+  id: CoalitionBasic
+  name: id-card-access-level-coalition-basic
+
+- type: accessLevel
+  id: CoalitionSecurity
+  name: id-card-access-level-coalition-security
+
+- type: accessLevel
+  id: CoalitionMedical
+  name: id-card-access-level-coalition-medical
+
+- type: accessLevel
+  id: CoalitionCommand
+  name: id-card-access-level-coalition-command
+
+- type: accessGroup
+  id: Coalition
+  tags:
+  - CoalitionMedical
+  - CoalitionSecurity
+  - CoalitionCommand
+  - CoalitionBasic
+
+- type: accessLevel
+  id: SeparatistsBasic
+  name: id-card-access-level-separatists-basic
+
+- type: accessLevel
+  id: SeparatistsSecurity
+  name: id-card-access-level-separatists-security
+
+- type: accessLevel
+  id: SeparatistsCommand
+  name: id-card-access-level-separatists-command
+
+- type: accessGroup
+  id: Separatists
+  tags:
+  - SeparatistsSecurity
+  - SeparatistsCommand
+  - SeparatistsBasic
+
+- type: accessLevel
+  id: ChurchBasic
+  name: id-card-access-level-church-basic
+
+- type: accessLevel
+  id: ChurchCommand
+  name: id-card-access-level-church-command
+
+- type: accessGroup
+  id: Church
+  tags:
+  - ChurchBasic
+  - ChurchCommand
+

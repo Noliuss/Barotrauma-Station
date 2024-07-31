@@ -122,7 +122,7 @@
           - 0 # CO2
           - 0 # Plasma
           - 0 # Tritium
-          - 0 # Water vapor
+          - 0 # Water
           - 0 # Ammonia
           - 0 # N2O
           - 0 # Frezon
@@ -454,13 +454,13 @@
 
 - type: entity
   parent: GasCanister
-  id: WaterVaporCanister
-  name: water vapor canister
-  description: A canister that can contain any type of gas. This one is supposed to contain water vapor. It can be attached to connector ports using a wrench.
+  id: WaterCanister
+  name: water canister
+  description: A canister that can contain any type of gas. This one is supposed to contain water. It can be attached to connector ports using a wrench.
   components:
     - type: Sprite
       layers:
-        - state: water_vapor
+        - state: water
     - type: GasCanister
       gasMixture:
         volume: 1000
@@ -470,7 +470,7 @@
           - 0 # CO2
           - 0 # Plasma
           - 0 # Tritium
-          - 1871.71051 # Water vapor
+          - 1871.71051 # Water
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -489,7 +489,7 @@
             collection: MetalBreak
         - !type:SpawnEntitiesBehavior
           spawn:
-            WaterVaporCanisterBroken:
+            WaterCanisterBroken:
               min: 1
               max: 1
         - !type:DoActsBehavior
@@ -514,7 +514,7 @@
           - 0 # CO2
           - 0 # Plasma
           - 0 # Tritium
-          - 0 #  Water vapor
+          - 0 #  Water
           - 1871.71051 # Ammonia
         temperature: 293.15
     - type: Destructible
@@ -561,7 +561,7 @@
           - 0 # CO2
           - 0 # Plasma
           - 0 # Tritium
-          - 0 #  Water vapor
+          - 0 #  Water
           - 0 # Ammonia
           - 1871.71051 # N2O
         temperature: 293.15
@@ -607,7 +607,7 @@
       - 0 # CO2
       - 0 # Plasma
       - 0 # Tritium
-      - 0 # Water vapor
+      - 0 # Water
       - 0 # Ammonia
       - 0 # N2O
       - 1871.71051 # Frezon
@@ -752,12 +752,12 @@
 
 - type: entity
   parent: GasCanisterBrokenBase
-  id: WaterVaporCanisterBroken
-  name: broken water vapor canister
+  id: WatercanisterBroken
+  name: broken water canister
   noSpawn: true
   components:
     - type: Sprite
-      state: water_vapor-1
+      state: water-1
 
 - type: entity
   parent: GasCanisterBrokenBase

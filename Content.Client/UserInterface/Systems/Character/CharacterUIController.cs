@@ -105,13 +105,15 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             return;
         }
 
-        var (entity, job, objectives, briefing, entityName) = data;
+        var (entity, job, objectives, briefing, entityName, skills) = data;
 
         _window.SpriteView.SetEntity(entity);
         _window.NameLabel.Text = entityName;
         _window.SubText.Text = job;
         _window.Objectives.RemoveAllChildren();
         _window.ObjectivesLabel.Visible = objectives.Any();
+        _window.Skills.RemoveAllChildren();
+        _window.SkillsLabel.Visible = skills.Any();
 
         foreach (var (groupId, conditions) in objectives)
         {
@@ -155,6 +157,23 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             briefingControl.Label.SetMessage(text);
             _window.Objectives.AddChild(briefingControl);
         }
+
+        foreach (var skill in skills)
+        {
+            var skillControl = new BoxContainer()
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                Modulate = Color.Gray
+            };
+
+            skillControl.AddChild(new Label
+            {
+                Text = skill,
+            });
+            _window.Skills.AddChild(skillControl);
+        }
+
+        _window.SkillsPlaceholder.Visible = skills == null;
 
         var controls = _characterInfo.GetCharacterInfoControls(entity);
         foreach (var control in controls)

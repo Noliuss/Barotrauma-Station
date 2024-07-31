@@ -44,3 +44,15 @@
   - Musician # DeltaV - Add Musician access
   - Reporter # DeltaV - Add Reporter access
   - Zookeeper # DeltaV - Add Zookeeper access
+
+- type: accessLevel
+  id: ClosedForeverShit
+  name: id-card-access-level-closed-shit
+
+- type: accessLevel
+  id: Pirate
+  name: id-card-access-level-pirate
+
+- type: accessLevel
+  id: Ruins
+  name: id-card-access-level-ruins

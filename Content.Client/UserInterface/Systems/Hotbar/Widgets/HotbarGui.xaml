@@ -8,7 +8,8 @@
     VerticalExpand="True"
     VerticalAlignment="Bottom"
     Orientation="Vertical"
-    HorizontalAlignment="Center">
+    HorizontalAlignment="Left"
+    Margin="65 0 0 0">
     <BoxContainer Orientation="Vertical">
         <Control HorizontalAlignment="Center">
             <inventory:ItemStatusPanel
@@ -25,23 +26,22 @@
                     Visible="False"/>
             </BoxContainer>
         </Control>
-        <BoxContainer Orientation="Horizontal" Name="Hotbar" HorizontalAlignment="Center">
-            <inventory:ItemSlotButtonContainer
-                Name="SecondHotbar"
-                SlotGroup="SecondHotbar"
+        <BoxContainer Orientation="Horizontal" Name="Hotbar" HorizontalAlignment="Right">
+            <hands:HandsContainer
+                Name="HandContainer"
+                Access="Public"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right"
                 VerticalExpand="False"
                 ExpandBackwards="True"
-                Columns="6"
-                HorizontalExpand="False"/>
-            <hands:HandsContainer
-                Name="HandContainer"
-                Access="Public"
-                HorizontalAlignment="Center"
-                HorizontalExpand="False"
                 ColumnLimit="6"
-                Margin="4 0 4 0"/>
+                HorizontalExpand="False"/>
+            <inventory:ItemSlotButtonContainer
+                Name="SecondHotbar"
+                SlotGroup="SecondHotbar"
+                HorizontalAlignment="Right"
+                HorizontalExpand="False"
+                Columns="6"/>
             <inventory:ItemSlotButtonContainer
                 Name="MainHotbar"
                 SlotGroup="MainHotbar"
