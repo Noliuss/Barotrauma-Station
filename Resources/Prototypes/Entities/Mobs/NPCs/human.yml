@@ -6,8 +6,6 @@
   components:
   - type: InputMover
   - type: MobMover
-  - type: Loadout
-    prototypes: [PassengerGear]
   - type: NpcFactionMember
     factions:
     - NanoTrasen
@@ -20,9 +18,6 @@
     - type: NpcFactionMember
       factions:
         - Syndicate
-    - type: Loadout
-      prototypes:
-        - SalvageSpecialistGear
     - type: InputMover
     - type: MobMover
     - type: HTN
@@ -38,9 +33,6 @@
   - type: NpcFactionMember
     factions:
       - Syndicate
-  - type: Loadout
-    prototypes:
-      - PirateGear
   - type: InputMover
   - type: MobMover
   - type: HTN
@@ -48,16 +40,13 @@
       task: SimpleHumanoidHostileCompound
 
 - type: entity
-  name: syndicate footsoldier 
+  name: syndicate footsoldier
   parent: BaseMobHuman
   id: MobSyndicateFootsoldier
   components:
     - type: NpcFactionMember
       factions:
         - Syndicate
-    - type: Loadout
-      prototypes:
-        - SyndicateFootsoldierGearRuin
     - type: InputMover
     - type: MobMover
     - type: HTN

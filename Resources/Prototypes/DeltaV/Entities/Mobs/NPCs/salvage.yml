@@ -17,9 +17,6 @@
         100: Dead #Tweak for "Acidify on Crit"
     - type: MindContainer
       showExamineInfo: False
-    - type: Loadout
-      prototypes:
-        - RadioGuardGear
     - type: InputMover
     - type: MobMover
     - type: HTN

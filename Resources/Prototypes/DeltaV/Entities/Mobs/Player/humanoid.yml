@@ -10,9 +10,6 @@
 
 - type: randomHumanoidSettings
   id: SyndicateListener
-  components:
-    - type: Loadout
-      prototypes: [SyndicateListenerGear]
 
 # Mobsters
 
@@ -39,8 +36,6 @@
       name: Mobster
       description: Break kneecaps, spray lead, keep your mouth shut.
     - type: GhostTakeoverAvailable
-    - type: Loadout
-      prototypes: [ MobsterGear ]
     - type: RandomMetadata
       nameSegments:
       - fake_human_first
@@ -70,8 +65,6 @@
       name: Mobster
       description: Break kneecaps, spray lead, keep your mouth shut.
     - type: GhostTakeoverAvailable
-    - type: Loadout
-      prototypes: [ MobsterGearAlt ]
     - type: RandomMetadata
       nameSegments:
       - fake_human_first

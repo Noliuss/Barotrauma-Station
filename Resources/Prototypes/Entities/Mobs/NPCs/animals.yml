@@ -1138,8 +1138,6 @@
   parent: MobKangaroo
   id: MobBoxingKangaroo
   components:
-  - type: Loadout
-    prototypes: [ BoxingKangarooGear ]
   - type: NpcFactionMember
     factions:
     - SimpleHostile
@@ -1299,8 +1297,6 @@
     name: ghost-role-information-monkey-name
     description: ghost-role-information-monkey-description
   - type: GhostTakeoverAvailable
-  - type: Loadout
-    prototypes: [SyndicateOperativeGearMonkey]
 
 - type: entity
   id: MobMonkeySyndicateAgent

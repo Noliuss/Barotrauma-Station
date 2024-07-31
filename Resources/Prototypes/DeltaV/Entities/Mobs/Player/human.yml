@@ -4,8 +4,6 @@
   id: MobHumanSyndicateListener
   name: Syndicate Listener
   components:
-    - type: Loadout
-      prototypes: [SyndicateListenerGear]
     - type: NpcFactionMember
       factions:
       - Syndicate

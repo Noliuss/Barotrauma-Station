@@ -8,7 +8,7 @@
     interactSuccessString: hugging-success-generic
     interactSuccessSound: /Audio/Effects/thudswoosh.ogg
     messagePerceivedByOthers: hugging-success-generic-others
-  - type: PotentialPsionic #Nyano - Summary: makes potentially psionic. 
+  - type: PotentialPsionic #Nyano - Summary: makes potentially psionic.
 
 - type: entity
   name: skeleton pirate
@@ -19,8 +19,6 @@
     name: ghost-role-information-skeleton-pirate-name
     description: ghost-role-information-skeleton-pirate-description
   - type: GhostTakeoverAvailable
-  - type: Loadout
-    prototypes: [PirateGear]
   - type: RandomHumanoidAppearance
 
 
@@ -33,8 +31,6 @@
     name: ghost-role-information-skeleton-biker-name
     description: ghost-role-information-skeleton-biker-description
   - type: GhostTakeoverAvailable
-  - type: Loadout
-    prototypes: [SkeletonBiker]
   - type: RandomHumanoidAppearance
 
 - type: entity
@@ -46,6 +42,4 @@
     name: ghost-role-information-closet-skeleton-name
     description: ghost-role-information-closet-skeleton-description
   - type: GhostTakeoverAvailable
-  - type: Loadout
-    prototypes: [LimitedPassengerGear]
   - type: RandomHumanoidAppearance
