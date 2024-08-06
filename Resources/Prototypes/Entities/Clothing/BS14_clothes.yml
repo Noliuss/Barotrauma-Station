@@ -153,6 +153,29 @@
   - type: Clothing
     sprite: Clothing/Head/Hats/hopcap.rsi
 
+# - type: entity
+#   parent: HatBase
+#   id: BS14-ClothingThermals
+#   name: thermal goggles
+#   description: A thermal imaging device that makes it easier to distinguish living targets in poor lighting conditions, even through solid obstacles.
+#   components:
+#   - type: Item
+#     size: Tiny
+#   - type: Sprite
+#     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
+#   - type: Clothing
+#     sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
+#   - type: NightVisionItem
+#   - type: Appearance
+#   - type: GenericVisualizer
+#     visuals:
+#       enum.NightVisionItemVisuals.Active:
+#         nightVisionItemLayer:
+#           True: { state: icon }
+#           False: { state: icon }
+#
+# This shit is broken for some reasons, and I have no ideas why. You can try to fix it, if you want.
+
 # Headsets
 
 - type: entity

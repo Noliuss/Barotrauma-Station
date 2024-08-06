@@ -341,3 +341,19 @@
       itemIconStyle: NoItem
       useDelay: 1 # emote spam
       event: !type:ToggleActionEvent
+
+- type: entity
+  id: ActionToggleNightVision
+  name: Toggle the nightvision
+  noSpawn: true
+  description: Allows you to see even in complete darkness.
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
+      state: icon
+    iconOn:
+      sprite: Clothing/Eyes/Glasses/ninjavisor.rsi
+      state: icon
+    event: !type:ToggleActionEvent
+    useDelay: 0.25

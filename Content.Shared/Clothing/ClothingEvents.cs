@@ -71,3 +71,17 @@ public readonly record struct ItemMaskToggledEvent(EntityUid Wearer, string? equ
 /// </summary>
 [ByRefEvent]
 public readonly record struct WearerMaskToggledEvent(bool IsToggled);
+
+public sealed partial class ToggleThermalsEvent : InstantActionEvent { }
+
+/// <summary>
+///     Event raised on the thermals goggles entity when it is toggled.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ItemThermalsToggledEvent(EntityUid Wearer, string? equippedPrefix, bool IsToggled, bool IsEquip);
+
+/// <summary>
+///     Event raised on the entity wearing the thermals when it is toggled.
+/// </summary>
+[ByRefEvent]
+public readonly record struct WearerThermalsToggledEvent(bool IsToggled);
