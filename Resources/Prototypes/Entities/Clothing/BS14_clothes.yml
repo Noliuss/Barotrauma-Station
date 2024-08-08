@@ -187,7 +187,6 @@
     - type: RadioMicrophone
       broadcastChannel: Handheld
       toggleOnInteract: false
-      frequency: 1330
     - type: RadioSpeaker
       channels:
       - Handheld

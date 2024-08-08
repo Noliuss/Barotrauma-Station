@@ -56,6 +56,7 @@ public sealed class RadioDeviceSystem : EntitySystem
         SubscribeLocalEvent<RadioMicrophoneComponent, ToggleHandheldRadioMicMessage>(OnToggleHandheldRadioMic);
         SubscribeLocalEvent<RadioMicrophoneComponent, ToggleHandheldRadioSpeakerMessage>(OnToggleHandheldRadioSpeaker);
         SubscribeLocalEvent<RadioMicrophoneComponent, SelectHandheldRadioFrequencyMessage>(OnChangeHandheldRadioFrequency);
+        SubscribeLocalEvent<RadioMicrophoneComponent, MapInitEvent>(OnHeadsetMapInit);
     }
 
     public override void Update(float frameTime)
@@ -309,5 +310,9 @@ public sealed class RadioDeviceSystem : EntitySystem
         _ui.TrySetUiState(radio, HandheldRadioUiKey.Key, state);
     }
 
+    private void OnHeadsetMapInit(EntityUid uid, RadioMicrophoneComponent component, MapInitEvent args)
+    {
+        component.Frequency = new Random().Next(0, 10000);
+    }
     #endregion
 }
