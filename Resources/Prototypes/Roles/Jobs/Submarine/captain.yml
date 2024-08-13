@@ -29,7 +29,7 @@
 - type: startingGear
   id: CaptainGear
   equipment:
-    jumpsuit: BS14-ClothingUniformAssistantClothes
+    jumpsuit: BS14-ClothingUniformAdmiral
     head: BS14-ClothingHeadAdmiralHat
     id: CaptainIDCard
     ears: BS14-ClothingHeadset

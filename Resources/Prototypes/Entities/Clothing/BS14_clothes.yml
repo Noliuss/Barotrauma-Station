@@ -35,7 +35,7 @@
 
 - type: entity
   parent: ClothingUniformBase
-  id: BS14-ClothingUniformDoctorUniform
+  id: BS14-ClothingUniformDoctor
   name: doctor's uniform
   description: Makes you look like you might be useful in a medical emergency.
   components:
@@ -60,7 +60,6 @@
     interfaces:
     - key: enum.StorageUiKey.Key
       type: StorageBoundUserInterface
-  # For some reasons it doesn't work. Maybe you know what's wrong here
   - type: Sprite
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/doctor.rsi
   - type: Clothing
@@ -100,11 +99,410 @@
   - type: Clothing
     sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/commando.rsi
 
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformHazmatSuit
+  name: hazmat suit
+  description: Has a protective lead shielding against radiation.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.80
+        Radiation: 0.40
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/hazmat.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/hazmat.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformMotherProvidence
+  name: Mother's Providence
+  description: Nothing can escape mother's warm embrace.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+  - type: NoSlip
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/mother_providence.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/mother_providence.rsi
+
+- type: entity
+  parent: BS14-ClothingUniformMechanicJumpsuit
+  id: BS14-ClothingUniformBoilerJumpsuit
+  name: boiler suit
+  description: The Boiler Suit is a part of one of the Mechanic's Uniforms.
+  components:
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/boiler.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/boiler.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformSeparatistCostume
+  name: separatist costume
+  description: A rugged outfit hand-crafted by the Jovian Separatists, designed to endure the harsh conditions of seabound life on Europa. This specific outfit has been improved with light armor plating.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.85
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/separatist.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/separatist.rsi
+
+- type: entity
+  parent: BS14-ClothingUniformSeparatistCostume
+  id: BS14-ClothingUniformSeparatistCostumeNovice
+  name: separatist costume (novice)
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/separatist_novice.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/separatist_novice.rsi
+
+- type: entity
+  parent: BS14-ClothingUniformSeparatistCostume
+  id: BS14-ClothingUniformSeparatistCostumeHard
+  name: separatist costume (hard)
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.80
+        Blunt: 0.95
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/separatist_hard.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/separatist_hard.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformAdmiral
+  name: admiral's uniform
+  description: The Admiral's Uniform is a part of one of the Captain's Uniforms.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/admiral.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/admiral.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformBanditOutfit
+  name: bandit outfit
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/bandit.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/bandit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformCrewChiefOutfit
+  name: crew chief outfit
+  description: The Crew Chief's Outfit is worn by Crew Chiefs in Outposts.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/crew_chief.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/crew_chief.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformGunner
+  name: gunner's uniform
+  description: A standard issue gunner's uniform.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.85
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/gunner.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/gunner.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformOutpostSecurity
+  name: outpost security uniform
+  description: The Outpost Security Uniform is worn by Outpost Security in Outposts.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.85
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/security.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/security.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformQuartermaster
+  name: quartermaster outfit
+  description: It is usually worn by the Quartermaster in Outposts.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/quartermaster.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/quartermaster.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformRenegadeJacket
+  name: renegade's jacket
+  description: Indicates who is in charge.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/renegade.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/renegade.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformSecurityOfficer
+  name: security officer's uniform
+  description: Obey my authority!
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.85
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/officer.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/officer.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformVeteranJacket
+  name: veteran's jacket
+  description: A warm jacket to protect its wearer against the cold depths.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/veteran.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/veteran.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformVIP
+  name: VIP outfit
+  description: The VIP Outfits are an Innerwear piece worn by VIPs.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.95
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/vip.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/vip.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformClownCostume
+  name: clown costume
+  description: Praise the honkmother.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/clown.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/clown.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformMinerOveralls
+  name: miner's overalls
+  description: The Miner's Overalls is worn by Miners in Outposts.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.85
+        Blunt: 0.80
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/miner.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/miner.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformResearcher
+  name: researcher's outfit
+  description: The Researcher's Outfit is worn by Researchers in Outposts.
+  components:
+  - type: ClothingSkillModifier
+    MechanicalEngineeringModifier: 5
+    ElectricalEngineeringModifier: 5
+    MedicalModifier: 5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/researcher.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/researcher.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformMedicFatigue
+  name: medic's fatigues
+  description: For frontline medics. Offers some protection against enemies.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+  - type: Storage
+    maxItemSize: Small
+    defaultStorageOrientation: Vertical
+    whitelist:
+      tags:
+        - Medicine
+    grid:
+    - 0,0,0,2
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+    - key: enum.StorageUiKey.Key
+      type: StorageBoundUserInterface
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/medic.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/medic.rsi
+    quickEquip: false
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformOutpostDwellerOutfit
+  name: outpost dweller's outfit
+  description: Not much to look at, but pretty warm and comfortable.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/dweller.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/dweller.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformPrisonerOutfit
+  name: prisoner outfit
+  description: The Prisoner Outfit is worn by Prisoners.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/prisoner.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/prisoner.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformStationAdministratorOutfit
+  name: station administrator's outfit
+  description: The Station Administrator's Outfit is worn by Station Administrators in Outposts.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/administrator.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/administrator.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: BS14-ClothingUniformMedicalOfficerOutfit
+  name: medical officer's outfit
+  description: The Medical Officer's Outfit is worn by Medical Officers in Outposts.
+  components:
+  - type: ClothingSkillModifier
+    MedicalModifier: 15
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/medical.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Uniforms/Jumpsuit/medical.rsi
+
 # Hats
 
 - type: entity
   parent: HatBase
-  id: BS14-ClothingHealthScannerHUD
+  id: BS14-ClothingHeadHealthScannerHUD
   name: health scanner HUD
   description: A heads-up display that shows information about the vital signs and status of nearby humans.
   components:

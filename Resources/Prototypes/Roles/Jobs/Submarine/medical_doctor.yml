@@ -22,7 +22,7 @@
 - type: startingGear
   id: DoctorGear
   equipment:
-    jumpsuit: BS14-ClothingUniformDoctorUniform
+    jumpsuit: BS14-ClothingUniformDoctor
     id: MedicalIDCard
     ears: BS14-ClothingHeadset
     head: BS14-ClothingHealthScannerHUD
