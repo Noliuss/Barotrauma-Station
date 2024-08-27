@@ -16,12 +16,14 @@ public sealed partial class MapAtmosphereComponent : SharedMapAtmosphereComponen
     /// <summary>
     ///     The default GasMixture a map will have. Space mixture by default.
     /// </summary>
-    [DataField("mixture"), ViewVariables(VVAccess.ReadWrite)]
-    public GasMixture? Mixture = GasMixture.SpaceGas;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public GasMixture Mixture = GasMixture.SpaceGas;
 
     /// <summary>
     ///     Whether empty tiles will be considered space or not.
     /// </summary>
-    [DataField("space"), ViewVariables(VVAccess.ReadWrite)]
-    public bool Space = false;
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public bool Space = true;
+
+    public SharedGasTileOverlaySystem.GasOverlayData Overlay;
 }

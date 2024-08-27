@@ -27,7 +27,7 @@
 - type: entity
   parent: DefaultStationBeaconMedical
   id: DefaultStationBeaconExam
-  suffix: Exam Room
+  suffix: Exam
   components:
   - type: NavMapBeacon
     text: station-beacon-exam
@@ -43,7 +43,7 @@
 - type: entity
   parent: DefaultStationBeaconMedical
   id: DefaultStationBeaconPsychologist
-  suffix: Psychologist
+  suffix: Psych
   components:
   - type: NavMapBeacon
     text: station-beacon-psych
@@ -52,7 +52,7 @@
 - type: entity
   parent: DefaultStationBeaconScience
   id: DefaultStationBeaconProber
-  suffix: Glimmer Prober
+  suffix: Prober
   components:
   - type: NavMapBeacon
     text: station-beacon-glimmer-prober
@@ -60,7 +60,7 @@
 - type: entity
   parent: DefaultStationBeaconScience
   id: DefaultStationBeaconMantis
-  suffix: Forensic Mantis
+  suffix: Mantis
   components:
   - type: NavMapBeacon
     text: station-beacon-forensic-mantis
@@ -134,3 +134,28 @@
   components:
   - type: NavMapBeacon
     text: station-beacon-corpsman
+
+#Justice
+- type: entity
+  parent: DefaultStationBeacon
+  id: DefaultStationBeaconJustice
+  suffix: Justice
+  components:
+  - type: NavMapBeacon
+    text: station-beacon-justice
+
+- type: entity
+  parent: DefaultStationBeaconJustice
+  id: DefaultStationBeaconChiefJustice
+  suffix: Chief Justice
+  components:
+  - type: NavMapBeacon
+    text: station-beacon-chiefjustice
+
+- type: entity
+  parent: DefaultStationBeaconJustice
+  id: DefaultStationBeaconProsecutor
+  suffix: Prosecutor
+  components:
+  - type: NavMapBeacon
+    text: station-beacon-prosecutor
