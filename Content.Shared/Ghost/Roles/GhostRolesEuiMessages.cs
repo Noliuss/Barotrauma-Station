@@ -1,4 +1,3 @@
-using Content.Shared.Customization.Systems;
 using Content.Shared.Eui;
 using Content.Shared.Roles;
 using Robust.Shared.Serialization;
@@ -12,7 +11,7 @@ namespace Content.Shared.Ghost.Roles
         public string Name { get; set; }
         public string Description { get; set; }
         public string Rules { get; set; }
-        public List<CharacterRequirement>? Requirements { get; set; }
+        public HashSet<JobRequirement>? Requirements { get; set; }
     }
 
     [NetSerializable, Serializable]

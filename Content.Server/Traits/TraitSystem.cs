@@ -3,6 +3,8 @@ using Content.Shared.Actions;
 using Content.Server.GameTicking;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Shared.Customization.Systems;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Players;
 using Content.Shared.Roles;
 using Content.Shared.Traits;
@@ -41,10 +43,9 @@ public sealed class TraitSystem : EntitySystem
                 return;
             }
 
-            if (!_characterRequirements.CheckRequirementsValid(
-                traitPrototype.Requirements,
+            if (!_characterRequirements.CheckRequirementsValid(traitPrototype, traitPrototype.Requirements,
                 _prototype.Index<JobPrototype>(args.JobId ?? _prototype.EnumeratePrototypes<JobPrototype>().First().ID),
-                args.Profile, _playTimeTracking.GetTrackerTimes(args.Player), args.Player.ContentData()?.Whitelisted ?? false,
+                args.Profile, _playTimeTracking.GetTrackerTimes(args.Player),
                 EntityManager, _prototype, _configuration,
                 out _))
                 continue;

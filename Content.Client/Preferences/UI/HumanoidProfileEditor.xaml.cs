@@ -126,7 +126,7 @@ namespace Content.Client.Preferences.UI
             _preferencesManager = preferencesManager;
             _configurationManager = configurationManager;
             _markingManager = IoCManager.Resolve<MarkingManager>();
-            _characterRequirementsSystem = _entityManager.System<CharacterRequirementsSystem>();
+            _characterRequirementsSystem = EntitySystem.Get<CharacterRequirementsSystem>();
             _controller = UserInterfaceManager.GetUIController<LobbyUIController>();
 
             _controller.SetProfileEditor(this);
@@ -658,9 +658,7 @@ namespace Content.Client.Preferences.UI
                 if (!antag.SetPreference)
                     continue;
 
-                var selector = new AntagPreferenceSelector(antag,
-                        _jobPriorities.FirstOrDefault(j => j.Priority == JobPriority.High)?.HighJob
-                            ?? new())
+                var selector = new AntagPreferenceSelector(antag)
                     { Margin = new Thickness(3f, 3f, 3f, 0f) };
                 _antagList.AddChild(selector);
                 _antagPreferences.Add(selector);
@@ -741,17 +739,10 @@ namespace Content.Client.Preferences.UI
                 {
                     var selector = new JobPrioritySelector(job, _prototypeManager);
 
-                    if (!_characterRequirementsSystem.CheckRequirementsValid(
-                        job.Requirements ?? new(),
-                        job,
-                        Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                        _requirements.GetRawPlayTimeTrackers(),
-                        _requirements.IsWhitelisted(),
-                        _entityManager,
-                        _prototypeManager,
-                        _configurationManager,
-                        out var reasons))
-                        selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
+                    if (!_requirements.IsAllowed(job, out var reason))
+                    {
+                        selector.LockRequirements(reason);
+                    }
 
                     category.AddChild(selector);
                     _jobPriorities.Add(selector);
@@ -795,17 +786,7 @@ namespace Content.Client.Preferences.UI
             var changed = false;
             foreach (var selector in _jobPriorities)
             {
-                if (selector.Priority == JobPriority.Never
-                    || _characterRequirementsSystem.CheckRequirementsValid(
-                        selector.Proto.Requirements ?? new(),
-                        selector.Proto,
-                        Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                        _requirements.GetRawPlayTimeTrackers(),
-                        _requirements.IsWhitelisted(),
-                        _entityManager,
-                        _prototypeManager,
-                        _configurationManager,
-                        out _))
+                if (_requirements.IsAllowed(selector.Proto, out var _) || selector.Priority == JobPriority.Never)
                     continue;
 
                 selector.Priority = JobPriority.Never;
@@ -1752,11 +1733,11 @@ namespace Content.Client.Preferences.UI
             var traits = enumeratedTraits.Where(trait =>
                 showUnusable || // Ignore everything if this is true
                 _characterRequirementsSystem.CheckRequirementsValid(
+                    trait,
                     trait.Requirements,
                     highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                    _requirements.GetRawPlayTimeTrackers(),
-                    _requirements.IsWhitelisted(),
+                    _requirements.GetPlayTimes(),
                     _entityManager,
                     _prototypeManager,
                     _configurationManager,
@@ -1767,11 +1748,11 @@ namespace Content.Client.Preferences.UI
             // Traits to highlight red when showUnusable is true
             var traitsUnusable = enumeratedTraits.Where(trait =>
                 _characterRequirementsSystem.CheckRequirementsValid(
+                    trait,
                     trait.Requirements,
                     highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                    _requirements.GetRawPlayTimeTrackers(),
-                    _requirements.IsWhitelisted(),
+                    _requirements.GetPlayTimes(),
                     _entityManager,
                     _prototypeManager,
                     _configurationManager,
@@ -1878,8 +1859,7 @@ namespace Content.Client.Preferences.UI
                 var selector = new TraitPreferenceSelector(trait, highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
                     traitsUnusable.Contains(trait) ? "" : "ButtonColorRed",
-                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem,
-                    _requirements);
+                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem);
 
                 // Look for an existing trait category
                 BoxContainer? match = null;
@@ -1911,8 +1891,7 @@ namespace Content.Client.Preferences.UI
             {
                 var selector = new TraitPreferenceSelector(trait, highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(), "",
-                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem,
-                    _requirements);
+                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem);
 
 
                 AddSelector(selector, trait.Points, trait.ID);
@@ -2013,11 +1992,11 @@ namespace Content.Client.Preferences.UI
             var loadouts = enumeratedLoadouts.Where(loadout =>
                 showUnusable || // Ignore everything if this is true
                 _characterRequirementsSystem.CheckRequirementsValid(
+                    loadout,
                     loadout.Requirements,
                     highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                    _requirements.GetRawPlayTimeTrackers(),
-                    _requirements.IsWhitelisted(),
+                    _requirements.GetPlayTimes(),
                     _entityManager,
                     _prototypeManager,
                     _configurationManager,
@@ -2028,11 +2007,11 @@ namespace Content.Client.Preferences.UI
             // Loadouts to highlight red when showUnusable is true
             var loadoutsUnusable = enumeratedLoadouts.Where(loadout =>
                 _characterRequirementsSystem.CheckRequirementsValid(
+                    loadout,
                     loadout.Requirements,
                     highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                    _requirements.GetRawPlayTimeTrackers(),
-                    _requirements.IsWhitelisted(),
+                    _requirements.GetPlayTimes(),
                     _entityManager,
                     _prototypeManager,
                     _configurationManager,
@@ -2142,8 +2121,7 @@ namespace Content.Client.Preferences.UI
                 var selector = new LoadoutPreferenceSelector(loadout, highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
                     loadoutsUnusable.Contains(loadout) ? "" : "ButtonColorRed",
-                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem,
-                    _requirements);
+                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem);
 
                 // Look for an existing loadout category
                 BoxContainer? match = null;
@@ -2172,8 +2150,7 @@ namespace Content.Client.Preferences.UI
             {
                 var selector = new LoadoutPreferenceSelector(loadout, highJob?.Proto ?? new JobPrototype(),
                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(), "",
-                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem,
-                    _requirements);
+                    _entityManager, _prototypeManager, _configurationManager, _characterRequirementsSystem);
 
 
                 AddSelector(selector, loadout.Cost, loadout.ID);

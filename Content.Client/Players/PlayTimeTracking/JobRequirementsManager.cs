@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared.CCVar;
-using Content.Shared.Customization.Systems;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Roles;
@@ -18,6 +17,9 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
 {
     [Dependency] private readonly IBaseClient _client = default!;
     [Dependency] private readonly IClientNetManager _net = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
 
     private readonly Dictionary<string, TimeSpan> _roles = new();
@@ -78,6 +80,43 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
         Updated?.Invoke();
     }
 
+    public bool IsAllowed(JobPrototype job, [NotNullWhen(false)] out FormattedMessage? reason)
+    {
+        reason = null;
+
+        if (_roleBans.Contains($"Job:{job.ID}"))
+        {
+            reason = FormattedMessage.FromUnformatted(Loc.GetString("role-ban"));
+            return false;
+        }
+
+        var player = _playerManager.LocalSession;
+        if (player == null)
+            return true;
+
+        return CheckRoleTime(job.Requirements, out reason);
+    }
+
+    public bool CheckRoleTime(HashSet<JobRequirement>? requirements, [NotNullWhen(false)] out FormattedMessage? reason, string? localePrefix = "role-timer-")
+    {
+        reason = null;
+
+        if (requirements == null || !_cfg.GetCVar(CCVars.GameRoleTimers))
+            return true;
+
+        var reasons = new List<string>();
+        foreach (var requirement in requirements)
+        {
+            if (JobRequirements.TryRequirementMet(requirement, _roles, out var jobReason, _entManager, _prototypes, _whitelisted, localePrefix))
+                continue;
+
+            reasons.Add(jobReason.ToMarkup());
+        }
+
+        reason = reasons.Count == 0 ? null : FormattedMessage.FromMarkup(string.Join('\n', reasons));
+        return reason == null;
+    }
+
     public TimeSpan FetchOverallPlaytime()
     {
         return _roles.TryGetValue("Overall", out var overallPlaytime) ? overallPlaytime : TimeSpan.Zero;
@@ -98,8 +137,12 @@ public sealed partial class JobRequirementsManager : ISharedPlaytimeManager
 
     public Dictionary<string, TimeSpan> GetPlayTimes()
     {
-        var dict = FetchPlaytimeByRoles();
+        var dict = new Dictionary<string, TimeSpan>();
+
         dict.Add(PlayTimeTrackingShared.TrackerOverall, FetchOverallPlaytime());
+        foreach (var role in FetchPlaytimeByRoles())
+            dict.Add(role.Key, role.Value);
+
         return dict;
     }
 

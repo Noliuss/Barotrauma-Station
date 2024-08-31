@@ -4,7 +4,6 @@ using Content.Shared.Roles;
 using Content.Shared.StatusIcon;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.Utility;
-using Robust.Shared.CPUJob.JobQueues;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Preferences.UI;
@@ -19,7 +18,7 @@ public sealed class JobPrioritySelector : RequirementsSelector<JobPrototype>
 
     public event Action<JobPriority>? PriorityChanged;
 
-    public JobPrioritySelector(JobPrototype proto, IPrototypeManager protoMan) : base(proto, proto)
+    public JobPrioritySelector(JobPrototype proto, IPrototypeManager protoMan) : base(proto)
     {
         Options.OnItemSelected += _ => PriorityChanged?.Invoke(Priority);
 
