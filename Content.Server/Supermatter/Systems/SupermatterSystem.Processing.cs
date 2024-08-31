@@ -46,7 +46,7 @@ public sealed partial class SupermatterSystem
         // Minimum value of -10, maximum value of 23. Affects plasma, o2 and heat output.
         var transmissionBonus = gases.Sum(gas => gases[gas.Key] * facts[gas.Key].TransmitModifier);
 
-        var h2OBonus = 1 - gases[Gas.WaterVapor] * 0.25f;
+        var h2OBonus = 1 - gases[Gas.Water] * 0.25f;
 
         powerRatio = Math.Clamp(powerRatio, 0, 1);
         heatModifier = Math.Max(heatModifier, 0.5f);

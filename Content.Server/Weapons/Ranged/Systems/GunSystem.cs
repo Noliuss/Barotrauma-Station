@@ -100,7 +100,7 @@ public sealed partial class GunSystem : SharedGunSystem
         var toMap = toCoordinates.ToMapPos(EntityManager, TransformSystem);
         var mapDirection = toMap - fromMap.Position;
         var mapAngle = mapDirection.ToAngle();
-        var angle = GetRecoilAngle(Timing.CurTime, gun, mapDirection.ToAngle(), user);
+        var angle = GetRecoilAngle(user, Timing.CurTime, gun, mapDirection.ToAngle());
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
         var fromEnt = MapManager.TryFindGridAt(fromMap, out var gridUid, out var grid)
@@ -323,7 +323,7 @@ public sealed partial class GunSystem : SharedGunSystem
 
     private Angle GetRecoilAngle(EntityUid? uid, TimeSpan curTime, GunComponent component, Angle direction)
     {
-    	var shooter = uid
+    	var shooter = uid;
         var timeSinceLastFire = (curTime - component.LastFire).TotalSeconds;
         var newTheta = MathHelper.Clamp(component.CurrentAngle.Theta + component.AngleIncreaseModified.Theta - component.AngleDecayModified.Theta * timeSinceLastFire, component.MinAngleModified.Theta, component.MaxAngleModified.Theta);
         component.CurrentAngle = new Angle(newTheta);

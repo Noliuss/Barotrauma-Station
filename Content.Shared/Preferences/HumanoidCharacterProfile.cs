@@ -51,8 +51,8 @@ namespace Content.Shared.Preferences
             PreferenceUnavailableMode preferenceUnavailable,
             List<string> antagPreferences,
             List<string> traitPreferences,
+            List<string> loadoutPreferences,
             Dictionary<string, SkillPriority> skillPriorities)
-            List<string> loadoutPreferences)
         {
             Name = name;
             FlavorText = flavortext;
@@ -80,7 +80,7 @@ namespace Content.Shared.Preferences
             Dictionary<string, JobPriority> jobPriorities,
             List<string> antagPreferences,
             List<string> traitPreferences,
-            List<string> loadoutPreferences)
+            List<string> loadoutPreferences,
             Dictionary<string, SkillPriority> skillPriorities)
             : this(other.Name, other.FlavorText, other.Species, other.Height, other.Width, other.Age, other.Sex, other.Gender, other.Appearance,
                 other.Clothing, other.Backpack, other.SpawnPriority, jobPriorities, other.PreferenceUnavailable,
@@ -113,7 +113,7 @@ namespace Content.Shared.Preferences
             PreferenceUnavailableMode preferenceUnavailable,
             IReadOnlyList<string> antagPreferences,
             IReadOnlyList<string> traitPreferences,
-            IReadOnlyList<string> loadoutPreferences)
+            IReadOnlyList<string> loadoutPreferences,
             IReadOnlyDictionary<string, SkillPriority> skillPriorities)
             : this(name, flavortext, species, height, width, age, sex, gender, appearance, clothing, backpack, spawnPriority,
                 new Dictionary<string, JobPriority>(jobPriorities), preferenceUnavailable,
@@ -147,7 +147,7 @@ namespace Content.Shared.Preferences
             PreferenceUnavailableMode.SpawnAsOverflow,
             new List<string>(),
             new List<string>(),
-            new List<string>())
+            new List<string>(),
             new Dictionary<string, SkillPriority>
             {
                 {"Helm", SkillPriority.Zero},
@@ -187,7 +187,7 @@ namespace Content.Shared.Preferences
                 PreferenceUnavailableMode.SpawnAsOverflow,
                 new List<string>(),
                 new List<string>(),
-                new List<string>());
+                new List<string>(),
                 new Dictionary<string, SkillPriority>
                 {
                     {"Helm", SkillPriority.Zero},
@@ -355,11 +355,11 @@ namespace Content.Shared.Preferences
         }
         public HumanoidCharacterProfile WithJobPriorities(IEnumerable<KeyValuePair<string, JobPriority>> jobPriorities)
         {
-            return new(this, new Dictionary<string, JobPriority>(jobPriorities), _antagPreferences, _traitPreferences, _skillPriorities, _loadoutPreferences);
+            return new(this, new Dictionary<string, JobPriority>(jobPriorities), _antagPreferences, _traitPreferences, _loadoutPreferences, _skillPriorities);
         }
         public HumanoidCharacterProfile WithSkillPriorities(IEnumerable<KeyValuePair<string, SkillPriority>> skillPriorities)
         {
-            return new(this, _jobPriorities, _antagPreferences, _traitPreferences, new Dictionary<string, SkillPriority>(skillPriorities), _loadoutPreferences);
+            return new(this, _jobPriorities, _antagPreferences, _traitPreferences, _loadoutPreferences, new Dictionary<string, SkillPriority>(skillPriorities));
         }
 
         public HumanoidCharacterProfile WithJobPriority(string jobId, JobPriority priority)
@@ -487,7 +487,7 @@ namespace Content.Shared.Preferences
                 || !_jobPriorities.SequenceEqual(other._jobPriorities)
                 || !_antagPreferences.SequenceEqual(other._antagPreferences)
                 || !_traitPreferences.SequenceEqual(other._traitPreferences)
-                || !_loadoutPreferences.SequenceEqual(other._loadoutPreferences))
+                || !_loadoutPreferences.SequenceEqual(other._loadoutPreferences)
                 || !_skillPriorities.SequenceEqual(other._skillPriorities))
                 return false;
             return Appearance.MemberwiseEquals(other.Appearance);
@@ -770,8 +770,10 @@ namespace Content.Shared.Preferences
                     _jobPriorities,
                     _antagPreferences,
                     _traitPreferences,
-                    _loadoutPreferences,
-        	        _skillPriorities
+                    _loadoutPreferences
+                ),
+                HashCode.Combine(
+                    _skillPriorities
                 )
             );
         }

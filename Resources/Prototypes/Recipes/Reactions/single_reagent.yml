@@ -25,9 +25,6 @@
   reactants:
     Sap:
       amount: 1.2
-  effects:
-  - !type:CreateGas
-    gas: WaterVapor
   products:
     Syrup: 0.1 #12:1 sap to syruop
 

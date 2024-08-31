@@ -17,7 +17,6 @@
     - id: FoodMeatHuman
       amount: 5
   - type: Skill
-  - type: PotentialPsionic #Nyano - Summary: makes potentially psionic.
 
 - type: entity
   parent: BaseSpeciesDummy
