@@ -4,9 +4,9 @@
   description: job-description-captain
   playTimeTracker: JobCaptain
   requirements:
-    - !type:CharacterDepartmentTimeRequirement
+    - !type:DepartmentTimeRequirement
       department: Civilian
-      min: 120
+      time: 120
   weight: 20
   startingGear: CaptainGear
   icon: "JobIconCaptain"
