@@ -4,12 +4,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Rejuvenate;
-using Content.Shared.Mood;
-using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Robust.Shared.Configuration;
-using Content.Shared.CCVar;
 
 namespace Content.Shared.Nutrition.EntitySystems;
 
@@ -22,8 +18,6 @@ public sealed class HungerSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private readonly SharedJetpackSystem _jetpack = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
 
     public override void Initialize()
     {
@@ -50,9 +44,10 @@ public sealed class HungerSystem : EntitySystem
 
     private void OnRefreshMovespeed(EntityUid uid, HungerComponent component, RefreshMovementSpeedModifiersEvent args)
     {
-        if (_config.GetCVar(CCVars.MoodEnabled)
-            || component.CurrentThreshold > HungerThreshold.Starving
-            || _jetpack.IsUserFlying(uid))
+        if (component.CurrentThreshold > HungerThreshold.Starving)
+            return;
+
+        if (_jetpack.IsUserFlying(uid))
             return;
 
         args.ModifySpeed(component.StarvingSlowdownModifier, component.StarvingSlowdownModifier);
@@ -116,13 +111,7 @@ public sealed class HungerSystem : EntitySystem
 
         if (GetMovementThreshold(component.CurrentThreshold) != GetMovementThreshold(component.LastThreshold))
         {
-            if (!_config.GetCVar(CCVars.MoodEnabled))
-                _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
-            else if (_net.IsServer)
-            {
-                var ev = new MoodEffectEvent("Hunger" + component.CurrentThreshold);
-                RaiseLocalEvent(uid, ev);
-            }
+            _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
         }
 
         if (component.HungerThresholdAlerts.TryGetValue(component.CurrentThreshold, out var alertId))
