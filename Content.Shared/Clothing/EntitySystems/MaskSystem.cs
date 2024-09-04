@@ -28,7 +28,7 @@ public sealed class MaskSystem : EntitySystem
 
     private void OnGetActions(EntityUid uid, MaskComponent component, GetItemActionsEvent args)
     {
-        if (_inventorySystem.InSlotWithFlags(uid, SlotFlags.MASK))
+        if (_inventorySystem.InSlotWithFlags(uid, SlotFlags.HEAD))
             args.AddAction(ref component.ToggleActionEntity, component.ToggleAction);
     }
 
@@ -38,16 +38,16 @@ public sealed class MaskSystem : EntitySystem
         if (mask.ToggleActionEntity == null || !_timing.IsFirstTimePredicted)
             return;
 
-        if (!_inventorySystem.TryGetSlotEntity(args.Performer, "mask", out var existing) || !uid.Equals(existing))
+        if (!_inventorySystem.TryGetSlotEntity(args.Performer, "head", out var existing) || !uid.Equals(existing))
             return;
 
         mask.IsToggled ^= true;
         _actionSystem.SetToggled(mask.ToggleActionEntity, mask.IsToggled);
 
         if (mask.IsToggled)
-            _popupSystem.PopupEntity(Loc.GetString("action-mask-pull-down-popup-message", ("mask", uid)), args.Performer, args.Performer);
+            _popupSystem.PopupEntity(Loc.GetString("action-mask-pull-down-popup-message", ("head", uid)), args.Performer, args.Performer);
         else
-            _popupSystem.PopupEntity(Loc.GetString("action-mask-pull-up-popup-message", ("mask", uid)), args.Performer, args.Performer);
+            _popupSystem.PopupEntity(Loc.GetString("action-mask-pull-up-popup-message", ("head", uid)), args.Performer, args.Performer);
 
         ToggleMaskComponents(uid, mask, args.Performer, mask.EquippedPrefix);
     }

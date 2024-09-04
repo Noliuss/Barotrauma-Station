@@ -542,14 +542,274 @@
   - type: Armor
     modifiers:
       coefficients:
-        Slash: 0.80
-        Piercing: 0.90
+        Slash: 0.95
+        Piercing: 0.95
+        Blunt: 0.95
   - type: ClothingSkillModifier
     HelmModifier: 10
   - type: Sprite
     sprite: Clothing/Head/Hats/hopcap.rsi
   - type: Clothing
     sprite: Clothing/Head/Hats/hopcap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadBallisticHelmet
+  name: ballistic helmet
+  description: While the helmet won't offer adequate protection against most of the inhabitants of the subsurface ocean, it can be extremely useful if there are traitors on board.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.85
+        Piercing: 0.75
+        Blunt: 0.85
+  - type: StaminaDamageResistance
+    coefficient: 0.80
+  - type: Sprite
+    sprite: Clothing/Head/Helmets/security.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Helmets/security.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadChitinHelmet
+  name: chitin helmet
+  description: A tough helmet made of chitin.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.80
+        Blunt: 0.85
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/chitin.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/chitin.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadGunnerHelmet
+  name: gunner's helmet
+  description: A bit lighter than a regular ballistic helmet; designed not to get in the way when one is operating a periscope.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.90
+        Piercing: 0.85
+        Blunt: 0.90
+  - type: StaminaDamageResistance
+    coefficient: 0.80
+  - type: ClothingSkillModifier
+    WeaponsModifier: 10
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/gunner.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/gunner.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadIronHelmet
+  name: iron helmet
+  description: A very simple and very heavy helmet that covers the entire face.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.75
+        Piercing: 0.75
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/iron.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/iron.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadRenegadeHat
+  name: renegade's hat
+  description: Strikes fear into the hearts of the Coalition.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+        Blunt: 0.95
+  - type: ClothingSkillModifier
+    HelmModifier: 10
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/renegade.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/renegade.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadRiotHelmet
+  name: riot helmet
+  description: Designed for crowd control but equally useful against alien invaders.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.85
+        Piercing: 0.70
+        Blunt: 0.85
+  - type: StaminaDamageResistance
+    coefficient: 0.80
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/riot.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/riot.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadSeparatistBandana
+  name: separatist bandana
+  description: The Separatist Bandana is commonly worn by Separatists.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.90
+        Blunt: 0.95
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/bandana.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/bandana.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadSeparatistCaptainHat
+  name: separatist captain hat
+  description: The Separatist Captain Hat is commonly used by Separatist Captains. It is an upgrade over the regular Captain's Hats.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+        Blunt: 0.95
+  - type: ClothingSkillModifier
+    HelmModifier: 12
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/separatist_captain.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/separatist_captain.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadSeparatistHelmet
+  name: separatist helmet
+  description: A customized ballistic helmet. Despite the crude improvements made to it, the helmet seems surprisingly sturdy.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.85
+        Piercing: 0.80
+        Blunt: 0.85
+  - type: StaminaDamageResistance
+    coefficient: 0.80
+  - type: ClothingSkillModifier
+    WeaponsModifier: 5
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/separatist.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/separatist.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadVeteranHat
+  name: veteran's hat
+  description: A well-worn cap that has seen many ports.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Piercing: 0.95
+        Blunt: 0.95
+  - type: ClothingSkillModifier
+    HelmModifier: 10
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/veteran.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/veteran.rsi
+
+- type: entity
+  parent: ClothingMaskGas
+  id: BS14-ClothingHeadMaskGasDiving
+  name: diving mask
+  description: Small enough to carry around in case it's needed, but won't protect you from the water pressure in the event of a full-blown hull breach.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/diving.rsi
+  - type: Clothing
+    slots: [ HEAD ]
+    sprite: Barotrauma14/Clothing/Head/diving.rsi
+
+- type: entity
+  parent: ClothingMaskGas
+  id: BS14-ClothingHeadMaskGasDivingClown
+  name: clown diving mask
+  description: A clown mask combined with a diving mask, allowing the user to both clown around and breathe underwater.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/clown.rsi
+  - type: Clothing
+    slots: [ HEAD ]
+    sprite: Barotrauma14/Clothing/Head/clown.rsi
+
+- type: entity
+  parent: ClothingMaskClownBase
+  id: BS14-ClothingHeadMaskClown
+  name: clown mask
+  description: Praise the honkmother.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Clothing/Mask/clown.rsi
+  - type: Clothing
+    slots: [ HEAD ]
+    sprite: Clothing/Mask/clown.rsi
+
+- type: entity
+  parent: BS14-ClothingHeadMaskClown
+  id: BS14-ClothingHeadMaskMotherCountenance
+  name: Mother's Countenance
+  description: Nothing remains hidden under mother's gaze.
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/mother_countenance.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/mother_countenance.rsi
+
+- type: entity
+  name: electrician's goggles
+  parent: ClothingHeadBase
+  id: BS14-ClothingHeadElectricianGoggles
+  description: A device that remotely detects and visualizes electrical fields, allowing an engineer to detect power and signals traveling through wires and to read the values of the signals from a device's connection panel.
+  components:
+  - type: TrayScanner
+  - type: Appearance
+  - type: Sprite
+    sprite: Barotrauma14/Clothing/Head/electrician.rsi
+  - type: Clothing
+    sprite: Barotrauma14/Clothing/Head/electrician.rsi
+
 
 # - type: entity
 #   parent: HatBase

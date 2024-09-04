@@ -142,7 +142,7 @@ namespace Content.Shared.CCVar
         ///     Controls the duration of the lobby timer in seconds. Defaults to 2 minutes and 30 seconds.
         /// </summary>
         public static readonly CVarDef<int>
-            GameLobbyDuration = CVarDef.Create("game.lobbyduration", 150, CVar.ARCHIVE);
+            GameLobbyDuration = CVarDef.Create("game.lobbyduration", 300, CVar.ARCHIVE);
 
         /// <summary>
         ///     Controls if players can latejoin at all.
@@ -205,7 +205,7 @@ namespace Content.Shared.CCVar
         ///     Controls the maximum number of character slots a player is allowed to have.
         /// </summary>
         public static readonly CVarDef<int>
-            GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 10, CVar.ARCHIVE | CVar.SERVERONLY);
+            GameMaxCharacterSlots = CVarDef.Create("game.maxcharacterslots", 5, CVar.ARCHIVE | CVar.SERVERONLY);
 
         /// <summary>
         ///     Controls the game map prototype to load. SS14 stores these prototypes in Prototypes/Maps.
@@ -348,14 +348,14 @@ namespace Content.Shared.CCVar
         /// Whether or not coordinates on the Debug overlay should only be available to admins.
         /// </summary>
         public static readonly CVarDef<bool> DebugCoordinatesAdminOnly =
-            CVarDef.Create("game.debug_coordinates_admin_only", true, CVar.SERVER | CVar.REPLICATED);
+            CVarDef.Create("game.debug_coordinates_admin_only", false, CVar.SERVER | CVar.REPLICATED);
 
 
         /// <summary>
         ///     Whether to allow characters to select traits.
         /// </summary>
         public static readonly CVarDef<bool> GameTraitsEnabled =
-            CVarDef.Create("game.traits_enabled", true, CVar.REPLICATED);
+            CVarDef.Create("game.traits_enabled", false, CVar.REPLICATED);
 
         /// <summary>
         ///     How many traits a character can have at most.
@@ -400,7 +400,7 @@ namespace Content.Shared.CCVar
         ///     When true, you have to press the change speed button to sprint.
         /// </summary>
         public static readonly CVarDef<bool> GamePressToSprint =
-            CVarDef.Create("game.press_to_sprint", true, CVar.REPLICATED);
+            CVarDef.Create("game.press_to_sprint", false, CVar.REPLICATED);
 
 #if EXCEPTION_TOLERANCE
         /// <summary>
@@ -482,7 +482,7 @@ namespace Content.Shared.CCVar
         ///     If enabled plyaers will be added to a queue instead of being kicked after SoftMaxPlayers is reached
         /// </summary>
         public static readonly CVarDef<bool> QueueEnabled =
-            CVarDef.Create("queue.enabled", false, CVar.SERVERONLY);
+            CVarDef.Create("queue.enabled", true, CVar.SERVERONLY);
 
 
         /*
@@ -636,7 +636,7 @@ namespace Content.Shared.CCVar
         ///     Whether tips being shown is enabled at all.
         /// </summary>
         public static readonly CVarDef<bool> TipsEnabled =
-            CVarDef.Create("tips.enabled", true);
+            CVarDef.Create("tips.enabled", false);
 
         /// <summary>
         ///     The dataset prototype to use when selecting a random tip.
@@ -1392,10 +1392,10 @@ namespace Content.Shared.CCVar
         /// Whether or not OOC chat should be enabled during a round.
         /// </summary>
         public static readonly CVarDef<bool> OocEnableDuringRound =
-            CVarDef.Create("ooc.enable_during_round", false, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("ooc.enable_during_round", true, CVar.NOTIFY | CVar.REPLICATED | CVar.SERVER);
 
         public static readonly CVarDef<bool> ShowOocPatronColor =
-            CVarDef.Create("ooc.show_ooc_patron_color", true, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT);
+            CVarDef.Create("ooc.show_ooc_patron_color", false, CVar.ARCHIVE | CVar.REPLICATED | CVar.CLIENT);
 
         /*
          * LOOC
@@ -1919,7 +1919,7 @@ namespace Content.Shared.CCVar
         /// Control displaying SSD indicators near players
         /// </summary>
         public static readonly CVarDef<bool> ICShowSSDIndicator =
-            CVarDef.Create("ic.show_ssd_indicator", true, CVar.CLIENTONLY);
+            CVarDef.Create("ic.show_ssd_indicator", false, CVar.CLIENTONLY);
 
         /*
          * Salvage
@@ -1962,7 +1962,7 @@ namespace Content.Shared.CCVar
         ///     Autosave interval in seconds.
         /// </summary>
         public static readonly CVarDef<float>
-            AutosaveInterval = CVarDef.Create("mapping.autosave_interval", 600f, CVar.SERVERONLY);
+            AutosaveInterval = CVarDef.Create("mapping.autosave_interval", 300f, CVar.SERVERONLY);
 
         /// <summary>
         ///     Directory in server user data to save to. Saves will be inside folders in this directory.
@@ -1979,7 +1979,7 @@ namespace Content.Shared.CCVar
         /// Time that players have to wait before rules can be accepted.
         /// </summary>
         public static readonly CVarDef<float> RulesWaitTime =
-            CVarDef.Create("rules.time", 60f, CVar.SERVER | CVar.REPLICATED);
+            CVarDef.Create("rules.time", 30f, CVar.SERVER | CVar.REPLICATED);
 
         /// <summary>
         /// Don't show rules to localhost/loopback interface.
@@ -2063,7 +2063,7 @@ namespace Content.Shared.CCVar
         /// The time you must spend reading the rules, before the "Request" button is enabled
         /// </summary>
         public static readonly CVarDef<float> GhostRoleTime =
-            CVarDef.Create("ghost.role_time", 8f, CVar.REPLICATED | CVar.SERVER);
+            CVarDef.Create("ghost.role_time", 3f, CVar.REPLICATED | CVar.SERVER);
 
         /*
          * Fire alarm
@@ -2266,21 +2266,21 @@ namespace Content.Shared.CCVar
         ///    Whether glimmer is enabled.
         /// </summary>
         public static readonly CVarDef<bool> GlimmerEnabled =
-            CVarDef.Create("glimmer.enabled", true, CVar.REPLICATED);
+            CVarDef.Create("glimmer.enabled", false, CVar.REPLICATED);
 
         /// <summary>
         ///     Passive glimmer drain per second.
         ///     Note that this is randomized and this is an average value.
         /// </summary>
         public static readonly CVarDef<float> GlimmerLostPerSecond =
-            CVarDef.Create("glimmer.passive_drain_per_second", 0.1f, CVar.SERVERONLY);
+            CVarDef.Create("glimmer.passive_drain_per_second", 0f, CVar.SERVERONLY);
 
         /// <summary>
         ///     Whether random rolls for psionics are allowed.
         ///     Guaranteed psionics will still go through.
         /// </summary>
         public static readonly CVarDef<bool> PsionicRollsEnabled =
-            CVarDef.Create("psionics.rolls_enabled", true, CVar.SERVERONLY);
+            CVarDef.Create("psionics.rolls_enabled", false, CVar.SERVERONLY);
 
         /// <summary>
         ///     Whether height & width sliders adjust a character's Fixture Component
@@ -2298,13 +2298,13 @@ namespace Content.Shared.CCVar
         ///     Enables station goals
         /// </summary>
         public static readonly CVarDef<bool> StationGoalsEnabled =
-            CVarDef.Create("game.station_goals", true, CVar.SERVERONLY);
+            CVarDef.Create("game.station_goals", false, CVar.SERVERONLY);
 
         /// <summary>
         ///     Chance for a station goal to be sent
         /// </summary>
         public static readonly CVarDef<float> StationGoalsChance =
-            CVarDef.Create("game.station_goals_chance", 0.1f, CVar.SERVERONLY);
+            CVarDef.Create("game.station_goals_chance", 0f, CVar.SERVERONLY);
 
 
         #region CPR System
