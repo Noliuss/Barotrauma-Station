@@ -5,8 +5,8 @@
   minPlayers: 0
   maxPlayers: 60
   stations:
-    Shoukou:
-      stationProto: StandardNanotrasenStation
+    dugong:
+      stationProto: StandardStationArena
       components:
         - type: StationNameSetup
           mapNameTemplate: '{0} Dugong {1}'
