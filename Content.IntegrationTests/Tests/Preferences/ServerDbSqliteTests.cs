@@ -12,6 +12,7 @@ using Robust.Shared.Log;
 using Robust.Shared.Maths;
 using Robust.Shared.Network;
 using Robust.UnitTesting;
+using Content.Shared.Skill;
 
 namespace Content.IntegrationTests.Tests.Preferences
 {
@@ -66,7 +67,17 @@ namespace Content.IntegrationTests.Tests.Preferences
                 antagPreferences: new List<string>(),
                 traitPreferences: new List<string>(),
                 loadoutPreferences: new List<string>(),
-                skillPriority: new List<string>()
+                skillPriorities: new Dictionary<string, SkillPriority>
+                {
+                    {"Helm", SkillPriority.Five},
+                    {"Weapons", SkillPriority.Five},
+                    {"MechanicalEngineering", SkillPriority.Five},
+                    {"ElectricalEngineering", SkillPriority.Five},
+                    {"Medical", SkillPriority.Five},
+                }
+                {
+
+                }
             );
         }
 
