@@ -73,10 +73,7 @@ namespace Content.IntegrationTests.Tests.Preferences
                     {"Weapons", SkillPriority.Five},
                     {"MechanicalEngineering", SkillPriority.Five},
                     {"ElectricalEngineering", SkillPriority.Five},
-                    {"Medical", SkillPriority.Five},
-                }
-                {
-
+                    {"Medical", SkillPriority.Five}
                 }
             );
         }
