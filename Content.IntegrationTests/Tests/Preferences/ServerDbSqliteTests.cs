@@ -65,7 +65,8 @@ namespace Content.IntegrationTests.Tests.Preferences
                 PreferenceUnavailableMode.StayInLobby,
                 antagPreferences: new List<string>(),
                 traitPreferences: new List<string>(),
-                loadoutPreferences: new List<string>()
+                loadoutPreferences: new List<string>(),
+                skillPriorities: new List<string>()
             );
         }
 

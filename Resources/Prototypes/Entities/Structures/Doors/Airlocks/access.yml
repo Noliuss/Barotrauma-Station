@@ -1224,3 +1224,21 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSyndicateAgent ]
+
+# Barotrauma Station 14
+
+- type: entity
+  parent: AirlockShuttle
+  id: AirlockDockSubmarineBasicLocked
+  suffix: SubmarineBasic, Locked
+  components:
+  - type: AccessReader
+    access: [["SubmarineBasic"]]
+
+- type: entity
+  parent: Airlock
+  id: AirlockSubmarineBasicLocked
+  suffix: SubmarineBasic, Locked
+  components:
+  - type: AccessReader
+    access: [["SubmarineBasic"]]

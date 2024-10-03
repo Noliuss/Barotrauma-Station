@@ -2502,3 +2502,34 @@
     color: "#9dc5c9"
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
+
+# - type: entity
+#   parent: VendingMachine
+#   id: BS14-VendingMachine
+#   name: vending machine
+#   components:
+#   - type: VendingMachine
+#     pack: BS14-VendingMachineInventory
+#     dispenseOnHitChance: 0.05
+#     dispenseOnHitThreshold: 2
+#     offState: off
+#     brokenState: broken
+#     normalState: normal-unshaded
+#     ejectState: eject-unshaded
+#     denyState: deny-unshaded
+#   - type: Sprite
+#     noRot: true
+#     sprite: Structures/Machines/VendingMachines/cigs.rsi
+#     layers:
+#     - state: "off"
+#       map: ["enum.VendingMachineVisualLayers.Base"]
+#     - state: "off"
+#       map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+#       shader: unshaded
+#     - state: panel
+#       map: ["enum.WiresVisualLayers.MaintenancePanel"]
+#   - type: Transform
+#     noRot: false
+#   - type: Rotatable
+#     rotateWhileAnchored: false
+#     rotateWhilePulling: true

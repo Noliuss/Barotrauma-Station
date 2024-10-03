@@ -1,0 +1,25 @@
+- type: gameMap
+  id: dugong
+  mapName: 'Dugong'
+  mapPath: /Maps/barotraum.yml
+  minPlayers: 0
+  maxPlayers: 60
+  stations:
+    Shoukou:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Dugong {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'GP'
+        - type: StationJobs
+          overflowJobs:
+            - Passenger
+          availableJobs:
+            Passenger: [ -1, -1 ]
+            Captain: [ 1, 1 ]
+            StationEngineer: [ 2, 5 ]
+            TechnicalAssistant: [ 2, 3 ]
+            MedicalDoctor: [ 3, 3 ]
+            SecurityOfficer: [ 2, 4 ]

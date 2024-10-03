@@ -258,8 +258,7 @@ public sealed class ThrusterSystem : EntitySystem
     /// </summary>
     public void EnableThruster(EntityUid uid, ThrusterComponent component, TransformComponent? xform = null)
     {
-        if (component.IsOn ||
-            !Resolve(uid, ref xform))
+        if (component.IsOn || !Resolve(uid, ref xform))
         {
             return;
         }
@@ -274,34 +273,13 @@ public sealed class ThrusterSystem : EntitySystem
         if (!EntityManager.TryGetComponent(xform.GridUid, out ShuttleComponent? shuttleComponent))
             return;
 
-        // Logger.DebugS("thruster", $"Enabled thruster {uid}");
+        var thrustPerDirection = component.Thrust / 4;
 
-        switch (component.Type)
+        for (var i = 0; i < 4; i++)
         {
-            case ThrusterType.Linear:
-                var direction = (int) xform.LocalRotation.GetCardinalDir() / 2;
-
-                shuttleComponent.LinearThrust[direction] += component.Thrust;
-                DebugTools.Assert(!shuttleComponent.LinearThrusters[direction].Contains(uid));
-                shuttleComponent.LinearThrusters[direction].Add(uid);
-
-                // Don't just add / remove the fixture whenever the thruster fires because perf
-                if (EntityManager.TryGetComponent(uid, out PhysicsComponent? physicsComponent) &&
-                    component.BurnPoly.Count > 0)
-                {
-                    var shape = new PolygonShape();
-                    shape.Set(component.BurnPoly);
-                    _fixtureSystem.TryCreateFixture(uid, shape, BurnFixture, hard: false, collisionLayer: (int) CollisionGroup.FullTileMask, body: physicsComponent);
-                }
-
-                break;
-            case ThrusterType.Angular:
-                shuttleComponent.AngularThrust += component.Thrust;
-                DebugTools.Assert(!shuttleComponent.AngularThrusters.Contains(uid));
-                shuttleComponent.AngularThrusters.Add(uid);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            shuttleComponent.LinearThrust[i] += thrustPerDirection;
+            DebugTools.Assert(!shuttleComponent.LinearThrusters[i].Contains(uid));
+            shuttleComponent.LinearThrusters[i].Add(uid);
         }
 
         if (EntityManager.TryGetComponent(uid, out AppearanceComponent? appearance))
@@ -323,13 +301,11 @@ public sealed class ThrusterSystem : EntitySystem
     /// </summary>
     private void RefreshCenter(EntityUid uid, ShuttleComponent shuttle)
     {
-        // TODO: Only refresh relevant directions.
         var center = Vector2.Zero;
         var thrustQuery = GetEntityQuery<ThrusterComponent>();
         var xformQuery = GetEntityQuery<TransformComponent>();
 
-        foreach (var dir in new[]
-                     { Direction.South, Direction.East, Direction.North, Direction.West })
+        foreach (var dir in new[] { Direction.South, Direction.East, Direction.North, Direction.West })
         {
             var index = (int) dir / 2;
             var pop = shuttle.LinearThrusters[index];
@@ -340,14 +316,19 @@ public sealed class ThrusterSystem : EntitySystem
                 if (!thrustQuery.TryGetComponent(ent, out var thruster) || !xformQuery.TryGetComponent(ent, out var xform))
                     continue;
 
-                center += xform.LocalPosition * thruster.Thrust;
-                totalThrust += thruster.Thrust;
+                center += xform.LocalPosition * (thruster.Thrust / 4);
+                totalThrust += thruster.Thrust / 4;
             }
 
-            center /= pop.Count * totalThrust;
+            if (pop.Count > 0)
+            {
+                center /= pop.Count * totalThrust;
+            }
+
             shuttle.CenterOfThrust[index] = center;
         }
     }
+
 
     public void DisableThruster(EntityUid uid, ThrusterComponent component, TransformComponent? xform = null, Angle? angle = null)
     {
@@ -360,8 +341,7 @@ public sealed class ThrusterSystem : EntitySystem
     /// </summary>
     public void DisableThruster(EntityUid uid, ThrusterComponent component, EntityUid? gridId, TransformComponent? xform = null, Angle? angle = null)
     {
-        if (!component.IsOn ||
-            !Resolve(uid, ref xform))
+        if (!component.IsOn || !Resolve(uid, ref xform))
         {
             return;
         }
@@ -376,25 +356,13 @@ public sealed class ThrusterSystem : EntitySystem
             apcPower.NeedsPower = false;
         }
 
-        // Logger.DebugS("thruster", $"Disabled thruster {uid}");
+        var thrustPerDirection = component.Thrust / 4;
 
-        switch (component.Type)
+        for (var i = 0; i < 4; i++)
         {
-            case ThrusterType.Linear:
-                angle ??= xform.LocalRotation;
-                var direction = (int) angle.Value.GetCardinalDir() / 2;
-
-                shuttleComponent.LinearThrust[direction] -= component.Thrust;
-                DebugTools.Assert(shuttleComponent.LinearThrusters[direction].Contains(uid));
-                shuttleComponent.LinearThrusters[direction].Remove(uid);
-                break;
-            case ThrusterType.Angular:
-                shuttleComponent.AngularThrust -= component.Thrust;
-                DebugTools.Assert(shuttleComponent.AngularThrusters.Contains(uid));
-                shuttleComponent.AngularThrusters.Remove(uid);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            shuttleComponent.LinearThrust[i] -= thrustPerDirection;
+            DebugTools.Assert(shuttleComponent.LinearThrusters[i].Contains(uid));
+            shuttleComponent.LinearThrusters[i].Remove(uid);
         }
 
         if (EntityManager.TryGetComponent(uid, out AppearanceComponent? appearance))

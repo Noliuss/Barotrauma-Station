@@ -354,3 +354,44 @@
           behaviors:
             - !type:SolutionExplosionBehavior
               solution: tank
+
+
+# - type: entity
+#   name: reactor
+#   description: Powers your submarine. Probably.
+#   parent: PortableGeneratorSwitchableBase
+#   id: BS14-Generator
+#   suffix: Uranium, 50 kW
+#   components:
+#     - type: Transform
+#     anchored: true
+#     - type: Physics
+#       bodyType: Static
+#     - type: Fixtures
+#       fixtures:
+#         fix1:
+#           shape:
+#             !type:PhysShapeAabb
+#             bounds: "-1.5,-0.5,1.5,0.6"
+#           density: 60
+#           mask:
+#           - MachineMask
+#           layer:
+#           - MachineLayer
+#     - type: Sprite
+#       layers:
+#         - state: portgen1
+#           map: [ "enum.GeneratorVisualLayers.Body" ]
+#         - state: portgen_on_unlit
+#           map: [ "enum.GeneratorVisualLayers.Unlit" ]
+#           shader: unshaded
+#           visible: false
+#     - type: GenericVisualizer
+#       visuals:
+#         enum.GeneratorVisuals.Running:
+#           enum.GeneratorVisualLayers.Body:
+#             True: { state: portgen1on }
+#             False: { state: portgen1 }
+#           enum.GeneratorVisualLayers.Unlit:
+#             True: { visible: true }
+#             False: { visible: false }

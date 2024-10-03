@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/c6e3401f2e7e1e55c57060cdf956a98ef1fefc24",
+  "copyright": "Sprite has been made by osetrokarasek(discord)",
   "size": {
     "x": 32,
     "y": 32
@@ -28,35 +28,16 @@
           0.07,
           0.07,
           0.07,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "closing_unlit",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.07,
-          0.07,
           0.07,
           0.2
         ]
       ]
     },
     {
-      "name": "deny_unlit",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "closing_unlit"
+    },
+    {
+      "name": "deny_unlit"
     },
     {
       "name": "open",
@@ -75,121 +56,40 @@
           0.07,
           0.07,
           0.07,
-          0.2
-        ]
-      ]
-    },
-    {
-      "name": "opening_unlit",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.07,
-          0.07,
           0.07,
           0.2
         ]
       ]
     },
     {
-      "name": "panel_closing",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.07,
-          0.07,
-          0.07,
-          0.2
-        ]
-      ]
+      "name": "opening_unlit"
     },
     {
-      "name": "panel_open",
-      "delays": [
-        [
-          1
-        ]
-      ]
+      "name": "panel_closing"
     },
     {
-      "name": "panel_opening",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.07,
-          0.07,
-          0.07,
-          0.2
-        ]
-      ]
+      "name": "panel_open"
     },
     {
-      "name": "sparks",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "panel_opening"
     },
     {
-      "name": "sparks_broken",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "sparks"
     },
     {
-      "name": "sparks_damaged",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          1.7
-        ]
-      ]
+      "name": "sparks_broken"
     },
     {
-      "name": "sparks_open",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1
-        ]
-      ]
+      "name": "sparks_damaged"
+    },
+    {
+      "name": "sparks_open"
     },
     {
       "name": "welded"
     },
     {
-      "name": "emergency_unlit",
-      "delays": [
-        [
-          0.4,
-          0.4
-        ]
-      ]
+      "name": "emergency_unlit"
     }
   ]
 }

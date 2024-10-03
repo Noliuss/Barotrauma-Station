@@ -1,0 +1,15 @@
+- type: vendingMachineInventory
+  id: BS14-VendingMachineInventory
+  startingInventory:
+    PowerCellMedium: 1
+    EmergencyOxygenTankFilled: 1
+    # BS14-WeldingFuelTank: 1
+    # BS14-MedicineBroadSpectrumAntibiotics: 5
+    # BS14-MedicineOpium: 5
+    # BS14-MedicinePomegrenadeExtract: 2
+    # BS14-FruitPomegrenade: 3
+    GroundTobacco: 3
+    # BS14-MedicineEthanol: 5
+    # BS14-MedicineTonic: 5
+    # BS14-MedicineEnergyDrink: 5
+    # BS14-MedicineProteinBar: 5
