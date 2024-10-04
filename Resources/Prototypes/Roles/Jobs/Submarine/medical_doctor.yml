@@ -25,5 +25,5 @@
     jumpsuit: BS14-ClothingUniformDoctor
     id: MedicalIDCard
     ears: BS14-ClothingHeadset
-    head: BS14-ClothingHealthScannerHUD
+    head: BS14-ClothingHeadHealthScannerHUD
     pocket1: Gauze
