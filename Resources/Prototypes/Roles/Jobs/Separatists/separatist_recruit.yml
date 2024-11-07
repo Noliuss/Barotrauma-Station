@@ -1,0 +1,29 @@
+- type: job
+  id: SeparatistRecruit
+  name: job-name-separatist-recruit
+  description: job-description-separatist-recruit
+  playTimeTracker: JobSeparatistRecruit
+  startingGear: SeparatistRecruitGear
+  icon: "JobIconVisitor"
+  supervisors: job-supervisors-separatist-leader
+  access:
+  - SeparatistsBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 15
+        weaponsJobModifier: 25
+        mechanicalEngineeringJobModifier: 20
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 25
+
+- type: startingGear
+  id: SeparatistRecruitGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformSeparatistCostumeNovice
+    head: BS14-ClothingHeadSeparatistHelmet
+    id: PassengerIDCard
+    ears: BS14-ClothingHeadset
+    pocket1: Wrench
+    pocket2: Screwdriver

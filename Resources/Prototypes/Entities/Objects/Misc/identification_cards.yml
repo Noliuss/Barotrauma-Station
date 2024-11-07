@@ -1137,3 +1137,8 @@
   - type: PresetIdCard
     job: SeniorOfficer
 
+- type: entity
+  parent: CaptainIDCard
+  id: BS14-StationAdministratorIDCard
+  name: station administrator ID card
+  

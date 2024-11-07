@@ -27,17 +27,12 @@
   name: id-card-access-level-separatists-basic
 
 - type: accessLevel
-  id: SeparatistsSecurity
-  name: id-card-access-level-separatists-security
-
-- type: accessLevel
   id: SeparatistsCommand
   name: id-card-access-level-separatists-command
 
 - type: accessGroup
   id: Separatists
   tags:
-  - SeparatistsSecurity
   - SeparatistsCommand
   - SeparatistsBasic
 

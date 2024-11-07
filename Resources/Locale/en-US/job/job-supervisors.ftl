@@ -14,3 +14,7 @@ job-supervisors-science = scientists, and the mystagogue
 job-supervisors-hire = whoever hires you
 job-supervisors-everyone = absolutely everyone
 job-supervisors-nobody = nobody. You are the chief. Have fun!
+job-supervisors-coalition = the coalitiom leaders
+job-supervisors-station-administrator = the station administrator
+job-supervisors-separatists = separatists leaders. Like, those that are leaders of leaders like you
+job-supervisors-separatist-leader = the separatists leader

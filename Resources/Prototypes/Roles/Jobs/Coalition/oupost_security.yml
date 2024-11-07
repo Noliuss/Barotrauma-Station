@@ -1,0 +1,32 @@
+- type: job
+  id: OutpostSecurity
+  name: job-name-outpost-security
+  description: job-description-outpost-security
+  playTimeTracker: JobOutpostSecurity
+  startingGear: OutpostSecurityGear
+  icon: "JobIconHeadOfSecurity"
+  supervisors: job-supervisors-station-administrator
+  canBeAntag: false
+  access:
+  - CoalitionSecurity
+  - CoalitionBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 10
+        weaponsJobModifier: 35
+        mechanicalEngineeringJobModifier: 20
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 25
+
+- type: startingGear
+  id: OutpostSecurityGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformOutpostSecurity
+    head: BS14-ClothingHeadRiotHelmet
+    id: SecurityIDCard
+    ears: BS14-ClothingHeadset
+    pocket1: CombatKnife
+    pocket2: Handcuffs
+    pocket3: Stunbaton

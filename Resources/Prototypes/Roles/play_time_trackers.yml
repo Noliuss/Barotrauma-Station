@@ -165,3 +165,15 @@
 
 - type: playTimeTracker
   id: JobZookeeper
+
+- type: playTimeTracker
+  id: JobStationAdministrator
+
+- type: playTimeTracker
+  id: JobMedicalOfficer
+
+- type: playTimeTracker
+  id: JobOutpostSecurity
+
+- type: playTimeTracker
+  id: JobCrewChief

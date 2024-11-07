@@ -1,0 +1,32 @@
+- type: job
+  id: ChiefMechanic
+  name: job-name-chief-mechanic
+  description: job-description-chief-mechanic
+  playTimeTracker: JobChiefMechanic
+  startingGear: ChiefMechanicGear
+  icon: "JobIconChiefEngineer"
+  supervisors: job-supervisors-separatist-leader
+  access:
+  - SeparatistsCommand
+  - SeparatistsBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 5
+        weaponsJobModifier: 10
+        mechanicalEngineeringJobModifier: 55
+        electricalEngineeringJobModifier: 20
+        medicalJobModifier: 10
+
+- type: startingGear
+  id: ChiefMechanicGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformBoilerJumpsuit
+    head: BS14-ClothingHeadBaseballHat
+    id: TechnicalAssistantIDCard
+    belt: ClothingBeltUtility
+    ears: BS14-ClothingHeadset
+    pocket1: Wrench
+    pocket2: Screwdriver
+    pocket3: Welder

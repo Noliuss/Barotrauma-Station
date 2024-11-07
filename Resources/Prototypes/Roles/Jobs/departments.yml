@@ -9,3 +9,23 @@
   - SecurityOfficer
   - MedicalDoctor
   - Passenger
+
+- type: department
+  id: Coalition
+  description: department-Coalition-description
+  color: "#8BED58"
+  roles:
+  - StationAdministrator
+  - MedicalOfficer
+  - CrewChief
+  - OutpostSecurity
+
+- type: department
+  id: Separatists
+  description: department-Separatists-description
+  color: "#7BED58"
+  roles:
+  - SeparatistLeader
+  - ChiefMechanic
+  - Miner
+  - SeparatistRecruit

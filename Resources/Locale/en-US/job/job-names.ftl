@@ -47,6 +47,7 @@ job-name-ertjanitor = ERT Janitor
 job-name-boxer = Boxer
 job-name-zookeeper = Zookeeper
 job-name-visitor = Visitor
+job-name-administrator = Station Administrator
 
 # Role timers - Make these alphabetical or I cut you
 JobAtmosphericTechnician = Atmospheric Technician
@@ -101,3 +102,11 @@ JobTechnicalAssistant = Mechanic
 JobVisitor = Visitor
 JobWarden = Warden
 JobZookeeper = Zookeeper
+job-name-administrator = Station Administrator
+job-name-medical-officer = Medical Officer
+job-name-outpost-security = Outpost Security
+job-name-crew-chief = Crew Chief
+job-name-separatist-recruit = Separatists Recruit
+job-name-separatist-leader = Separatists Leader
+job-name-miner = Miner
+job-name-chief-mechanic = Chief Mechanic

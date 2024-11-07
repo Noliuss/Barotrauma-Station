@@ -1,0 +1,29 @@
+- type: job
+  id: MedicalOfficer
+  name: job-name-medical-officer
+  description: job-description-medical-officer
+  playTimeTracker: JobMedicalOfficer
+  startingGear: MedicalOfficerGear
+  icon: "JobIconChiefMedicalOfficer"
+  supervisors: job-supervisors-station-administrator
+  access:
+  - CoalitionMedical
+  - CoalitionBasic
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 10
+        weaponsJobModifier: 20
+        mechanicalEngineeringJobModifier: 10
+        electricalEngineeringJobModifier: 10
+        medicalJobModifier: 45
+
+- type: startingGear
+  id: MedicalOfficerGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformMedicalOfficerOutfit
+    id: MedicalIDCard
+    ears: BS14-ClothingHeadset
+    head: BS14-ClothingHeadHealthScannerHUD
+    pocket1: Gauze

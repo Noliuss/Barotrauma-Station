@@ -1,0 +1,31 @@
+- type: job
+  id: SeparatistLeader
+  name: job-name-separatist-leader
+  description: job-description-separatist-leader
+  playTimeTracker: JobSeparatistLeader
+  weight: 20
+  startingGear: SeparatistLeaderGear
+  icon: "JobIconNoId"
+  supervisors: job-supervisors-separatists
+  canBeAntag: false
+  accessGroups:
+  - Separatists
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 25
+        weaponsJobModifier: 40
+        mechanicalEngineeringJobModifier: 5
+        electricalEngineeringJobModifier: 15
+        medicalJobModifier: 15
+
+- type: startingGear
+  id: SeparatistLeaderGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformSeparatistCostumeHard
+    head: BS14-ClothingHeadSeparatistCaptainHat
+    id: CaptainIDCard
+    ears: BS14-ClothingHeadset

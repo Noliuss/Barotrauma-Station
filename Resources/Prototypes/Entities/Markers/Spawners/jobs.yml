@@ -660,3 +660,94 @@
     layers:
       - state: green
       - state: zookeeper
+
+
+# Barotrauma Station 14
+
+- type: entity
+  id: SpawnPointStationAdministrator
+  parent: SpawnPointJobBase
+  name: StationAdministrator
+  components:
+  - type: SpawnPoint
+    job_id: StationAdministrator
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointMedicalOfficer
+  parent: SpawnPointJobBase
+  name: MedicalOfficer
+  components:
+  - type: SpawnPoint
+    job_id: MedicalOfficer
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointOutpostSecurity
+  parent: SpawnPointJobBase
+  name: OutpostSecurity
+  components:
+  - type: SpawnPoint
+    job_id: OutpostSecurity
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointCrewChief
+  parent: SpawnPointJobBase
+  name: CrewChief
+  components:
+  - type: SpawnPoint
+    job_id: CrewChief
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointSeparatistRecruit
+  parent: SpawnPointJobBase
+  name: SeparatistRecruit
+  components:
+  - type: SpawnPoint
+    job_id: SeparatistRecruit
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointSeparatistLeader
+  parent: SpawnPointJobBase
+  name: SeparatistLeader
+  components:
+  - type: SpawnPoint
+    job_id: SeparatistLeader
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointMiner
+  parent: SpawnPointJobBase
+  name: Miner
+  components:
+  - type: SpawnPoint
+    job_id: Miner
+  - type: Sprite
+    layers:
+      - state: green
+
+- type: entity
+  id: SpawnPointChiefMechanic
+  parent: SpawnPointJobBase
+  name: ChiefMechanic
+  components:
+  - type: SpawnPoint
+    job_id: ChiefMechanic
+  - type: Sprite
+    layers:
+      - state: green

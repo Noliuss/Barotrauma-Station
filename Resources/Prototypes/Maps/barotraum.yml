@@ -1,7 +1,7 @@
 - type: gameMap
   id: dugong
   mapName: 'Dugong'
-  mapPath: /Maps/barotraum.yml
+  mapPath: /Maps/barotraum_outpost.yml
   minPlayers: 0
   maxPlayers: 60
   stations:
@@ -23,3 +23,21 @@
             TechnicalAssistant: [ 2, 3 ]
             MedicalDoctor: [ 3, 3 ]
             SecurityOfficer: [ 2, 4 ]
+    Outpost:
+      stationProto: StandardStationArena
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Outpost {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'GP'
+        - type: StationJobs
+          availableJobs:
+            StationAdministrator: [ 1, 1 ]
+            MedicalOfficer: [ 1, 1 ]
+            OutpostSecurity: [ 2, 2 ]
+            CrewChief: [ 1, 1 ]
+            SeparatistRecruit: [ 2, 2 ]
+            Miner: [ 2, 2 ]
+            ChiefMechanic: [ 1, 1 ]
+            SeparatistLeader: [ 2, 2 ]

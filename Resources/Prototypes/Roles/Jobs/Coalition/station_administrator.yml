@@ -1,0 +1,30 @@
+- type: job
+  id: StationAdministrator
+  name: job-name-administrator
+  description: job-description-administrator
+  playTimeTracker: JobStationAdministrator
+  weight: 20
+  startingGear: StationAdministratorGear
+  icon: "JobIconHeadOfPersonnel"
+  supervisors: job-supervisors-coalition
+  canBeAntag: false
+  accessGroups:
+  - Coalition
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+      - type: Skill
+        helmJobModifier: 25
+        weaponsJobModifier: 20
+        mechanicalEngineeringJobModifier: 10
+        electricalEngineeringJobModifier: 10
+        medicalJobModifier: 15
+
+- type: startingGear
+  id: StationAdministratorGear
+  equipment:
+    jumpsuit: BS14-ClothingUniformStationAdministratorOutfit
+    id: BS14-StationAdministratorIDCard
+    ears: BS14-ClothingHeadset

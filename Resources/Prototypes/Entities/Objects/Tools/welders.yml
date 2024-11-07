@@ -84,7 +84,7 @@
     solutions:
       Welder:
         reagents:
-        - ReagentId: WeldingFuel
+        - ReagentId: Omnizine
           Quantity: 100
         maxVol: 100
   - type: Tool
