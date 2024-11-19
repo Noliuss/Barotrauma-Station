@@ -33,6 +33,7 @@ using Robust.Client.Utility;
 using Robust.Client.UserInterface.CustomControls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
+using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -71,8 +72,6 @@ namespace Content.Client.Preferences.UI
         private SingleMarkingPicker _hairPicker => CHairStylePicker;
         private SingleMarkingPicker _facialHairPicker => CFacialHairPicker;
         private EyeColorPicker _eyesPicker => CEyeColorPicker;
-        private Slider _heightSlider => CHeightSlider;
-        private Slider _widthSlider => CWidthSlider;
 
         private TabContainer _tabContainer => CTabContainer;
         private BoxContainer _jobList => CJobList;
@@ -205,82 +204,6 @@ namespace Content.Client.Preferences.UI
             };
 
             #endregion Species
-
-            #region Height
-
-            var prototype = _speciesList.Find(x => x.ID == Profile?.Species) ?? _speciesList.First();
-
-            _heightSlider.MinValue = prototype.MinHeight;
-            _heightSlider.MaxValue = prototype.MaxHeight;
-            _heightSlider.Value = Profile?.Height ?? prototype.DefaultHeight;
-            var height = MathF.Round(prototype.AverageHeight * _heightSlider.Value);
-            CHeightLabel.Text = Loc.GetString("humanoid-profile-editor-height-label", ("height", (int) height));
-
-            _heightSlider.OnValueChanged += args =>
-            {
-                if (Profile is null)
-                    return;
-
-                prototype = _speciesList.Find(x => x.ID == Profile.Species) ?? _speciesList.First(); // Just in case
-
-                var value = Math.Clamp(args.Value, prototype.MinHeight, prototype.MaxHeight);
-                var height = MathF.Round(prototype.AverageHeight * value);
-                CHeightLabel.Text = Loc.GetString("humanoid-profile-editor-height-label", ("height", (int) height));
-                SetProfileHeight(value);
-                UpdateWeight();
-            };
-
-            CHeightReset.OnPressed += _ =>
-            {
-                _heightSlider.Value = prototype.DefaultHeight;
-                SetProfileHeight(prototype.DefaultHeight);
-                UpdateWeight();
-            };
-
-
-            _widthSlider.MinValue = prototype.MinWidth;
-            _widthSlider.MaxValue = prototype.MaxWidth;
-            _widthSlider.Value = Profile?.Width ?? prototype.DefaultWidth;
-            var width = MathF.Round(prototype.AverageWidth * _widthSlider.Value);
-            CWidthLabel.Text = Loc.GetString("humanoid-profile-editor-width-label", ("width", width));
-
-            _widthSlider.OnValueChanged += args =>
-            {
-                if (Profile is null)
-                    return;
-
-                prototype = _speciesList.Find(x => x.ID == Profile.Species) ?? _speciesList.First(); // Just in case
-
-                var value = Math.Clamp(args.Value, prototype.MinWidth, prototype.MaxWidth);
-                var width = MathF.Round(prototype.AverageWidth * value);
-                CWidthLabel.Text = Loc.GetString("humanoid-profile-editor-width-label", ("width", width));
-                SetProfileWidth(value);
-                UpdateWeight();
-            };
-
-            CWidthReset.OnPressed += _ =>
-            {
-                _widthSlider.Value = prototype.DefaultWidth;
-                SetProfileWidth(prototype.DefaultWidth);
-                UpdateWeight();
-            };
-
-            prototypeManager.Index(prototype.Prototype).TryGetComponent<FixturesComponent>(out var fixture);
-            if (fixture != null)
-            {
-                var radius = fixture.Fixtures["fix1"].Shape.Radius;
-                var density = fixture.Fixtures["fix1"].Density;
-                var avg = (_widthSlider.Value + _heightSlider.Value) / 2;
-                var weight = MathF.Round(MathF.PI * MathF.Pow(radius * avg, 2) * density);
-                CWeightLabel.Text = Loc.GetString("humanoid-profile-editor-weight-label", ("weight", (int) weight));
-            }
-            else
-            {
-                // Whelp, the fixture doesn't exist, guesstimate it instead
-                CWeightLabel.Text = Loc.GetString("humanoid-profile-editor-weight-label", ("weight", (int) 71));
-            }
-
-            #endregion Height
 
             #region Skin
 
@@ -993,11 +916,8 @@ namespace Content.Client.Preferences.UI
             Profile = Profile?.WithSpecies(newSpecies);
             OnSkinColorOnValueChanged(); // Species may have special color prefs, make sure to update it.
             CMarkings.SetSpecies(newSpecies); // Repopulate the markings tab as well.
-            UpdateSexControls(); // Update sex for new species
-            // Changing species provides inaccurate sliders without these
-            UpdateHeightControls();
-            UpdateWidthControls();
-            UpdateWeight();
+            UpdateSexControls(); // update sex for new species
+            RebuildSpriteView(); // they might have different inv so we need a new dummy
             UpdateSpeciesGuidebookIcon();
             IsDirty = true;
             UpdatePreview();
@@ -1029,20 +949,6 @@ namespace Content.Client.Preferences.UI
         {
             Profile = Profile?.WithSpawnPriorityPreference(newSpawnPriority);
             IsDirty = true;
-        }
-
-        private void SetProfileHeight(float height)
-        {
-            Profile = Profile?.WithHeight(height);
-            IsDirty = true;
-            UpdatePreview();
-        }
-
-        private void SetProfileWidth(float width)
-        {
-            Profile = Profile?.WithWidth(width);
-            IsDirty = true;
-            UpdatePreview();
         }
 
         public void Save()
@@ -1218,56 +1124,6 @@ namespace Content.Client.Preferences.UI
             _spawnPriorityButton.SelectId((int) Profile.SpawnPriority);
         }
 
-        private void UpdateHeightControls()
-        {
-            if (Profile == null)
-                return;
-
-            var species = _speciesList.Find(x => x.ID == Profile.Species) ?? _speciesList.First();
-
-            _heightSlider.MinValue = species.MinHeight;
-            _heightSlider.Value = Profile.Height;
-            _heightSlider.MaxValue = species.MaxHeight;
-
-            var height = MathF.Round(species.AverageHeight * _heightSlider.Value);
-            CHeightLabel.Text = Loc.GetString("humanoid-profile-editor-height-label", ("height", (int) height));
-        }
-
-        private void UpdateWidthControls()
-        {
-            if (Profile == null)
-                return;
-
-            var species = _speciesList.Find(x => x.ID == Profile.Species) ?? _speciesList.First();
-
-            _widthSlider.MinValue = species.MinWidth;
-            _widthSlider.Value = Profile.Width;
-            _widthSlider.MaxValue = species.MaxWidth;
-
-            var width = MathF.Round(species.AverageWidth * _widthSlider.Value);
-            CWidthLabel.Text = Loc.GetString("humanoid-profile-editor-width-label", ("width", (int) width));
-        }
-
-        private void UpdateWeight()
-        {
-            if (Profile == null)
-                return;
-
-            var species = _speciesList.Find(x => x.ID == Profile.Species) ?? _speciesList.First();
-            _prototypeManager.Index(species.Prototype).TryGetComponent<FixturesComponent>(out var fixture);
-
-            if (fixture != null)
-            {
-                var radius = fixture.Fixtures["fix1"].Shape.Radius;
-                var density = fixture.Fixtures["fix1"].Density;
-                var avg = (Profile.Width + Profile.Height) / 2;
-                var weight = MathF.Round(MathF.PI * MathF.Pow(radius * avg, 2) * density);
-                CWeightLabel.Text = Loc.GetString("humanoid-profile-editor-weight-label", ("weight", (int) weight));
-            }
-
-            _previewSpriteView.InvalidateMeasure();
-        }
-
         private void UpdateHairPickers()
         {
             if (Profile == null)
@@ -1389,9 +1245,6 @@ namespace Content.Client.Preferences.UI
             UpdateHairPickers();
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
-            UpdateHeightControls();
-            UpdateWidthControls();
-            UpdateWeight();
 
             _preferenceUnavailableButton.SelectId((int) Profile.PreferenceUnavailable);
         }

@@ -11,7 +11,7 @@
           "/Audio/Weapons/smash.ogg"
   - type: InteractionOutline
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/basic.rsi
+    sprite: Structures/Doors/Airlocks/Standard/BasicHorizontal.rsi
     snapCardinals: true
     layers:
     - state: closed
@@ -116,7 +116,7 @@
   - type: RCDDeconstructable
     cost: 6
     delay: 8
-    fx: EffectRCDDeconstruct8    
+    fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
     - trigger:
@@ -151,7 +151,7 @@
   - type: BlockWeather
   placement:
     mode: SnapgridCenter
- 
+
 - type: entity
   id: AirlockRCDResistant
   parent: Airlock
