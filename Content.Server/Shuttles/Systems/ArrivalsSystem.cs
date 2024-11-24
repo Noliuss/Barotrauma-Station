@@ -425,7 +425,7 @@ public sealed class ArrivalsSystem : EntitySystem
                 if (xform.MapUid != arrivalsXform.MapUid)
                 {
                     if (arrivals.IsValid())
-                        _shuttles.FTLToDock(uid, shuttle, arrivals);
+                        _shuttles.FTLTravel(uid, shuttle, arrivals, dock: true);
 
                     comp.NextArrivalsTime = _timing.CurTime + TimeSpan.FromSeconds(tripTime);
                 }
@@ -435,7 +435,7 @@ public sealed class ArrivalsSystem : EntitySystem
                     var targetGrid = _station.GetLargestGrid(data);
 
                     if (targetGrid != null)
-                        _shuttles.FTLToDock(uid, shuttle, targetGrid.Value);
+                        _shuttles.FTLTravel(uid, shuttle, targetGrid.Value, dock: true);
 
                     // The ArrivalsCooldown includes the trip there, so we only need to add the time taken for
                     // the trip back.
@@ -555,7 +555,7 @@ public sealed class ArrivalsSystem : EntitySystem
             var arrivalsComp = EnsureComp<ArrivalsShuttleComponent>(component.Shuttle);
             arrivalsComp.Station = uid;
             EnsureComp<ProtectedGridComponent>(uid);
-            _shuttles.FTLToDock(component.Shuttle, shuttleComp, arrivals, hyperspaceTime: RoundStartFTLDuration);
+            _shuttles.FTLTravel(component.Shuttle, shuttleComp, arrivals, hyperspaceTime: RoundStartFTLDuration, dock: true);
             arrivalsComp.NextTransfer = _timing.CurTime + TimeSpan.FromSeconds(_cfgManager.GetCVar(CCVars.ArrivalsCooldown));
         }
 

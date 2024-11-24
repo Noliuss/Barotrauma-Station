@@ -459,7 +459,7 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
 
         component.MapEntity = map;
         component.Entity = grid;
-        _shuttle.TryAddFTLDestination(mapId, false, out _);
+        _shuttle.AddFTLDestination(grid.Value, false);
     }
 
     public HashSet<EntityUid> GetCentcommMaps()

@@ -35,6 +35,7 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
     [Dependency] private readonly BiomeSystem _biomes = default!;
     [Dependency] private readonly BodySystem _bobby = default!;
     [Dependency] private readonly DockingSystem _dockSystem = default!;
+    [Dependency] private readonly DoorSystem _doors = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly FixtureSystem _fixtures = default!;
     [Dependency] private readonly MapLoaderSystem _loader = default!;
@@ -63,6 +64,8 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
         SubscribeLocalEvent<ShuttleComponent, ComponentStartup>(OnShuttleStartup);
         SubscribeLocalEvent<ShuttleComponent, ComponentShutdown>(OnShuttleShutdown);
 
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+
         SubscribeLocalEvent<GridInitializeEvent>(OnGridInit);
         SubscribeLocalEvent<FixturesComponent, GridFixtureChangeEvent>(OnGridFixtureChange);
     }
@@ -71,6 +74,11 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
     {
         base.Update(frameTime);
         UpdateHyperspace();
+    }
+
+    private void OnRoundRestart(RoundRestartCleanupEvent ev)
+    {
+        CleanupHyperspace();
     }
 
     private void OnGridFixtureChange(EntityUid uid, FixturesComponent manager, GridFixtureChangeEvent args)

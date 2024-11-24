@@ -163,15 +163,15 @@ public sealed partial class EmergencyShuttleSystem
 
                 if (!Deleted(centcomm.Entity))
                 {
-                    _shuttle.FTLToDock(comp.EmergencyShuttle.Value, shuttle,
-                        centcomm.Entity.Value, _consoleAccumulator, TransitTime);
+                    _shuttle.FTLTravel(comp.EmergencyShuttle.Value, shuttle,
+                        centcomm.Entity.Value, _consoleAccumulator, TransitTime, true);
                     continue;
                 }
 
                 if (!Deleted(centcomm.MapEntity))
                 {
                     // TODO: Need to get non-overlapping positions.
-                    _shuttle.FTLToCoordinates(comp.EmergencyShuttle.Value, shuttle,
+                    _shuttle.FTLTravel(comp.EmergencyShuttle.Value, shuttle,
                         new EntityCoordinates(centcomm.MapEntity.Value,
                             _random.NextVector2(1000f)), _consoleAccumulator, TransitTime);
                 }
@@ -201,7 +201,7 @@ public sealed partial class EmergencyShuttleSystem
             }
 
             // Don't dock them. If you do end up doing this then stagger launch.
-            _shuttle.FTLToDock(uid, shuttle, centcomm.Entity.Value, hyperspaceTime: TransitTime);
+            _shuttle.FTLTravel(uid, shuttle, centcomm.Entity.Value, hyperspaceTime: TransitTime);
             RemCompDeferred<EscapePodComponent>(uid);
         }
 
@@ -223,18 +223,15 @@ public sealed partial class EmergencyShuttleSystem
         // All the others.
         if (_consoleAccumulator < minTime)
         {
-            var query = AllEntityQuery<StationCentcommComponent, TransformComponent>();
+            var query = AllEntityQuery<StationCentcommComponent>();
 
             // Guarantees that emergency shuttle arrives first before anyone else can FTL.
-            while (query.MoveNext(out var comp, out var centcommXform))
+            while (query.MoveNext(out var comp))
             {
                 if (Deleted(comp.Entity))
                     continue;
 
-                if (_shuttle.TryAddFTLDestination(centcommXform.MapID, true, out var ftlComp))
-                {
-                    _shuttle.SetFTLWhitelist((centcommXform.MapUid!.Value, ftlComp), null);
-                }
+                _shuttle.AddFTLDestination(comp.Entity.Value, true);
             }
         }
     }
