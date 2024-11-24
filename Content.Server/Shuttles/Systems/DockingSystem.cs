@@ -207,6 +207,8 @@ namespace Content.Server.Shuttles.Systems
 
             EnableDocking(uid, component);
 
+            SetDockingEnabled((uid, component), true);
+
             // This little gem is for docking deserialization
             if (component.DockedWith != null)
             {
