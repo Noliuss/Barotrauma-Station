@@ -231,8 +231,8 @@ public sealed partial class ShuttleSystem
             return false;
         }
 
-        reason = null;
-        return true;
+        reason = ev.Reason;
+        return false;
     }
 
     /// <summary>

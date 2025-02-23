@@ -23,8 +23,6 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         _window.OpenCentered();
         _window.OnClose += Close;
 
-        _window.RequestFTL += OnFTLRequest;
-        _window.RequestBeaconFTL += OnFTLBeaconRequest;
         _window.DockRequest += OnDockRequest;
         _window.UndockRequest += OnUndockRequest;
     }
@@ -43,24 +41,6 @@ public sealed class ShuttleConsoleBoundUserInterface : BoundUserInterface
         {
             DockEntity = entity,
             TargetDockEntity = target,
-        });
-    }
-
-    private void OnFTLBeaconRequest(NetEntity ent, Angle angle)
-    {
-        SendMessage(new ShuttleConsoleFTLBeaconMessage()
-        {
-            Beacon = ent,
-            Angle = angle,
-        });
-    }
-
-    private void OnFTLRequest(MapCoordinates obj, Angle angle)
-    {
-        SendMessage(new ShuttleConsoleFTLPositionMessage()
-        {
-            Coordinates = obj,
-            Angle = angle,
         });
     }
 

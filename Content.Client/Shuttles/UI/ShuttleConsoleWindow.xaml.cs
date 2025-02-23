@@ -17,8 +17,6 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
     private ShuttleConsoleMode _mode = ShuttleConsoleMode.Nav;
 
-    public event Action<MapCoordinates, Angle>? RequestFTL;
-    public event Action<NetEntity, Angle>? RequestBeaconFTL;
 
     public event Action<NetEntity, NetEntity>? DockRequest;
     public event Action<NetEntity>? UndockRequest;
@@ -30,28 +28,16 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
 
         // Mode switching
         NavModeButton.OnPressed += NavPressed;
-        MapModeButton.OnPressed += MapPressed;
         DockModeButton.OnPressed += DockPressed;
 
         // Modes are exclusive
         var group = new ButtonGroup();
 
         NavModeButton.Group = group;
-        MapModeButton.Group = group;
         DockModeButton.Group = group;
 
         NavModeButton.Pressed = true;
         SetupMode(_mode);
-
-        MapContainer.RequestFTL += (coords, angle) =>
-        {
-            RequestFTL?.Invoke(coords, angle);
-        };
-
-        MapContainer.RequestBeaconFTL += (ent, angle) =>
-        {
-            RequestBeaconFTL?.Invoke(ent, angle);
-        };
 
         DockContainer.DockRequest += (entity, netEntity) =>
         {
@@ -71,12 +57,6 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
             NavContainer.Visible = false;
         }
 
-        if (mode != ShuttleConsoleMode.Map)
-        {
-            MapContainer.Visible = false;
-            MapContainer.SetMap(MapId.Nullspace, Vector2.Zero);
-        }
-
         if (mode != ShuttleConsoleMode.Dock)
         {
             DockContainer.Visible = false;
@@ -87,12 +67,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     {
         SwitchMode(ShuttleConsoleMode.Nav);
     }
-
-    private void MapPressed(BaseButton.ButtonEventArgs obj)
-    {
-        SwitchMode(ShuttleConsoleMode.Map);
-    }
-
+    
     private void DockPressed(BaseButton.ButtonEventArgs obj)
     {
         SwitchMode(ShuttleConsoleMode.Dock);
@@ -104,10 +79,6 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
         {
             case ShuttleConsoleMode.Nav:
                 NavContainer.Visible = true;
-                break;
-            case ShuttleConsoleMode.Map:
-                MapContainer.Visible = true;
-                MapContainer.Startup();
                 break;
             case ShuttleConsoleMode.Dock:
                 DockContainer.Visible = true;
@@ -130,7 +101,6 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     public enum ShuttleConsoleMode : byte
     {
         Nav,
-        Map,
         Dock,
     }
 
@@ -138,11 +108,7 @@ public sealed partial class ShuttleConsoleWindow : FancyWindow,
     {
         var coordinates = _entManager.GetCoordinates(cState.NavState.Coordinates);
         NavContainer.SetShuttle(coordinates?.EntityId);
-        MapContainer.SetShuttle(coordinates?.EntityId);
-        MapContainer.SetConsole(owner);
-
         NavContainer.UpdateState(cState.NavState);
-        MapContainer.UpdateState(cState.MapState);
         DockContainer.UpdateState(coordinates?.EntityId, cState.DockState);
     }
 }
